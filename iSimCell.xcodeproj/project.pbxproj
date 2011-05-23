@@ -19,6 +19,7 @@
 		554256CF138A701900FD94C6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 554256CD138A701900FD94C6 /* InfoPlist.strings */; };
 		554256D2138A701900FD94C6 /* iSimCellTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 554256D1138A701900FD94C6 /* iSimCellTests.h */; };
 		554256D4138A701900FD94C6 /* iSimCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 554256D3138A701900FD94C6 /* iSimCellTests.m */; };
+		55425732138A78CB00FD94C6 /* MySimulationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 55425730138A78A500FD94C6 /* MySimulationTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		554256D0138A701900FD94C6 /* iSimCellTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSimCellTests-Prefix.pch"; sourceTree = "<group>"; };
 		554256D1138A701900FD94C6 /* iSimCellTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iSimCellTests.h; sourceTree = "<group>"; };
 		554256D3138A701900FD94C6 /* iSimCellTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iSimCellTests.m; sourceTree = "<group>"; };
+		5542572F138A78A500FD94C6 /* MySimulationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySimulationTest.h; sourceTree = "<group>"; };
+		55425730138A78A500FD94C6 /* MySimulationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySimulationTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +189,8 @@
 		554256E0138A71C500FD94C6 /* Test Cases */ = {
 			isa = PBXGroup;
 			children = (
+				5542572F138A78A500FD94C6 /* MySimulationTest.h */,
+				55425730138A78A500FD94C6 /* MySimulationTest.m */,
 			);
 			name = "Test Cases";
 			sourceTree = "<group>";
@@ -310,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				554256D4138A701900FD94C6 /* iSimCellTests.m in Sources */,
+				55425732138A78CB00FD94C6 /* MySimulationTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
