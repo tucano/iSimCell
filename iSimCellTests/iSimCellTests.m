@@ -27,7 +27,9 @@
 
 - (void)testExample
 {
-    STFail(@"Unit tests are not implemented yet in iSimCellTests");
+    // Simple Test
+    int pippo = 1;
+    STAssertEquals(1, pippo, @"Test if pippo is 1, got: %i", pippo);
 }
 
 @end
