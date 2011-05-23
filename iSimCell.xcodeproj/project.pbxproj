@@ -116,12 +116,9 @@
 		554256A9138A701900FD94C6 /* iSimCell */ = {
 			isa = PBXGroup;
 			children = (
+				554256DF138A71AE00FD94C6 /* DataModels */,
+				554256DE138A715500FD94C6 /* Classes */,
 				554256DD138A704C00FD94C6 /* Interface */,
-				554256B5138A701900FD94C6 /* MySimulation.h */,
-				554256B6138A701900FD94C6 /* MySimulation.m */,
-				554256B8138A701900FD94C6 /* MySimulation.xib */,
-				554256BB138A701900FD94C6 /* MainMenu.xib */,
-				554256BE138A701900FD94C6 /* MySimulation.xcdatamodeld */,
 				554256AA138A701900FD94C6 /* Supporting Files */,
 			);
 			path = iSimCell;
@@ -142,6 +139,7 @@
 		554256CA138A701900FD94C6 /* iSimCellTests */ = {
 			isa = PBXGroup;
 			children = (
+				554256E0138A71C500FD94C6 /* Test Cases */,
 				554256D1138A701900FD94C6 /* iSimCellTests.h */,
 				554256D3138A701900FD94C6 /* iSimCellTests.m */,
 				554256CB138A701900FD94C6 /* Supporting Files */,
@@ -162,8 +160,34 @@
 		554256DD138A704C00FD94C6 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				554256B8138A701900FD94C6 /* MySimulation.xib */,
+				554256BB138A701900FD94C6 /* MainMenu.xib */,
 			);
 			name = Interface;
+			sourceTree = "<group>";
+		};
+		554256DE138A715500FD94C6 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				554256B5138A701900FD94C6 /* MySimulation.h */,
+				554256B6138A701900FD94C6 /* MySimulation.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		554256DF138A71AE00FD94C6 /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+				554256BE138A701900FD94C6 /* MySimulation.xcdatamodeld */,
+			);
+			name = DataModels;
+			sourceTree = "<group>";
+		};
+		554256E0138A71C500FD94C6 /* Test Cases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Test Cases";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
