@@ -15,12 +15,12 @@
 {
     [super setUp];
     
-    testSimulation = [[MySimulation alloc] init];
+    testsimulation = [[MySimulation alloc] init];
 }
 
 - (void)tearDown
 {
-    [testSimulation release];
+    [testsimulation release];
     
     [super tearDown];
 }
@@ -28,7 +28,14 @@
 - (void)testAllocAndRelease
 {
    
-    STAssertNotNil(testSimulation, @"test if object is not nil, got nil", testSimulation);
+    STAssertNotNil(testsimulation, @"test if object is not nil, got nil", testsimulation);
+}
+
+- (void)testNibLoad
+{
+    // test strings with equalObjects
+    NSString *nibName = [testsimulation windowNibName];
+    STAssertEqualObjects(@"SimCellWindow", nibName, @"test if nib connected is SimCellWindow, got %@", nibName);
 }
 
 @end

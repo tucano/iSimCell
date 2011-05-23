@@ -11,7 +11,7 @@
 
 @interface MySimulationTest : SenTestCase {
 @private
-    MySimulation *testSimulation;
+    MySimulation *testsimulation;
 }
 
 @end

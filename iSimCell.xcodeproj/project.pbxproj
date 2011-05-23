@@ -12,7 +12,7 @@
 		554256B1138A701900FD94C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 554256B0138A701900FD94C6 /* main.m */; };
 		554256B4138A701900FD94C6 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 554256B2138A701900FD94C6 /* Credits.rtf */; };
 		554256B7138A701900FD94C6 /* MySimulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 554256B6138A701900FD94C6 /* MySimulation.m */; };
-		554256BA138A701900FD94C6 /* MySimulation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 554256B8138A701900FD94C6 /* MySimulation.xib */; };
+		554256BA138A701900FD94C6 /* SimCellWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 554256B8138A701900FD94C6 /* SimCellWindow.xib */; };
 		554256BD138A701900FD94C6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 554256BB138A701900FD94C6 /* MainMenu.xib */; };
 		554256C0138A701900FD94C6 /* MySimulation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 554256BE138A701900FD94C6 /* MySimulation.xcdatamodeld */; };
 		554256C7138A701900FD94C6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554256A3138A701900FD94C6 /* Cocoa.framework */; };
@@ -45,7 +45,7 @@
 		554256B3138A701900FD94C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		554256B5138A701900FD94C6 /* MySimulation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MySimulation.h; sourceTree = "<group>"; };
 		554256B6138A701900FD94C6 /* MySimulation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MySimulation.m; sourceTree = "<group>"; };
-		554256B9138A701900FD94C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MySimulation.xib; sourceTree = "<group>"; };
+		554256B9138A701900FD94C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SimCellWindow.xib; sourceTree = "<group>"; };
 		554256BC138A701900FD94C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		554256BF138A701900FD94C6 /* MySimulation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MySimulation.xcdatamodel; sourceTree = "<group>"; };
 		554256C6138A701900FD94C6 /* iSimCellTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iSimCellTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,7 +163,7 @@
 		554256DD138A704C00FD94C6 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				554256B8138A701900FD94C6 /* MySimulation.xib */,
+				554256B8138A701900FD94C6 /* SimCellWindow.xib */,
 				554256BB138A701900FD94C6 /* MainMenu.xib */,
 			);
 			name = Interface;
@@ -267,7 +267,7 @@
 			files = (
 				554256AE138A701900FD94C6 /* InfoPlist.strings in Resources */,
 				554256B4138A701900FD94C6 /* Credits.rtf in Resources */,
-				554256BA138A701900FD94C6 /* MySimulation.xib in Resources */,
+				554256BA138A701900FD94C6 /* SimCellWindow.xib in Resources */,
 				554256BD138A701900FD94C6 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -346,12 +346,12 @@
 			name = Credits.rtf;
 			sourceTree = "<group>";
 		};
-		554256B8138A701900FD94C6 /* MySimulation.xib */ = {
+		554256B8138A701900FD94C6 /* SimCellWindow.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				554256B9138A701900FD94C6 /* en */,
 			);
-			name = MySimulation.xib;
+			name = SimCellWindow.xib;
 			sourceTree = "<group>";
 		};
 		554256BB138A701900FD94C6 /* MainMenu.xib */ = {
@@ -498,6 +498,7 @@
 				554256D9138A701900FD94C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		554256DA138A701900FD94C6 /* Build configuration list for PBXNativeTarget "iSimCellTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +507,7 @@
 				554256DC138A701900FD94C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
