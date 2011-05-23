@@ -20,6 +20,7 @@
 		554256D2138A701900FD94C6 /* iSimCellTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 554256D1138A701900FD94C6 /* iSimCellTests.h */; };
 		554256D4138A701900FD94C6 /* iSimCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 554256D3138A701900FD94C6 /* iSimCellTests.m */; };
 		55425732138A78CB00FD94C6 /* MySimulationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 55425730138A78A500FD94C6 /* MySimulationTest.m */; };
+		55B82CC3138AA1C30078BC6A /* simCell in CopyFiles */ = {isa = PBXBuildFile; fileRef = 55B82CC2138AA1C30078BC6A /* simCell */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,19 @@
 			remoteInfo = iSimCell;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		55B82CC1138AA1870078BC6A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				55B82CC3138AA1C30078BC6A /* simCell in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5542569F138A701900FD94C6 /* iSimCell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSimCell.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,6 +70,7 @@
 		554256D3138A701900FD94C6 /* iSimCellTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iSimCellTests.m; sourceTree = "<group>"; };
 		5542572F138A78A500FD94C6 /* MySimulationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySimulationTest.h; sourceTree = "<group>"; };
 		55425730138A78A500FD94C6 /* MySimulationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySimulationTest.m; sourceTree = "<group>"; };
+		55B82CC2138AA1C30078BC6A /* simCell */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = simCell; path = ../../simCell/src/simCell; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +134,7 @@
 		554256A9138A701900FD94C6 /* iSimCell */ = {
 			isa = PBXGroup;
 			children = (
+				55B82CC4138AA1F10078BC6A /* Resources */,
 				554256DF138A71AE00FD94C6 /* DataModels */,
 				554256DE138A715500FD94C6 /* Classes */,
 				554256DD138A704C00FD94C6 /* Interface */,
@@ -195,6 +211,14 @@
 			name = "Test Cases";
 			sourceTree = "<group>";
 		};
+		55B82CC4138AA1F10078BC6A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				55B82CC2138AA1C30078BC6A /* simCell */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -205,6 +229,7 @@
 				5542569B138A701900FD94C6 /* Sources */,
 				5542569C138A701900FD94C6 /* Frameworks */,
 				5542569D138A701900FD94C6 /* Resources */,
+				55B82CC1138AA1870078BC6A /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -240,7 +265,7 @@
 		55425696138A701900FD94C6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				ORGANIZATIONNAME = "IFOM-FIRC";
+				ORGANIZATIONNAME = Tucano;
 			};
 			buildConfigurationList = 55425699138A701900FD94C6 /* Build configuration list for PBXProject "iSimCell" */;
 			compatibilityVersion = "Xcode 3.2";
