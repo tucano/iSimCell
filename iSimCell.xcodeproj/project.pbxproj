@@ -37,20 +37,20 @@
 		554256A6138A701900FD94C6 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		554256A7138A701900FD94C6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		554256A8138A701900FD94C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		554256AB138A701900FD94C6 /* iSimCell-Info.plist */ = {isa = PBXFileReference; path = "iSimCell-Info.plist"; sourceTree = "<group>"; };
+		554256AB138A701900FD94C6 /* iSimCell-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iSimCell-Info.plist"; sourceTree = "<group>"; };
 		554256AD138A701900FD94C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		554256AF138A701900FD94C6 /* iSimCell-Prefix.pch */ = {isa = PBXFileReference; path = "iSimCell-Prefix.pch"; sourceTree = "<group>"; };
+		554256AF138A701900FD94C6 /* iSimCell-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSimCell-Prefix.pch"; sourceTree = "<group>"; };
 		554256B0138A701900FD94C6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		554256B3138A701900FD94C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		554256B5138A701900FD94C6 /* MySimulation.h */ = {isa = PBXFileReference; path = MySimulation.h; sourceTree = "<group>"; };
+		554256B5138A701900FD94C6 /* MySimulation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MySimulation.h; sourceTree = "<group>"; };
 		554256B6138A701900FD94C6 /* MySimulation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MySimulation.m; sourceTree = "<group>"; };
 		554256B9138A701900FD94C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MySimulation.xib; sourceTree = "<group>"; };
 		554256BC138A701900FD94C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		554256BF138A701900FD94C6 /* MySimulation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MySimulation.xcdatamodel; sourceTree = "<group>"; };
 		554256C6138A701900FD94C6 /* iSimCellTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iSimCellTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		554256CC138A701900FD94C6 /* iSimCellTests-Info.plist */ = {isa = PBXFileReference; path = "iSimCellTests-Info.plist"; sourceTree = "<group>"; };
+		554256CC138A701900FD94C6 /* iSimCellTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iSimCellTests-Info.plist"; sourceTree = "<group>"; };
 		554256CE138A701900FD94C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		554256D0138A701900FD94C6 /* iSimCellTests-Prefix.pch */ = {isa = PBXFileReference; path = "iSimCellTests-Prefix.pch"; sourceTree = "<group>"; };
+		554256D0138A701900FD94C6 /* iSimCellTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSimCellTests-Prefix.pch"; sourceTree = "<group>"; };
 		554256D1138A701900FD94C6 /* iSimCellTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iSimCellTests.h; sourceTree = "<group>"; };
 		554256D3138A701900FD94C6 /* iSimCellTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iSimCellTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,6 +116,7 @@
 		554256A9138A701900FD94C6 /* iSimCell */ = {
 			isa = PBXGroup;
 			children = (
+				554256DD138A704C00FD94C6 /* Interface */,
 				554256B5138A701900FD94C6 /* MySimulation.h */,
 				554256B6138A701900FD94C6 /* MySimulation.m */,
 				554256B8138A701900FD94C6 /* MySimulation.xib */,
@@ -156,6 +157,13 @@
 				554256D0138A701900FD94C6 /* iSimCellTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		554256DD138A704C00FD94C6 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Interface;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
