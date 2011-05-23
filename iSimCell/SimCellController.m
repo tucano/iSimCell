@@ -34,13 +34,13 @@
     NSLog(@"Window Loaded");
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     
-    
 }
 
 - (IBAction)launchSim:(id)sender
 {
     simcell = [[SimCellLinker alloc] init];
-
+    [theText setString:@""];
+    [theText setNeedsDisplay:YES];
     [ [NSNotificationCenter defaultCenter] 
      addObserver:self 
      selector:@selector(gotData:) 
