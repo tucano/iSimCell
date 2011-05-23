@@ -7,6 +7,7 @@
 //
 
 #import "MySimulation.h"
+#import "SimCellController.h"
 
 @implementation MySimulation
 
@@ -26,10 +27,18 @@
     return self;
 }
 
+// override -makeWindowControllers to set a window Controller attached to the document
+-(void)makeWindowControllers
+{
+    SimCellController *ctl = [ [SimCellController alloc] initWithWindowNibName: [self windowNibName] ];
+    [ctl autorelease];
+    [self addWindowController:ctl];
+    
+}
+
 - (NSString *)windowNibName
 {
   // Override returning the nib file name of the document
-  // If you need to use a subclass of NSWindowController or if your document supports multiple NSWindowControllers, you should remove this method and override -makeWindowControllers instead.
   return @"SimCellWindow";
 }
 
