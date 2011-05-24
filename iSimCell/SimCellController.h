@@ -9,13 +9,12 @@
 #import <Cocoa/Cocoa.h>
 #import "SimCellLinker.h"
 
+
 @interface SimCellController : NSWindowController {
 @private
     SimCellLinker *simcell;
 }
 
 - (IBAction)launchSim:(id)sender;
-- (void)appendString:(NSString *)string toView:(NSTextView *)view;
-- (void)gotData:(NSNotification *)notification;
 
 @end

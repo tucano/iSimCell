@@ -11,7 +11,7 @@
 
 @interface SimCellLinker : NSObject {
 @private
-    NSTask *simcellbin;
+    NSTask *simcellTask;
     NSPipe *toPipe;
     NSPipe *fromPipe;
     NSPipe *fromPipeError;
@@ -23,10 +23,8 @@
     NSData *simCellData;
 }
 
-@property(assign)NSData *simCellData;
+
 @property(assign) NSArray *simCellArguments;
-@property(readonly) NSFileHandle *fromSimcellbin;
-@property(readonly) NSFileHandle *fromSimCellError;
 
 -(void)launch;
 -(void)storeData;

@@ -11,7 +11,7 @@
 
 @implementation SimCellLinker
 
-@synthesize fromSimcellbin, fromSimCellError, simCellArguments, simCellData;
+@synthesize simCellArguments;
 
 - (id)init
 {
@@ -33,13 +33,13 @@
         fromSimCellError = [fromPipeError fileHandleForReading];
         
         // ALLOC TASK
-        simcellbin = [[NSTask alloc] init];
-        [simcellbin setLaunchPath:path];
+        simcellTask = [[NSTask alloc] init];
+        [simcellTask setLaunchPath:path];
         
         // ALLOC OUTPUTS
-        [simcellbin setStandardOutput:fromPipe];
-        [simcellbin setStandardError:fromPipeError];
-        [simcellbin setStandardInput:toPipe];        
+        [simcellTask setStandardOutput:fromPipe];
+        [simcellTask setStandardError:fromPipeError];
+        [simcellTask setStandardInput:toPipe];        
     }
     
     return self;
@@ -47,22 +47,35 @@
 
 - (void)dealloc
 {
-    [simcellbin terminate];
-    [simcellbin release];
+    [simcellTask release];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super dealloc];
 }
 
 - (void) launch
 {
     if ([self simCellArguments])
-        [simcellbin setArguments: [self simCellArguments]];
+        [simcellTask setArguments: [self simCellArguments]];
     
-    [simcellbin launch];
+    [ [NSNotificationCenter defaultCenter] 
+     addObserver:self 
+     selector:@selector(endTask:) 
+     name:NSTaskDidTerminateNotification 
+     object:simcellTask];
+    
+    [simcellTask launch];
 }
 
 - (void) storeData
 {
-    [self setSimCellData:[[self fromSimcellbin] readDataToEndOfFile]];
+    simCellData = [fromSimcellbin readDataToEndOfFile];
+    NSLog(@"FINAL DATA LENGHT: %lu", [simCellData length]);
 }
+
+-(void)endTask:(NSNotification *)notification
+{
+    NSLog(@"End Task");
+}
+
 
 @end
