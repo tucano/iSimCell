@@ -45,6 +45,9 @@
 
 - (void) launch
 {
+    NSArray *arguments;
+    arguments = [NSArray arrayWithObjects: @"-o", @"table",@"-n",@"1", nil];
+    [simcellbin setArguments: arguments];
     [simcellbin launch];
 }
 

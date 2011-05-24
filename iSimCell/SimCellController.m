@@ -63,7 +63,6 @@
     [str release];
 }
 
-
 - (void)appendString:(NSString *)string toView:(NSTextView *)view
 {
     if (string == nil) { return; }

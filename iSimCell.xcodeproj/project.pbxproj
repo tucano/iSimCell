@@ -23,6 +23,8 @@
 		55B82CC3138AA1C30078BC6A /* simCell in CopyFiles */ = {isa = PBXBuildFile; fileRef = 55B82CC2138AA1C30078BC6A /* simCell */; };
 		55B82CC7138AA4A20078BC6A /* SimCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B82CC6138AA4A20078BC6A /* SimCellController.m */; };
 		55B82CCA138AA6EB0078BC6A /* SimCellLinker.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B82CC9138AA6EB0078BC6A /* SimCellLinker.m */; };
+		55F48100138BA83C00406891 /* SimCellControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F480FD138BA68300406891 /* SimCellControllerTest.m */; };
+		55F48103138BA8C100406891 /* SimCellLinkerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F48102138BA8C100406891 /* SimCellLinkerTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,10 @@
 		55B82CC6138AA4A20078BC6A /* SimCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimCellController.m; sourceTree = "<group>"; };
 		55B82CC8138AA6EB0078BC6A /* SimCellLinker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimCellLinker.h; sourceTree = "<group>"; };
 		55B82CC9138AA6EB0078BC6A /* SimCellLinker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimCellLinker.m; sourceTree = "<group>"; };
+		55F480FC138BA68300406891 /* SimCellControllerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimCellControllerTest.h; sourceTree = "<group>"; };
+		55F480FD138BA68300406891 /* SimCellControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimCellControllerTest.m; sourceTree = "<group>"; };
+		55F48101138BA8C100406891 /* SimCellLinkerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimCellLinkerTest.h; sourceTree = "<group>"; };
+		55F48102138BA8C100406891 /* SimCellLinkerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimCellLinkerTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +223,10 @@
 			children = (
 				5542572F138A78A500FD94C6 /* MySimulationTest.h */,
 				55425730138A78A500FD94C6 /* MySimulationTest.m */,
+				55F480FC138BA68300406891 /* SimCellControllerTest.h */,
+				55F480FD138BA68300406891 /* SimCellControllerTest.m */,
+				55F48101138BA8C100406891 /* SimCellLinkerTest.h */,
+				55F48102138BA8C100406891 /* SimCellLinkerTest.m */,
 			);
 			name = "Test Cases";
 			sourceTree = "<group>";
@@ -353,6 +363,8 @@
 			files = (
 				554256D4138A701900FD94C6 /* iSimCellTests.m in Sources */,
 				55425732138A78CB00FD94C6 /* MySimulationTest.m in Sources */,
+				55F48100138BA83C00406891 /* SimCellControllerTest.m in Sources */,
+				55F48103138BA8C100406891 /* SimCellLinkerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
