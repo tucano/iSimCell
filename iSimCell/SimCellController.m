@@ -11,6 +11,11 @@
 
 @implementation SimCellController
 
+
+/* 
+ *  INIT, LOAD, DEALLOC
+ */
+
 - (id)initWithWindow:(NSWindow *)window
 {
     self = [super initWithWindow:window];
@@ -35,12 +40,19 @@
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     
 }
+- (NSString *)windowTitleForDocumentDisplayName:(NSString *)displayName
+{
+    return [@"iSimCell - " stringByAppendingString:displayName];
+}
+
+/* 
+ *  ACTIONS
+ */
 
 - (IBAction)launchSim:(id)sender
 {
     simcell = [[SimCellLinker alloc] init];
-    [theText setString:@""];
-    [theText setNeedsDisplay:YES];
+    
     [ [NSNotificationCenter defaultCenter] 
      addObserver:self 
      selector:@selector(gotData:) 
@@ -48,22 +60,25 @@
      object:[simcell fromSimcellbin]];
     
     [[simcell fromSimcellbin] readInBackgroundAndNotify];
-    [simcell setSimCellArguments: [NSArray arrayWithObjects: @"-o", @"table",@"-n",@"1", nil] ];
+    [simcell setSimCellArguments: [NSArray arrayWithObjects: @"-o", @"table",@"-n",@"1000", nil] ];
     [simcell launch];
+    [simcell storeData];
+    NSLog(@"DATA: %lu", [[simcell simCellData] length]);
 }
 
--(void)gotData:(NSNotification *)notification
+- (void)gotData:(NSNotification *)notification
 {
     NSData  *data;
     NSString  *str;
     
     data = [ [notification userInfo] objectForKey:NSFileHandleNotificationDataItem ];
     str = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-    [self appendString:str toView:theText];
+    NSLog(@"%@", str);
     [[simcell fromSimcellbin] readInBackgroundAndNotify];
     [str release];
 }
 
+// USED TO APPEND STRINGS TO TEXTVIEW
 - (void)appendString:(NSString *)string toView:(NSTextView *)view
 {
     if (string == nil) { return; }

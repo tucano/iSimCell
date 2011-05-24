@@ -11,7 +11,7 @@
 
 @implementation SimCellLinker
 
-@synthesize fromSimcellbin, fromSimCellError, simCellArguments;
+@synthesize fromSimcellbin, fromSimCellError, simCellArguments, simCellData;
 
 - (id)init
 {
@@ -47,6 +47,7 @@
 
 - (void)dealloc
 {
+    [simcellbin terminate];
     [simcellbin release];
     [super dealloc];
 }
@@ -57,6 +58,11 @@
         [simcellbin setArguments: [self simCellArguments]];
     
     [simcellbin launch];
+}
+
+- (void) storeData
+{
+    [self setSimCellData:[[self fromSimcellbin] readDataToEndOfFile]];
 }
 
 @end

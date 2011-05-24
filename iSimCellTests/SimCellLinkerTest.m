@@ -23,14 +23,10 @@
     [super tearDown];
 }
 
-- (void)testAllocAndRelease
-{
-    STAssertNotNil(linker, @"test if object is not nil, got nil", linker);
-}
-
 - (void)testLaunch
 {
     [linker launch];
+    STAssertNotNil(linker, @"test if object is not nil, got nil", linker);
     STAssertNotNil([linker fromSimcellbin], @"Test if stdoutput is not nil, got nil");
     STAssertNotNil([linker fromSimCellError], @"Test if stdouterror is not nil, got nil");
 }

@@ -20,12 +20,15 @@
     NSFileHandle *fromSimCellError;
     NSString *path;
     NSArray *simCellArguments;
+    NSData *simCellData;
 }
 
+@property(assign)NSData *simCellData;
 @property(assign) NSArray *simCellArguments;
 @property(readonly) NSFileHandle *fromSimcellbin;
 @property(readonly) NSFileHandle *fromSimCellError;
 
 -(void)launch;
+-(void)storeData;
 
 @end

@@ -11,10 +11,11 @@
 
 @interface SimCellController : NSWindowController {
 @private
-    IBOutlet NSTextView *theText;
     SimCellLinker *simcell;
 }
+
 - (IBAction)launchSim:(id)sender;
 - (void)appendString:(NSString *)string toView:(NSTextView *)view;
+- (void)gotData:(NSNotification *)notification;
 
 @end
