@@ -24,6 +24,8 @@
     
     NSString *path;
     NSArray *arguments;
+    
+    NSMutableData *taskData;
 }
 
 

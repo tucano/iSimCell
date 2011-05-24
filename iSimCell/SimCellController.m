@@ -49,7 +49,7 @@
 
 - (IBAction)launchSim:(id)sender
 {
-    [simcell setArguments: [NSArray arrayWithObjects: @"-o", @"table",@"-n",@"1000", nil] ];
+    [simcell setArguments: [NSArray arrayWithObjects: @"-ographml",@"-n1",@"-T15",@"-D10",nil] ];
     [simcell launchTask];
 }
 
