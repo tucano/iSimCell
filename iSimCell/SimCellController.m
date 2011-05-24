@@ -22,7 +22,7 @@
 
 - (void)dealloc
 {
-    // dealloc here ...
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [simcell release];
     [super dealloc];
 }
@@ -48,6 +48,7 @@
      object:[simcell fromSimcellbin]];
     
     [[simcell fromSimcellbin] readInBackgroundAndNotify];
+    [simcell setSimCellArguments: [NSArray arrayWithObjects: @"-o", @"table",@"-n",@"1", nil] ];
     [simcell launch];
 }
 

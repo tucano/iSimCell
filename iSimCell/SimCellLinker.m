@@ -11,26 +11,35 @@
 
 @implementation SimCellLinker
 
-@synthesize fromSimcellbin;
+@synthesize fromSimcellbin, fromSimCellError, simCellArguments;
 
 - (id)init
 {
     path = 0;
     self = [super init];
     if (self) {
+
+        // PATH
         path = [ [NSBundle mainBundle] pathForAuxiliaryExecutable:@"simCell"];
+        
+        // PIPES
         toPipe = [NSPipe pipe];
         fromPipe = [NSPipe pipe];
+        fromPipeError = [NSPipe pipe];
         
+        // FILEHANDLES
         toSimcellbin = [toPipe fileHandleForWriting];
         fromSimcellbin = [fromPipe fileHandleForReading];
+        fromSimCellError = [fromPipeError fileHandleForReading];
         
+        // ALLOC TASK
         simcellbin = [[NSTask alloc] init];
         [simcellbin setLaunchPath:path];
         
+        // ALLOC OUTPUTS
         [simcellbin setStandardOutput:fromPipe];
-        [simcellbin setStandardInput:toPipe];
-        
+        [simcellbin setStandardError:fromPipeError];
+        [simcellbin setStandardInput:toPipe];        
     }
     
     return self;
@@ -38,16 +47,15 @@
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [simcellbin release];
     [super dealloc];
 }
 
 - (void) launch
 {
-    NSArray *arguments;
-    arguments = [NSArray arrayWithObjects: @"-o", @"table",@"-n",@"1", nil];
-    [simcellbin setArguments: arguments];
+    if ([self simCellArguments])
+        [simcellbin setArguments: [self simCellArguments]];
+    
     [simcellbin launch];
 }
 

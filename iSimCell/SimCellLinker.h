@@ -14,11 +14,18 @@
     NSTask *simcellbin;
     NSPipe *toPipe;
     NSPipe *fromPipe;
+    NSPipe *fromPipeError;
     NSFileHandle *toSimcellbin;
     NSFileHandle *fromSimcellbin;
+    NSFileHandle *fromSimCellError;
     NSString *path;
+    NSArray *simCellArguments;
 }
+
+@property(assign) NSArray *simCellArguments;
 @property(readonly) NSFileHandle *fromSimcellbin;
+@property(readonly) NSFileHandle *fromSimCellError;
+
 -(void)launch;
 
 @end

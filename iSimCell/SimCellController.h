@@ -16,4 +16,5 @@
 }
 - (IBAction)launchSim:(id)sender;
 - (void)appendString:(NSString *)string toView:(NSTextView *)view;
+
 @end
