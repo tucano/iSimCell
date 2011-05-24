@@ -15,6 +15,7 @@
     SimCellLinker *simcell;
 }
 
-- (IBAction)launchSim:(id)sender;
+-(IBAction)launchSim:(id)sender;
+-(IBAction)terminateSim:(id)sender;
 
 @end

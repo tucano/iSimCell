@@ -19,7 +19,7 @@
     self = [super initWithWindow:window];
     if (self) {
         // Initialization code here.
-       
+        simcell = [[SimCellLinker alloc] init];       
     }
     return self;
 }
@@ -49,10 +49,13 @@
 
 - (IBAction)launchSim:(id)sender
 {
-    simcell = [[SimCellLinker alloc] init];
-    [simcell setSimCellArguments: [NSArray arrayWithObjects: @"-o", @"table",@"-n",@"100", nil] ];
-    [simcell launch];
-    [simcell storeData];
+    [simcell setArguments: [NSArray arrayWithObjects: @"-o", @"table",@"-n",@"1000", nil] ];
+    [simcell launchTask];
+}
+
+-(IBAction)terminateSim:(id)sender
+{
+    [simcell killTask];
 }
 
 @end
