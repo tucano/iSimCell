@@ -25,7 +25,7 @@
 
 - (void)testLaunch
 {
-    [linker launch];
+    [linker launchTask];
     STAssertNotNil(linker, @"test if object is not nil, got nil", linker);
 }
 @end

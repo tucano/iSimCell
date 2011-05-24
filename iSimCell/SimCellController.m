@@ -51,6 +51,13 @@
 {
     [simcell setArguments: [NSArray arrayWithObjects: @"-ographml",@"-n1",@"-T15",@"-D10",nil] ];
     [simcell launchTask];
+    [progBar startAnimation:self];
+    // register observer for complete task
+    [[NSNotificationCenter defaultCenter] 
+     addObserver:self 
+     selector:@selector(taskFinished) 
+     name:@"SimCellTaskComplete" 
+     object:simcell];
 }
 
 -(IBAction)terminateSim:(id)sender
@@ -58,4 +65,8 @@
     [simcell killTask];
 }
 
+-(void)taskFinished
+{
+    [progBar stopAnimation:self];
+}
 @end

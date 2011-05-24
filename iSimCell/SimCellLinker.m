@@ -95,10 +95,15 @@
 {
     int exitCode = [[notification object] terminationStatus];
     NSLog(@"End Task with ExitCode: %i", exitCode);
+    
     // Do whatever else you need to do when the task finished
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    NSString *text = [[NSString alloc] initWithData:taskData encoding:NSASCIIStringEncoding];
-    NSLog(@"%@",text);
+    
+    // Post completed task
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"SimCellTaskComplete" object:self];
+    
+    //NSString *text = [[NSString alloc] initWithData:taskData encoding:NSASCIIStringEncoding];
+    //NSLog(@"%@",text);
 }
 
 - (void)taskDataAvailable:(NSNotification *)notif

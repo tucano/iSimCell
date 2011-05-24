@@ -13,6 +13,7 @@
 @interface SimCellController : NSWindowController {
 @private
     SimCellLinker *simcell;
+    IBOutlet NSProgressIndicator *progBar;
 }
 
 -(IBAction)launchSim:(id)sender;
