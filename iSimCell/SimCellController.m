@@ -37,23 +37,23 @@
 
     NSLog(@"Window Loaded");
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
-    
 }
+
 - (NSString *)windowTitleForDocumentDisplayName:(NSString *)displayName
 {
     return [@"iSimCell - " stringByAppendingString:displayName];
 }
 
+
 /* 
  *  ACTIONS
  */
-
 - (IBAction)launchSim:(id)sender
 {
     // register observer for start task
     [[NSNotificationCenter defaultCenter] 
      addObserver:self 
-     selector:@selector(taskStarted) 
+     selector:@selector(taskStarted:) 
      name:@"SimCellTaskStarted" 
      object:simcell];
 
@@ -63,7 +63,7 @@
     // register observer for complete task
     [[NSNotificationCenter defaultCenter] 
      addObserver:self 
-     selector:@selector(taskFinished) 
+     selector:@selector(taskFinished:) 
      name:@"SimCellTaskComplete" 
      object:simcell];
 }
@@ -73,15 +73,15 @@
     [simcell killTask];
 }
 
--(void)taskStarted
+-(void)taskStarted:(NSNotification *)notification
 {
-    [progBar startAnimation:nil];
+   [progBar startAnimation:self];
     NSLog(@"Controller for window %@. Task Control Start.", [[self document] displayName]);
 }
 
--(void)taskFinished
+-(void)taskFinished:(NSNotification *)notification
 {
-    [progBar stopAnimation:nil];
+    [progBar stopAnimation:self];
     NSLog(@"Controller for window %@. Task Control End.", [[self document] displayName]);
 }
 @end
