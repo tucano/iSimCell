@@ -75,6 +75,10 @@
      object:taskOutput];
     
     [task launch];
+    
+    // Post started task
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"SimCellTaskStarted" object:self];
+    
     [taskOutput readInBackgroundAndNotify];
 
     [environment release];
@@ -102,8 +106,8 @@
     // Post completed task
     [[NSNotificationCenter defaultCenter] postNotificationName:@"SimCellTaskComplete" object:self];
     
-    //NSString *text = [[NSString alloc] initWithData:taskData encoding:NSASCIIStringEncoding];
-    //NSLog(@"%@",text);
+//    NSString *text = [[NSString alloc] initWithData:taskData encoding:NSASCIIStringEncoding];
+//    NSLog(@"%@",text);
 }
 
 - (void)taskDataAvailable:(NSNotification *)notif

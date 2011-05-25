@@ -26,6 +26,7 @@
 
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [simcell release];
     [super dealloc];
 }
@@ -49,9 +50,16 @@
 
 - (IBAction)launchSim:(id)sender
 {
+    // register observer for start task
+    [[NSNotificationCenter defaultCenter] 
+     addObserver:self 
+     selector:@selector(taskStarted) 
+     name:@"SimCellTaskStarted" 
+     object:simcell];
+
     [simcell setArguments: [NSArray arrayWithObjects: @"-ographml",@"-n1",@"-T15",@"-D10",nil] ];
     [simcell launchTask];
-    [progBar startAnimation:self];
+
     // register observer for complete task
     [[NSNotificationCenter defaultCenter] 
      addObserver:self 
@@ -65,8 +73,15 @@
     [simcell killTask];
 }
 
+-(void)taskStarted
+{
+    [progBar startAnimation:nil];
+    NSLog(@"Controller for window %@. Task Control Start.", [[self document] displayName]);
+}
+
 -(void)taskFinished
 {
-    [progBar stopAnimation:self];
+    [progBar stopAnimation:nil];
+    NSLog(@"Controller for window %@. Task Control End.", [[self document] displayName]);
 }
 @end
