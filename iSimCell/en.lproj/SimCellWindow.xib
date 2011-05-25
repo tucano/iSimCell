@@ -12,6 +12,7 @@
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<string>NSUserDefaultsController</string>
 			<string>NSToolbar</string>
 			<string>NSScroller</string>
 			<string>NSSplitView</string>
@@ -544,7 +545,8 @@
 											<string key="NSFrame">{{302, 264}, {32, 32}}</string>
 											<reference key="NSSuperview" ref="417265164"/>
 											<reference key="NSWindow"/>
-											<int key="NSpiFlags">20490</int>
+											<reference key="NSNextKeyView"/>
+											<int key="NSpiFlags">28682</int>
 											<double key="NSMaxValue">100</double>
 										</object>
 									</object>
@@ -579,6 +581,9 @@
 			</object>
 			<object class="NSCustomObject" id="934670232">
 				<string key="NSClassName">SimCellController</string>
+			</object>
+			<object class="NSUserDefaultsController" id="544451701">
+				<bool key="NSSharedInstance">YES</bool>
 			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -816,6 +821,11 @@
 						<reference key="object" ref="543902566"/>
 						<reference key="parent" ref="417265164"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">100165</int>
+						<reference key="object" ref="544451701"/>
+						<reference key="parent" ref="0"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -903,7 +913,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">100157</int>
+			<int key="maxID">100180</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
