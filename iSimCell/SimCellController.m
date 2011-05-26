@@ -14,7 +14,7 @@
  *  INIT, LOAD, DEALLOC
  */
 
-@synthesize managedObjectContext, simulationController,targetController;
+@synthesize managedObjectContext, simulationController;
 
 - (id)initWithWindow:(NSWindow *)window
 {
@@ -39,8 +39,6 @@
 
     NSLog(@"SimCellController: Window Loaded");
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
-    NSPersistentStoreCoordinator * coordinator = [[targetController managedObjectContext] persistentStoreCoordinator];
-    [managedObjectContext setPersistentStoreCoordinator:coordinator];
 }
 
 - (NSString *)windowTitleForDocumentDisplayName:(NSString *)displayName

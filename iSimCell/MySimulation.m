@@ -67,7 +67,7 @@
 {
     [super windowControllerDidLoadNib:aController];
     // Add any code here that needs to be executed once the windowController has loaded the document's window.
-    NSLog(@"NSPersistentDocument: windowController load NIB");
+    NSLog(@"NSPersistentDocument: windowController loaded NIB");
 }
 
 @end
