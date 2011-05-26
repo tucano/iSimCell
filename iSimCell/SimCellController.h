@@ -8,9 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 #import "SimCellLinker.h"
+#import "MySimulation.h"
 
 @interface SimCellController : NSWindowController {
 @private
+    MySimulation *document;
     SimCellLinker *simcell;
     IBOutlet NSProgressIndicator *progBar;
 }

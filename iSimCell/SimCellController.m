@@ -21,7 +21,7 @@
     self = [super initWithWindow:window];
     if (self) {
         // Initialization code here.
-        simcell = [[SimCellLinker alloc] init];       
+        simcell = [[SimCellLinker alloc] init];
     }
     return self;
 }
@@ -36,9 +36,11 @@
 - (void)windowDidLoad
 {
     [super windowDidLoad];
-
-    NSLog(@"SimCellController: Window Loaded");
+    
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    document = [self document];
+    NSLog(@"SimCellController: Window Loaded. Document is: %@", [document simulation]);
+    NSLog(@"SimCellController: simulation name: %@", [[document simulation] valueForKey:@"name"]);
 }
 
 - (NSString *)windowTitleForDocumentDisplayName:(NSString *)displayName

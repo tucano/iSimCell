@@ -63,11 +63,4 @@
     return @"SimCellWindow";
 }
 
-- (void)windowControllerDidLoadNib:(NSWindowController *)aController
-{
-    [super windowControllerDidLoadNib:aController];
-    // Add any code here that needs to be executed once the windowController has loaded the document's window.
-    NSLog(@"NSPersistentDocument: windowController loaded NIB");
-}
-
 @end
