@@ -25,6 +25,8 @@
 		55B82CCA138AA6EB0078BC6A /* SimCellLinker.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B82CC9138AA6EB0078BC6A /* SimCellLinker.m */; };
 		55F48100138BA83C00406891 /* SimCellControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F480FD138BA68300406891 /* SimCellControllerTest.m */; };
 		55F48103138BA8C100406891 /* SimCellLinkerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F48102138BA8C100406891 /* SimCellLinkerTest.m */; };
+		55FC150F138E823700BBCBD0 /* Simulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FC150E138E823700BBCBD0 /* Simulation.m */; };
+		55FC1513138E825300BBCBD0 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FC1512138E825300BBCBD0 /* Configuration.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,10 @@
 		55F480FD138BA68300406891 /* SimCellControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimCellControllerTest.m; sourceTree = "<group>"; };
 		55F48101138BA8C100406891 /* SimCellLinkerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimCellLinkerTest.h; sourceTree = "<group>"; };
 		55F48102138BA8C100406891 /* SimCellLinkerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimCellLinkerTest.m; sourceTree = "<group>"; };
+		55FC150D138E823700BBCBD0 /* Simulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Simulation.h; sourceTree = "<group>"; };
+		55FC150E138E823700BBCBD0 /* Simulation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Simulation.m; sourceTree = "<group>"; };
+		55FC1511138E825300BBCBD0 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
+		55FC1512138E825300BBCBD0 /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +212,10 @@
 				55B82CC6138AA4A20078BC6A /* SimCellController.m */,
 				55B82CC8138AA6EB0078BC6A /* SimCellLinker.h */,
 				55B82CC9138AA6EB0078BC6A /* SimCellLinker.m */,
+				55FC150D138E823700BBCBD0 /* Simulation.h */,
+				55FC150E138E823700BBCBD0 /* Simulation.m */,
+				55FC1511138E825300BBCBD0 /* Configuration.h */,
+				55FC1512138E825300BBCBD0 /* Configuration.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -354,6 +364,8 @@
 				554256C0138A701900FD94C6 /* MySimulation.xcdatamodeld in Sources */,
 				55B82CC7138AA4A20078BC6A /* SimCellController.m in Sources */,
 				55B82CCA138AA6EB0078BC6A /* SimCellLinker.m in Sources */,
+				55FC150F138E823700BBCBD0 /* Simulation.m in Sources */,
+				55FC1513138E825300BBCBD0 /* Configuration.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

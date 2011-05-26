@@ -32,17 +32,23 @@
         NSLog(@"NSPersistentDocument: InitWithType with CoreData object models");
         
         /*
-         *  Create CoreData Object:
-         * http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/NSPersistentDocumentTutorial/
+         *  Create CoreData Object PREWINDOW LOAD (to init things):
          */
         
         NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
         [[managedObjectContext undoManager] disableUndoRegistration];
-        self.simulation = [NSEntityDescription insertNewObjectForEntityForName:@"Simulation" 
+        simulation = [NSEntityDescription insertNewObjectForEntityForName:@"Simulation" 
                                                         inManagedObjectContext:managedObjectContext];
+        
+        Configuration *defaultConfig = [NSEntityDescription insertNewObjectForEntityForName:@"Configuration" 
+                                                                       inManagedObjectContext:managedObjectContext];
+        
+        defaultConfig.uniqueID = @"Default Config";
+        [simulation addConfigurationsObject:defaultConfig];
         [managedObjectContext processPendingChanges];
         [[managedObjectContext undoManager] enableUndoRegistration];
-        NSLog(@"NSPersistenDocument: Simulation Object loaded: %@", [simulation valueForKey:@"name"]);
+        NSLog(@"NSPersistenDocument: Simulation Object loaded: %@", simulation.name);
+        NSLog(@"NSPersistenDocument: Configuration Default Object loaded: %@", simulation.configurations);
     }
     return self;
 }
@@ -53,7 +59,7 @@
     SimCellController *ctl = [ [SimCellController alloc] initWithWindowNibName: [self windowNibName] ];
     [ctl autorelease];
     [self addWindowController:ctl];
-     NSLog(@"NSPersistentDocument: passing control to the window controller");
+     NSLog(@"NSPersistentDocument: passing control to the window controller, bye bye!");
     
 }
 

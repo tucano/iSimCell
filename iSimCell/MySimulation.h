@@ -7,10 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "Simulation.h"
+#import "Configuration.h"
 
 @interface MySimulation : NSPersistentDocument {
 @private
-    NSManagedObject *simulation;
+    Simulation *simulation;
 }
 
 @property(assign,nonatomic) NSManagedObject *simulation;
