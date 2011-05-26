@@ -15,11 +15,13 @@
 }
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSSet* configurations;
+@property (nonatomic, retain) NSString * uniqueID;
 
 - (void)addConfigurationsObject:(NSManagedObject *)value;
 - (void)removeConfigurationsObject:(NSManagedObject *)value;
 - (void)addConfigurations:(NSSet *)value;
 - (void)removeConfigurations:(NSSet *)value;
 
+- (void) generateUniqueID;
 
 @end

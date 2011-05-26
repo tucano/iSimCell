@@ -16,6 +16,7 @@
 
 @dynamic name;
 @dynamic configurations;
+@dynamic uniqueID;
 
 #pragma mark -
 #pragma mark Accessors/Mutators
@@ -48,5 +49,21 @@
     [self didChangeValueForKey:@"configurations" withSetMutation:NSKeyValueMinusSetMutation usingObjects:value];
 }
 
+#pragma mark -
+#pragma mark Core Data Methods
+- (void) awakeFromInsert {
+    // called when the object is first created.
+    [self generateUniqueID];
+}
+
+
+#pragma mark -
+#pragma mark Private
+
+- (void) generateUniqueID {
+    NSString* uniqueID = self.uniqueID;
+    if ( uniqueID != nil ) return;
+    self.uniqueID = [[NSProcessInfo processInfo] globallyUniqueString];
+}
 
 @end
