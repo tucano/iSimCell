@@ -18,4 +18,8 @@
 -(IBAction)launchSim:(id)sender;
 -(IBAction)terminateSim:(id)sender;
 
+@property(nonatomic, retain) IBOutlet NSManagedObjectContext *managedObjectContext;
+@property(nonatomic, retain) IBOutlet NSObjectController *simulationController;
+@property (nonatomic, retain) IBOutlet NSObjectController * targetController;
+
 @end

@@ -29,7 +29,7 @@
         // Add your subclass-specific initialization here.
         
         // If an error occurs here, send a [self release] message and return nil.
-        NSLog(@"NSPersistentDocument: InitWithType");
+        NSLog(@"NSPersistentDocument: InitWithType with CoreData object models");
         
         /*
          *  Create CoreData Object:
@@ -42,7 +42,7 @@
                                                         inManagedObjectContext:managedObjectContext];
         [managedObjectContext processPendingChanges];
         [[managedObjectContext undoManager] enableUndoRegistration];
-       
+        NSLog(@"NSPersistenDocument: Simulation Object loaded: %@", [simulation valueForKey:@"name"]);
     }
     return self;
 }
@@ -67,7 +67,7 @@
 {
     [super windowControllerDidLoadNib:aController];
     // Add any code here that needs to be executed once the windowController has loaded the document's window.
-    NSLog(@"NSPersistenDocument: Simlulation Object loaded: %@", [simulation valueForKey:@"name"]);
+    NSLog(@"NSPersistentDocument: windowController load NIB");
 }
 
 @end
