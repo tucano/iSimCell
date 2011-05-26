@@ -10,7 +10,9 @@
 
 @interface MySimulation : NSPersistentDocument {
 @private
-
+    NSManagedObject *simulation;
 }
+
+@property(assign,nonatomic) NSManagedObject *simulation;
 
 @end

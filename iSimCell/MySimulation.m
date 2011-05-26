@@ -11,10 +11,15 @@
 
 @implementation MySimulation
 
+/*
+ * SYNT and DYNAMIC delaration
+ */
+
+@synthesize simulation;
 
 
 /* 
- *  TEMPLATE METHODS
+ *  INITIALIZATION METHODS
  */
 
 - (id)init
@@ -23,6 +28,29 @@
     if (self) {
         // Add your subclass-specific initialization here.
         // If an error occurs here, send a [self release] message and return nil.
+    }
+    return self;
+}
+
+-(id)initWithType:(NSString *)type error:(NSError **)error
+{
+    self = [super initWithType:type error:error];
+    if (self != nil) {
+        // Add your subclass-specific initialization here.
+        // If an error occurs here, send a [self release] message and return nil.
+        NSLog(@"InitWithType");
+        /*
+         *  Create CoreData Object:
+         * http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/NSPersistentDocumentTutorial/
+         */
+        
+        NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+        [[managedObjectContext undoManager] disableUndoRegistration];
+        self.simulation = [NSEntityDescription insertNewObjectForEntityForName:@"Simulation" 
+                                                        inManagedObjectContext:managedObjectContext];
+        [managedObjectContext processPendingChanges];
+        [[managedObjectContext undoManager] enableUndoRegistration];
+        NSLog(@"Simlulation: %@", [simulation valueForKey:@"name"]);
     }
     return self;
 }
@@ -46,8 +74,6 @@
 {
     [super windowControllerDidLoadNib:aController];
     // Add any code here that needs to be executed once the windowController has loaded the document's window.
-    
-    NSLog(@"%@","");
 }
 
 @end
