@@ -7,8 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+
 #import "Simulation.h"
 #import "Configuration.h"
+
 
 @interface MySimulation : NSPersistentDocument {
 @private

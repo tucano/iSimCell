@@ -38,4 +38,6 @@
 @property (nonatomic, retain) NSNumber * prob;
 @property (nonatomic, retain) Simulation * simulation;
 
+- (void) generateUniqueID;
+
 @end

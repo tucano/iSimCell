@@ -11,6 +11,10 @@
 
 
 @implementation Configuration
+
+#pragma mark -
+#pragma mark Initialization
+
 @dynamic name;
 @dynamic key;
 @dynamic facs_range;
@@ -35,5 +39,22 @@
 @dynamic prob;
 @dynamic simulation;
 
+
+#pragma mark -
+#pragma mark Core Data Methods
+- (void) awakeFromInsert {
+    // called when the object is first created.
+    [self generateUniqueID];
+}
+
+
+#pragma mark -
+#pragma mark Private
+
+- (void) generateUniqueID {
+    NSString* uniqueID = self.uniqueID;
+    if ( uniqueID != nil ) return;
+    self.uniqueID = [[NSProcessInfo processInfo] globallyUniqueString];
+}
 
 @end
