@@ -17,5 +17,9 @@
 @property (nonatomic, retain) NSSet* configurations;
 
 - (void)addConfigurationsObject:(NSManagedObject *)value;
+- (void)removeConfigurationsObject:(NSManagedObject *)value;
+- (void)addConfigurations:(NSSet *)value;
+- (void)removeConfigurations:(NSSet *)value;
+
 
 @end

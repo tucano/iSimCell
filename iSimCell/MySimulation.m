@@ -43,7 +43,7 @@
         Configuration *defaultConfig = [NSEntityDescription insertNewObjectForEntityForName:@"Configuration" 
                                                                        inManagedObjectContext:managedObjectContext];
         
-        defaultConfig.uniqueID = @"Default Config";
+        defaultConfig.name = @"Default Config";
         [simulation addConfigurationsObject:defaultConfig];
         [managedObjectContext processPendingChanges];
         [[managedObjectContext undoManager] enableUndoRegistration];

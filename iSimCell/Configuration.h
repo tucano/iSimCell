@@ -14,6 +14,7 @@
 @interface Configuration : NSManagedObject {
 @private
 }
+@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * key;
 @property (nonatomic, retain) NSNumber * facs_range;
 @property (nonatomic, retain) NSString * output;

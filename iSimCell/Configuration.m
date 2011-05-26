@@ -11,6 +11,7 @@
 
 
 @implementation Configuration
+@dynamic name;
 @dynamic key;
 @dynamic facs_range;
 @dynamic output;
