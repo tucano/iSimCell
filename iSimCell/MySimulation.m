@@ -39,6 +39,13 @@
         
         defaultConfig.name = @"Default Config";
         [simulation addConfigurationsObject:defaultConfig];
+        
+        defaultConfig = [NSEntityDescription insertNewObjectForEntityForName:@"Configuration" 
+                                                                     inManagedObjectContext:managedObjectContext];
+        
+        defaultConfig.name = @"Another Config";
+        [simulation addConfigurationsObject:defaultConfig];
+        
         [managedObjectContext processPendingChanges];
         [[managedObjectContext undoManager] enableUndoRegistration];
         NSLog(@"NSPersistenDocument: Simulation Object loaded: %@", simulation.name);

@@ -42,7 +42,7 @@
     document = [self document];
     NSLog(@"SimCellController: Window Loaded. Calling Document is: %@", document);
     NSLog(@"SimCellController: MySimulation Model: %@", [document simulation]);
-    NSLog(@"SimCellController: simulation name: %@", [[document simulation] valueForKey:@"name"]);
+    NSLog(@"SimCellController: simulation configurations: %@", [[document simulation] valueForKey:@"configurations"]);
 }
 
 - (NSString *)windowTitleForDocumentDisplayName:(NSString *)displayName
