@@ -22,23 +22,15 @@
  *  INITIALIZATION METHODS
  */
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        // Add your subclass-specific initialization here.
-        // If an error occurs here, send a [self release] message and return nil.
-    }
-    return self;
-}
-
 -(id)initWithType:(NSString *)type error:(NSError **)error
 {
     self = [super initWithType:type error:error];
     if (self != nil) {
         // Add your subclass-specific initialization here.
+        
         // If an error occurs here, send a [self release] message and return nil.
-        NSLog(@"InitWithType");
+        NSLog(@"NSPersistentDocument: InitWithType");
+        
         /*
          *  Create CoreData Object:
          * http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/NSPersistentDocumentTutorial/
@@ -50,7 +42,7 @@
                                                         inManagedObjectContext:managedObjectContext];
         [managedObjectContext processPendingChanges];
         [[managedObjectContext undoManager] enableUndoRegistration];
-        NSLog(@"Simlulation: %@", [simulation valueForKey:@"name"]);
+       
     }
     return self;
 }
@@ -61,6 +53,7 @@
     SimCellController *ctl = [ [SimCellController alloc] initWithWindowNibName: [self windowNibName] ];
     [ctl autorelease];
     [self addWindowController:ctl];
+     NSLog(@"NSPersistentDocument: passing control to the window controller");
     
 }
 
@@ -74,6 +67,7 @@
 {
     [super windowControllerDidLoadNib:aController];
     // Add any code here that needs to be executed once the windowController has loaded the document's window.
+    NSLog(@"NSPersistenDocument: Simlulation Object loaded: %@", [simulation valueForKey:@"name"]);
 }
 
 @end

@@ -9,7 +9,6 @@
 #import <Cocoa/Cocoa.h>
 #import "SimCellLinker.h"
 
-
 @interface SimCellController : NSWindowController {
 @private
     SimCellLinker *simcell;
