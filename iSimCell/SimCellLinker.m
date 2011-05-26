@@ -13,6 +13,9 @@
 
 @synthesize arguments;
 
+#pragma mark -
+#pragma mark Initialization
+
 - (id)init
 {
     self = [super init];
@@ -28,6 +31,9 @@
     [task release];  
     [super dealloc];
 }
+
+#pragma mark -
+#pragma mark Actions
 
 - (void)launchTask
 {
@@ -95,6 +101,9 @@
         [task terminate];
 }
 
+#pragma mark -
+#pragma mark Notification
+
 -(void)endTask:(NSNotification *)notification
 {
     int exitCode = [[notification object] terminationStatus];
@@ -110,9 +119,9 @@
 //    NSLog(@"%@",text);
 }
 
-- (void)taskDataAvailable:(NSNotification *)notif
+- (void)taskDataAvailable:(NSNotification *)notification
 {
-    NSData *incomingData = [[notif userInfo] objectForKey:NSFileHandleNotificationDataItem];
+    NSData *incomingData = [[notification userInfo] objectForKey:NSFileHandleNotificationDataItem];
     if (incomingData && [incomingData length])
     {
         // Do whatever with incomingText, the string that has some text in it

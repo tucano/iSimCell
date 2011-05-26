@@ -11,16 +11,11 @@
 
 @implementation MySimulation
 
-/*
- * SYNT and DYNAMIC delaration
- */
+
+#pragma mark -
+#pragma mark Initialization
 
 @synthesize simulation;
-
-
-/* 
- *  INITIALIZATION METHODS
- */
 
 -(id)initWithType:(NSString *)type error:(NSError **)error
 {
@@ -52,6 +47,9 @@
     }
     return self;
 }
+
+#pragma mark -
+#pragma mark WindowController
 
 // override -makeWindowControllers to set a window Controller attached to the document
 -(void)makeWindowControllers

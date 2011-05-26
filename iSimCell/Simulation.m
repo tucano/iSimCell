@@ -10,8 +10,15 @@
 
 
 @implementation Simulation
+
+#pragma mark -
+#pragma mark Initialization
+
 @dynamic name;
 @dynamic configurations;
+
+#pragma mark -
+#pragma mark Accessors/Mutators
 
 - (void)addConfigurationsObject:(NSManagedObject *)value {    
     NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];

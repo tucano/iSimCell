@@ -10,9 +10,8 @@
 
 @implementation SimCellController
 
-/* 
- *  INIT, LOAD, DEALLOC
- */
+#pragma mark -
+#pragma mark Initialization
 
 @synthesize managedObjectContext, simulationController;
 
@@ -51,10 +50,9 @@
     return [@"iSimCell - " stringByAppendingString:displayName];
 }
 
+#pragma mark -
+#pragma mark Actions
 
-/* 
- *  ACTIONS
- */
 - (IBAction)launchSim:(id)sender
 {
     // register observer for start task
@@ -79,6 +77,9 @@
 {
     [simcell killTask];
 }
+
+#pragma mark -
+#pragma mark Norifications
 
 -(void)taskStarted:(NSNotification *)notification
 {
