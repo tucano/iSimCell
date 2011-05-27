@@ -15,12 +15,16 @@
     MySimulation *document;
     SimCellLinker *simcell;
     IBOutlet NSProgressIndicator *progBar;
+    IBOutlet NSArrayController *configurationsController;
 }
 
 -(IBAction)launchSim:(id)sender;
 -(IBAction)terminateSim:(id)sender;
+-(IBAction)changeOutput:(id)sender;
 
 @property(nonatomic, retain) IBOutlet NSManagedObjectContext *managedObjectContext;
 @property(nonatomic, retain) IBOutlet NSObjectController *simulationController;
+
+-(Configuration *)selectedConfiguration;
 
 @end

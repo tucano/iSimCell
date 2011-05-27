@@ -75,6 +75,12 @@
     defaultConfig.name = @"Default Config";
     [simulation addConfigurationsObject:defaultConfig];
     
+    Configuration *defaultConfig2 = [NSEntityDescription insertNewObjectForEntityForName:@"Configuration" 
+                                                                 inManagedObjectContext:managedObjectContext];
+    
+    defaultConfig2.name = @"Default Config2";
+    [simulation addConfigurationsObject:defaultConfig2];
+    
     [managedObjectContext processPendingChanges];
     [[managedObjectContext undoManager] enableUndoRegistration];
     

@@ -77,6 +77,13 @@
     [simcell killTask];
 }
 
+-(IBAction)changeOutput:(id)sender
+{
+    NSLog(@"Current configuration: %@. Sender: %@",[[self selectedConfiguration] name],[[sender selectedItem] title]);
+    [[self selectedConfiguration] setValue:[[sender selectedItem] title] 
+                                    forKey:@"output"];
+}
+
 #pragma mark -
 #pragma mark Norifications
 
@@ -91,4 +98,12 @@
     [progBar stopAnimation:self];
     NSLog(@"Controller for window %@. Task Control End.", [[self document] displayName]);
 }
+
+#pragma mark -
+#pragma mark Norifications
+-(Configuration *)selectedConfiguration
+{
+    return [[configurationsController selectedObjects] objectAtIndex:0];
+}
+
 @end
