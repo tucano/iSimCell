@@ -21,14 +21,16 @@
     self = [super initWithWindow:window];
     if (self) {
         // Initialization code here.
-        NSLog(@"SimCellController: Window alloc");
+        NSLog(@"SimCellController: Window alloc, created linker: %@", simcell);
+        simcell = [[SimCellLinker alloc] init];
+        simcellLock = NO;
     }
     return self;
 }
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [simcell release];
     [super dealloc];
 }
 
@@ -54,13 +56,12 @@
 
 - (IBAction)launchSim:(id)sender
 {
-    // Kill other simCells
-    if (simcell) {
-        //[simcell killTask];
+    // back if Locked
+    if (simcellLock) {
+        return;
     }
     
-    simcell = [[SimCellLinker alloc] init];
-    NSLog(@"Window controller: created linker:: %@", simcell);
+    simcellLock = YES;
     
     // register observer for start task
     [self addNotification:@"SimCellTaskStarted" selector:@"taskStarted:"];
@@ -102,8 +103,9 @@
     NSLog(@"Controller for window %@. Task Control End.", [mydocument displayName]);
     
     simulation.data = [simcell taskData];
-    //NSLog(@"Data: %@", [[NSString alloc] initWithData:[simcell taskData] encoding:NSASCIIStringEncoding]);
-    [simcell release];
+    NSLog(@"Data: %@", [[NSString alloc] initWithData:[simcell taskData] encoding:NSASCIIStringEncoding]);
+    simcellLock = NO;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark -
