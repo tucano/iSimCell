@@ -21,8 +21,7 @@
     self = [super initWithWindow:window];
     if (self) {
         // Initialization code here.
-        simcell = [[SimCellLinker alloc] init];
-        NSLog(@"SimCellController: Window alloc. created linker:: %@", simcell);
+        NSLog(@"SimCellController: Window alloc");
     }
     return self;
 }
@@ -55,6 +54,14 @@
 
 - (IBAction)launchSim:(id)sender
 {
+    // Kill other simCells
+    if (simcell) {
+        //[simcell killTask];
+    }
+    
+    simcell = [[SimCellLinker alloc] init];
+    NSLog(@"Window controller: created linker:: %@", simcell);
+    
     // register observer for start task
     [self addNotification:@"SimCellTaskStarted" selector:@"taskStarted:"];
 
@@ -93,9 +100,10 @@
 {
     [progBar stopAnimation:self];
     NSLog(@"Controller for window %@. Task Control End.", [mydocument displayName]);
-
+    
     simulation.data = [simcell taskData];
-    NSLog(@"Data: %@", [simulation stringifyData]);
+    //NSLog(@"Data: %@", [[NSString alloc] initWithData:[simcell taskData] encoding:NSASCIIStringEncoding]);
+    [simcell release];
 }
 
 #pragma mark -

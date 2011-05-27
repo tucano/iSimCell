@@ -28,8 +28,7 @@
 
 - (void)dealloc
 {
-    [taskData release];
-    [task release];  
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super dealloc];
 }
 
@@ -115,7 +114,6 @@
     }
     
     // Do whatever else you need to do when the task finished
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     // Post completed task
     [[NSNotificationCenter defaultCenter] postNotificationName:@"SimCellTaskComplete" object:self];
