@@ -26,5 +26,6 @@
 @property(nonatomic, retain) IBOutlet NSObjectController *simulationController;
 
 -(Configuration *)selectedConfiguration;
+-(void)addNotification:(NSString *)message selector:(NSString *)selector;
 
 @end

@@ -55,21 +55,13 @@
 - (IBAction)launchSim:(id)sender
 {
     // register observer for start task
-    [[NSNotificationCenter defaultCenter] 
-     addObserver:self 
-     selector:@selector(taskStarted:) 
-     name:@"SimCellTaskStarted" 
-     object:simcell];
+    [self addNotification:@"SimCellTaskStarted" selector:@"taskStarted:"];
 
     [simcell setArguments: [NSArray arrayWithObjects: @"-ographml",@"-n1",@"-T15",@"-D10",nil] ];
     [simcell launchTask];
 
     // register observer for complete task
-    [[NSNotificationCenter defaultCenter] 
-     addObserver:self 
-     selector:@selector(taskFinished:) 
-     name:@"SimCellTaskComplete" 
-     object:simcell];
+    [self addNotification:@"SimCellTaskComplete" selector:@"taskFinished:"];
 }
 
 -(IBAction)terminateSim:(id)sender
@@ -85,7 +77,7 @@
 }
 
 #pragma mark -
-#pragma mark Norifications
+#pragma mark Notifications
 
 -(void)taskStarted:(NSNotification *)notification
 {
@@ -100,10 +92,21 @@
 }
 
 #pragma mark -
-#pragma mark Norifications
+#pragma mark Private
 -(Configuration *)selectedConfiguration
 {
     return [[configurationsController selectedObjects] objectAtIndex:0];
+}
+
+-(void)addNotification:(NSString *)message selector:(NSString *)selector
+{
+    SEL method;
+    method = NSSelectorFromString(selector);
+    [[NSNotificationCenter defaultCenter] 
+     addObserver:self 
+     selector:method
+     name:message
+     object:simcell];
 }
 
 @end
