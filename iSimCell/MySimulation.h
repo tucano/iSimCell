@@ -19,4 +19,7 @@
 
 @property(assign,nonatomic) NSManagedObject *simulation;
 
+-(void)createNewSimulation;
+-(void)fetchSimulation;
+
 @end

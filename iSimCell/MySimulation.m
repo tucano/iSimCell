@@ -25,32 +25,12 @@
         // If an error occurs here, send a [self release] message and return nil.
         NSLog(@"NSPersistentDocument: InitWithType with CoreData object models");
         
-        /*
-         *  Create CoreData Object PREWINDOW LOAD (to init things):
-         */
-        
-        NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
-        [[managedObjectContext undoManager] disableUndoRegistration];
-        simulation = [NSEntityDescription insertNewObjectForEntityForName:@"Simulation" 
-                                                        inManagedObjectContext:managedObjectContext];
-        
-        Configuration *defaultConfig = [NSEntityDescription insertNewObjectForEntityForName:@"Configuration" 
-                                                                       inManagedObjectContext:managedObjectContext];
-        
-        defaultConfig.name = @"Default Config";
-        [simulation addConfigurationsObject:defaultConfig];
-        
-        defaultConfig = [NSEntityDescription insertNewObjectForEntityForName:@"Configuration" 
-                                                                     inManagedObjectContext:managedObjectContext];
-        
-        defaultConfig.name = @"Another Config";
-        [simulation addConfigurationsObject:defaultConfig];
-        
-        [managedObjectContext processPendingChanges];
-        [[managedObjectContext undoManager] enableUndoRegistration];
+        [self createNewSimulation];
+
         NSLog(@"NSPersistenDocument: Simulation Object loaded: %@", simulation.name);
-        NSLog(@"NSPersistenDocument: Configuration Default Object loaded: %@", simulation.configurations);
+        NSLog(@"NSPersistenDocument: Configuration Default Object loaded: %@", [[[simulation.configurations allObjects] objectAtIndex:0] name]);
     }
+     NSLog(@"NSPersistentDocument: open...");
     return self;
 }
 
@@ -63,7 +43,12 @@
     SimCellController *ctl = [ [SimCellController alloc] initWithWindowNibName: [self windowNibName] ];
     [ctl autorelease];
     [self addWindowController:ctl];
-     NSLog(@"NSPersistentDocument: passing control to the window controller, bye bye!");
+    // IF NOT object
+    if (simulation == nil) {
+        [self fetchSimulation];
+        NSLog(@"Simulation was nil, now is: %@", simulation.name);
+    }
+     NSLog(@"NSPersistentDocument: passing control to the window controller. Current Object: %@", simulation.name);
     
 }
 
@@ -71,6 +56,49 @@
 {
     // Override returning the nib file name of the document
     return @"SimCellWindow";
+}
+
+#pragma mark -
+#pragma mark Core Data Methods
+-(void)createNewSimulation
+{
+    //  Create CoreData Object PREWINDOW LOAD (to init things)
+    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+    [[managedObjectContext undoManager] disableUndoRegistration];
+
+    simulation = [NSEntityDescription insertNewObjectForEntityForName:@"Simulation" 
+                                               inManagedObjectContext:managedObjectContext];
+    
+    Configuration *defaultConfig = [NSEntityDescription insertNewObjectForEntityForName:@"Configuration" 
+                                                                 inManagedObjectContext:managedObjectContext];
+    
+    defaultConfig.name = @"Default Config";
+    [simulation addConfigurationsObject:defaultConfig];
+    
+    [managedObjectContext processPendingChanges];
+    [[managedObjectContext undoManager] enableUndoRegistration];
+    
+}
+
+-(void)fetchSimulation
+{
+    NSLog(@"fetchRequest: -->");
+    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Simulation" 
+                                                         inManagedObjectContext:managedObjectContext];
+    NSFetchRequest *request = [[[NSFetchRequest alloc] init ] autorelease];
+    
+    [request setEntity:entityDescription];
+    NSError *error = nil;
+    NSArray *array = [managedObjectContext executeFetchRequest:request error:&error];
+    
+    if (array == nil) {
+        // Deal with error
+        NSLog(@"fetchRequest NODATA");
+    }
+    
+    simulation = [array objectAtIndex:0];
+    NSLog(@"fetchRequest: %@", simulation.name);
 }
 
 @end

@@ -30,6 +30,7 @@
 			<string>NSObjectController</string>
 			<string>NSToolbar</string>
 			<string>NSScrollView</string>
+			<string>NSBox</string>
 			<string>NSUserDefaultsController</string>
 			<string>NSProgressIndicator</string>
 			<string>NSScroller</string>
@@ -46,7 +47,7 @@
 		<object class="NSMutableArray" key="IBDocument.RootObjects" id="580458321">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSCustomObject" id="512844837">
-				<string key="NSClassName">SimCellController</string>
+				<string key="NSClassName">MySimulation</string>
 			</object>
 			<object class="NSCustomObject" id="613418571">
 				<string key="NSClassName">FirstResponder</string>
@@ -540,6 +541,50 @@
 									<int key="NSvFlags">256</int>
 									<object class="NSMutableArray" key="NSSubviews">
 										<bool key="EncodedWithXMLCoder">YES</bool>
+										<object class="NSBox" id="496831785">
+											<reference key="NSNextResponder" ref="417265164"/>
+											<int key="NSvFlags">12</int>
+											<object class="NSMutableArray" key="NSSubviews">
+												<bool key="EncodedWithXMLCoder">YES</bool>
+												<object class="NSView" id="584382477">
+													<reference key="NSNextResponder" ref="496831785"/>
+													<int key="NSvFlags">256</int>
+													<string key="NSFrame">{{1, 1}, {345, 522}}</string>
+													<reference key="NSSuperview" ref="496831785"/>
+													<reference key="NSWindow"/>
+													<reference key="NSNextKeyView" ref="543902566"/>
+												</object>
+											</object>
+											<string key="NSFrame">{{273, 16}, {347, 524}}</string>
+											<reference key="NSSuperview" ref="417265164"/>
+											<reference key="NSWindow"/>
+											<reference key="NSNextKeyView" ref="584382477"/>
+											<string key="NSOffsets">{0, 0}</string>
+											<object class="NSTextFieldCell" key="NSTitleCell">
+												<int key="NSCellFlags">67239424</int>
+												<int key="NSCellFlags2">0</int>
+												<string key="NSContents">Box</string>
+												<reference key="NSSupport" ref="26"/>
+												<object class="NSColor" key="NSBackgroundColor" id="249415543">
+													<int key="NSColorSpace">6</int>
+													<string key="NSCatalogName">System</string>
+													<string key="NSColorName">textBackgroundColor</string>
+													<object class="NSColor" key="NSColor" id="826698502">
+														<int key="NSColorSpace">3</int>
+														<bytes key="NSWhite">MQA</bytes>
+													</object>
+												</object>
+												<object class="NSColor" key="NSTextColor">
+													<int key="NSColorSpace">3</int>
+													<bytes key="NSWhite">MCAwLjgwMDAwMDAxMTkAA</bytes>
+												</object>
+											</object>
+											<reference key="NSContentView" ref="584382477"/>
+											<int key="NSBorderType">1</int>
+											<int key="NSBoxType">0</int>
+											<int key="NSTitlePosition">0</int>
+											<bool key="NSTransparent">NO</bool>
+										</object>
 										<object class="NSScrollView" id="780231741">
 											<reference key="NSNextResponder" ref="417265164"/>
 											<int key="NSvFlags">268</int>
@@ -564,6 +609,7 @@
 																<string key="NSFrameSize">{236, 17}</string>
 																<reference key="NSSuperview" ref="963748138"/>
 																<reference key="NSWindow"/>
+																<reference key="NSNextKeyView" ref="977320451"/>
 																<reference key="NSTableView" ref="856665932"/>
 															</object>
 															<object class="_NSCornerView" key="NSCornerView" id="977320451">
@@ -608,10 +654,7 @@
 															</object>
 															<double key="NSIntercellSpacingWidth">3</double>
 															<double key="NSIntercellSpacingHeight">2</double>
-															<object class="NSColor" key="NSBackgroundColor" id="826698502">
-																<int key="NSColorSpace">3</int>
-																<bytes key="NSWhite">MQA</bytes>
-															</object>
+															<reference key="NSBackgroundColor" ref="826698502"/>
 															<reference key="NSGridColor" ref="842649051"/>
 															<double key="NSRowHeight">17</double>
 															<int key="NSTvFlags">-968884224</int>
@@ -649,7 +692,7 @@
 													<string key="NSFrame">{{1, 458}, {595, 15}}</string>
 													<reference key="NSSuperview" ref="780231741"/>
 													<reference key="NSWindow"/>
-													<reference key="NSNextKeyView" ref="543902566"/>
+													<reference key="NSNextKeyView" ref="496831785"/>
 													<int key="NSsFlags">1</int>
 													<reference key="NSTarget" ref="780231741"/>
 													<string key="NSAction">_doScroller:</string>
@@ -675,7 +718,7 @@
 											<string key="NSFrame">{{20, 390}, {238, 113}}</string>
 											<reference key="NSSuperview" ref="417265164"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView"/>
+											<reference key="NSNextKeyView" ref="963748138"/>
 											<int key="NSsFlags">562</int>
 											<reference key="NSVScroller" ref="818906638"/>
 											<reference key="NSHScroller" ref="459895675"/>
@@ -699,12 +742,7 @@
 												<reference key="NSSupport" ref="407787948"/>
 												<reference key="NSControlView" ref="616746764"/>
 												<bool key="NSDrawsBackground">YES</bool>
-												<object class="NSColor" key="NSBackgroundColor">
-													<int key="NSColorSpace">6</int>
-													<string key="NSCatalogName">System</string>
-													<string key="NSColorName">textBackgroundColor</string>
-													<reference key="NSColor" ref="826698502"/>
-												</object>
+												<reference key="NSBackgroundColor" ref="249415543"/>
 												<object class="NSColor" key="NSTextColor">
 													<int key="NSColorSpace">6</int>
 													<string key="NSCatalogName">System</string>
@@ -1003,6 +1041,7 @@
 							<reference ref="108395726"/>
 						</object>
 						<reference key="parent" ref="885508871"/>
+						<string key="objectName">SideBar</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">100067</int>
@@ -1012,8 +1051,10 @@
 							<reference ref="543902566"/>
 							<reference ref="616746764"/>
 							<reference ref="780231741"/>
+							<reference ref="496831785"/>
 						</object>
 						<reference key="parent" ref="885508871"/>
+						<string key="objectName">Main</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">100097</int>
@@ -1216,6 +1257,11 @@
 						<reference key="object" ref="751117033"/>
 						<reference key="parent" ref="780231741"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">100346</int>
+						<reference key="object" ref="496831785"/>
+						<reference key="parent" ref="417265164"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -1250,6 +1296,7 @@
 					<string>100262.IBPluginDependency</string>
 					<string>100263.IBPluginDependency</string>
 					<string>100311.IBPluginDependency</string>
+					<string>100346.IBPluginDependency</string>
 					<string>5.IBEditorWindowLastContentRect</string>
 					<string>5.IBPluginDependency</string>
 					<string>5.IBWindowTemplateEditedContentRect</string>
@@ -1260,6 +1307,7 @@
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1309,23 +1357,38 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">100345</int>
+			<int key="maxID">100346</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBPartialClassDescription">
-					<string key="className">SimCellController</string>
-					<string key="superclassName">NSWindowController</string>
+					<string key="className">MySimulation</string>
+					<string key="superclassName">NSPersistentDocument</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/MySimulation.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSDocument</string>
 					<object class="NSMutableDictionary" key="actions">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>launchSim:</string>
-							<string>terminateSim:</string>
+							<string>printDocument:</string>
+							<string>revertDocumentToSaved:</string>
+							<string>runPageLayout:</string>
+							<string>saveDocument:</string>
+							<string>saveDocumentAs:</string>
+							<string>saveDocumentTo:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 						</object>
@@ -1334,63 +1397,44 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>launchSim:</string>
-							<string>terminateSim:</string>
+							<string>printDocument:</string>
+							<string>revertDocumentToSaved:</string>
+							<string>runPageLayout:</string>
+							<string>saveDocument:</string>
+							<string>saveDocumentAs:</string>
+							<string>saveDocumentTo:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBActionInfo">
-								<string key="name">launchSim:</string>
+								<string key="name">printDocument:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
-								<string key="name">terminateSim:</string>
+								<string key="name">revertDocumentToSaved:</string>
 								<string key="candidateClassName">id</string>
 							</object>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="outlets">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>managedObjectContext</string>
-							<string>progBar</string>
-							<string>simulationController</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>NSManagedObjectContext</string>
-							<string>NSProgressIndicator</string>
-							<string>NSObjectController</string>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>managedObjectContext</string>
-							<string>progBar</string>
-							<string>simulationController</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBToOneOutletInfo">
-								<string key="name">managedObjectContext</string>
-								<string key="candidateClassName">NSManagedObjectContext</string>
+							<object class="IBActionInfo">
+								<string key="name">runPageLayout:</string>
+								<string key="candidateClassName">id</string>
 							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">progBar</string>
-								<string key="candidateClassName">NSProgressIndicator</string>
+							<object class="IBActionInfo">
+								<string key="name">saveDocument:</string>
+								<string key="candidateClassName">id</string>
 							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">simulationController</string>
-								<string key="candidateClassName">NSObjectController</string>
+							<object class="IBActionInfo">
+								<string key="name">saveDocumentAs:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">saveDocumentTo:</string>
+								<string key="candidateClassName">id</string>
 							</object>
 						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/SimCellController.h</string>
+						<string key="minorKey">./Classes/NSDocument.h</string>
 					</object>
 				</object>
 			</object>
