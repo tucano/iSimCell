@@ -40,5 +40,6 @@
 @property (nonatomic, retain) Simulation * simulation;
 
 - (void) generateUniqueID;
+-(NSArray *)arrayOfOptions;
 
 @end

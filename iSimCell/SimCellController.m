@@ -30,7 +30,6 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [simcell release];
     [super dealloc];
 }
 
@@ -59,7 +58,10 @@
     // register observer for start task
     [self addNotification:@"SimCellTaskStarted" selector:@"taskStarted:"];
 
-    [simcell setArguments: [NSArray arrayWithObjects: @"-ographml",@"-n1",@"-T15",@"-D10",nil] ];
+    NSArray *myargs = [[self selectedConfiguration] arrayOfOptions];
+    NSLog(@"Arguments: %@",myargs);
+    
+    [simcell setArguments: myargs];
     [simcell launchTask];
 
     // register observer for complete task
@@ -93,7 +95,7 @@
     NSLog(@"Controller for window %@. Task Control End.", [mydocument displayName]);
 
     simulation.data = [simcell taskData];
-    //NSLog(@"Data: %@", [simulation stringifyData]);
+    NSLog(@"Data: %@", [simulation stringifyData]);
 }
 
 #pragma mark -

@@ -42,19 +42,69 @@
 
 #pragma mark -
 #pragma mark Core Data Methods
-- (void) awakeFromInsert {
+- (void) awakeFromInsert 
+{
     // called when the object is first created.
     [self generateUniqueID];
 }
 
 
 #pragma mark -
-#pragma mark Private
+#pragma mark Custom
 
-- (void) generateUniqueID {
+- (void) generateUniqueID 
+{
     NSString* uniqueID = self.uniqueID;
     if ( uniqueID != nil ) return;
     self.uniqueID = [[NSProcessInfo processInfo] globallyUniqueString];
+}
+
+-(NSArray *)arrayOfOptions
+{
+    /*
+     * 1. create a MutableArray and handle special cases
+     * 2. get keys from Attributes and make them a MutableDicionary
+     * 3. remove bad keys
+     * 4. loop 
+     */
+    
+    NSMutableArray *tmp = [[NSMutableArray alloc] init];
+    NSMutableDictionary *keys = [[NSMutableDictionary alloc] initWithDictionary:[[self entity] attributesByName]];
+    
+    NSLog(@"verbose: %@", self.verbose);
+
+    // handle VERBOSE and HEADERS
+    if ([self.verbose intValue] > 0) {
+        NSString *verboseLevel = @"-";
+        for (int i = 1 ; i <= [self.verbose intValue]; i++) {
+            verboseLevel = [verboseLevel stringByAppendingString:@"v"];
+        }
+        [tmp addObject:verboseLevel];
+    }
+    if ([self.headers intValue] > 0) {
+        [tmp addObject:@"-H"];
+    }
+    
+    [keys removeObjectForKey:@"uniqueID"];
+    [keys removeObjectForKey:@"name"];
+    [keys removeObjectForKey:@"verbose"];
+    [keys removeObjectForKey:@"headers"];
+    
+    NSEnumerator *enumerator = [keys keyEnumerator];
+    id key;
+    
+    while ((key = [enumerator nextObject])) {
+        NSString *optkey = [@"--" stringByAppendingString:key];
+        optkey = [optkey stringByReplacingOccurrencesOfString:@"_" withString:@"-"];
+        optkey = [optkey stringByAppendingString:@"="];
+        NSString *optvalue = [NSString stringWithFormat:@"%@",[self valueForKey:key]];
+        NSString *optstr = [optkey stringByAppendingString:optvalue];        
+        [tmp addObject:optstr];
+    }
+    
+    NSArray *opt = [[NSArray alloc] initWithArray:tmp];
+    [tmp release];
+    return opt;
 }
 
 @end

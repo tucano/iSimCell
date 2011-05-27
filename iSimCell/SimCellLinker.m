@@ -110,6 +110,10 @@
     int exitCode = [[notification object] terminationStatus];
     NSLog(@"End Task with ExitCode: %i", exitCode);
     
+    if (exitCode != 0) {
+        NSLog(@"Task error: %@", [[NSString alloc] initWithData:[taskLog readDataToEndOfFile] encoding:NSASCIIStringEncoding]);
+    }
+    
     // Do whatever else you need to do when the task finished
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     

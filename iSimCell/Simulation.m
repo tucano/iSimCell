@@ -22,7 +22,8 @@
 #pragma mark -
 #pragma mark Accessors/Mutators
 
-- (void)addConfigurationsObject:(NSManagedObject *)value {    
+- (void)addConfigurationsObject:(NSManagedObject *)value 
+{    
     NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
     [self willChangeValueForKey:@"configurations" withSetMutation:NSKeyValueUnionSetMutation usingObjects:changedObjects];
     [[self primitiveValueForKey:@"configurations"] addObject:value];
@@ -30,7 +31,8 @@
     [changedObjects release];
 }
 
-- (void)removeConfigurationsObject:(NSManagedObject *)value {
+- (void)removeConfigurationsObject:(NSManagedObject *)value 
+{
     NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
     [self willChangeValueForKey:@"configurations" withSetMutation:NSKeyValueMinusSetMutation usingObjects:changedObjects];
     [[self primitiveValueForKey:@"configurations"] removeObject:value];
@@ -38,13 +40,15 @@
     [changedObjects release];
 }
 
-- (void)addConfigurations:(NSSet *)value {    
+- (void)addConfigurations:(NSSet *)value 
+{    
     [self willChangeValueForKey:@"configurations" withSetMutation:NSKeyValueUnionSetMutation usingObjects:value];
     [[self primitiveValueForKey:@"configurations"] unionSet:value];
     [self didChangeValueForKey:@"configurations" withSetMutation:NSKeyValueUnionSetMutation usingObjects:value];
 }
 
-- (void)removeConfigurations:(NSSet *)value {
+- (void)removeConfigurations:(NSSet *)value 
+{
     [self willChangeValueForKey:@"configurations" withSetMutation:NSKeyValueMinusSetMutation usingObjects:value];
     [[self primitiveValueForKey:@"configurations"] minusSet:value];
     [self didChangeValueForKey:@"configurations" withSetMutation:NSKeyValueMinusSetMutation usingObjects:value];
