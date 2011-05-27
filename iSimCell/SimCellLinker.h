@@ -14,11 +14,9 @@
     
     NSTask *task;
     
-    NSPipe *inputPipe;
     NSPipe *outputPipe;
     NSPipe *outputPipeError;
     
-    NSFileHandle *taskInput;
     NSFileHandle *taskOutput;
     NSFileHandle *taskLog;
     

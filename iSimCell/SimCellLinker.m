@@ -45,12 +45,10 @@
     path = [ [NSBundle mainBundle] pathForAuxiliaryExecutable:@"simCell"];
     
     // PIPES
-    inputPipe = [NSPipe pipe];
     outputPipe = [NSPipe pipe];
     outputPipeError = [NSPipe pipe];
     
     // FILEHANDLES
-    taskInput = [inputPipe fileHandleForWriting];
     taskOutput = [outputPipe fileHandleForReading];
     taskLog = [outputPipeError fileHandleForReading];
     
@@ -61,7 +59,7 @@
     // ALLOC OUTPUTS
     [task setStandardOutput:outputPipe];
     [task setStandardError:outputPipeError];
-    [task setStandardInput:inputPipe];       
+    [task setStandardInput:[NSPipe pipe]];
     
     if ([self arguments])
         [task setArguments: [self arguments]];
@@ -94,11 +92,6 @@
     [environment release];
 }
 
-- (void)sendData:(NSString *)dataString
-{
-    [taskInput writeData:[dataString dataUsingEncoding:[NSString defaultCStringEncoding]]];
-}
-
 -(void)killTask
 {
     if ([task isRunning])
@@ -119,8 +112,7 @@
     }
     
     // Do whatever else you need to do when the task finished
-    //[taskData initWithData:[taskOutput readDataToEndOfFile]];
-    NSLog(@"DATA FILE HANDLE %@", [[NSString alloc] initWithData:[taskOutput readDataToEndOfFile] encoding:NSASCIIStringEncoding]);
+    
     // Post completed task
     [[NSNotificationCenter defaultCenter] postNotificationName:@"SimCellTaskComplete" object:self];
 }
@@ -133,7 +125,7 @@
     {
         // Do whatever with incomingText, the string that has some text in it
         // [taskData appendData:incomingData];
-        
+        NSLog(@"DATA FILE HANDLE %@", [[NSString alloc] initWithData:incomingData encoding:NSASCIIStringEncoding]);
         [taskOutput readInBackgroundAndNotify];
         return;
     }
