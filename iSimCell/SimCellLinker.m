@@ -12,6 +12,7 @@
 @implementation SimCellLinker
 
 @synthesize arguments;
+@synthesize taskData;
 
 #pragma mark -
 #pragma mark Initialization
@@ -114,9 +115,6 @@
     
     // Post completed task
     [[NSNotificationCenter defaultCenter] postNotificationName:@"SimCellTaskComplete" object:self];
-    
-//    NSString *text = [[NSString alloc] initWithData:taskData encoding:NSASCIIStringEncoding];
-//    NSLog(@"%@",text);
 }
 
 - (void)taskDataAvailable:(NSNotification *)notification

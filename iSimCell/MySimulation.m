@@ -14,8 +14,6 @@
 #pragma mark -
 #pragma mark Initialization
 
-@synthesize simulation;
-
 -(id)initWithType:(NSString *)type error:(NSError **)error
 {
     self = [super initWithType:type error:error];
@@ -57,6 +55,15 @@
     // Override returning the nib file name of the document
     return @"SimCellWindow";
 }
+
+#pragma mark -
+#pragma mark Accessors
+
+-(Simulation *)getSimulation
+{
+    return simulation;
+}
+
 
 #pragma mark -
 #pragma mark Core Data Methods

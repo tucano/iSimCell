@@ -7,7 +7,6 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
 #import "Simulation.h"
 #import "Configuration.h"
 
@@ -17,9 +16,8 @@
     Simulation *simulation;
 }
 
-@property(assign,nonatomic) NSManagedObject *simulation;
-
 -(void)createNewSimulation;
 -(void)fetchSimulation;
+-(Simulation *)getSimulation;
 
 @end

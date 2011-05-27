@@ -13,7 +13,8 @@
 #pragma mark -
 #pragma mark Initialization
 
-@synthesize managedObjectContext, simulationController;
+@synthesize managedObjectContext;
+@synthesize simulationController;
 
 - (id)initWithWindow:(NSWindow *)window
 {
@@ -38,10 +39,11 @@
     [super windowDidLoad];
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
-    document = [self document];
-    NSLog(@"SimCellController: Window Loaded. Calling Document is: %@", document);
-    NSLog(@"SimCellController: MySimulation Model: %@", [[document simulation] valueForKey:@"name"]);
-    NSLog(@"SimCellController: simulation configurations: %@", [[[[[document simulation] valueForKey:@"configurations"] allObjects] objectAtIndex:0] valueForKey:@"name"]);
+    mydocument = [self document];
+    simulation = [mydocument getSimulation];
+    NSLog(@"SimCellController: Window Loaded. Calling Document is: %@", mydocument);
+    NSLog(@"SimCellController: MySimulation Model: %@", simulation.uniqueID);
+    NSLog(@"SimCellController: simulation first configuration: %@", [[[simulation.configurations allObjects] objectAtIndex:0] valueForKey:@"uniqueID"]);
 }
 
 - (NSString *)windowTitleForDocumentDisplayName:(NSString *)displayName
@@ -82,13 +84,16 @@
 -(void)taskStarted:(NSNotification *)notification
 {
    [progBar startAnimation:self];
-    NSLog(@"Controller for window %@. Task Control Start.", [[self document] displayName]);
+    NSLog(@"Controller for window %@. Task Control Start.", [mydocument displayName]);
 }
 
 -(void)taskFinished:(NSNotification *)notification
 {
     [progBar stopAnimation:self];
-    NSLog(@"Controller for window %@. Task Control End.", [[self document] displayName]);
+    NSLog(@"Controller for window %@. Task Control End.", [mydocument displayName]);
+
+    simulation.data = [simcell taskData];
+    //NSLog(@"Data: %@", [simulation stringifyData]);
 }
 
 #pragma mark -

@@ -17,6 +17,7 @@
 @dynamic name;
 @dynamic configurations;
 @dynamic uniqueID;
+@dynamic data;
 
 #pragma mark -
 #pragma mark Accessors/Mutators
@@ -58,12 +59,17 @@
 
 
 #pragma mark -
-#pragma mark Private
+#pragma mark Custom Methods
 
 - (void) generateUniqueID {
     NSString* uniqueID = self.uniqueID;
     if ( uniqueID != nil ) return;
     self.uniqueID = [[NSProcessInfo processInfo] globallyUniqueString];
+}
+
+-(NSString *)stringifyData
+{
+    return [[NSString alloc] initWithData:[self valueForKey:@"data"] encoding:NSASCIIStringEncoding];
 }
 
 @end

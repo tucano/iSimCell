@@ -12,7 +12,8 @@
 
 @interface SimCellController : NSWindowController {
 @private
-    MySimulation *document;
+    MySimulation *mydocument;
+    Simulation   *simulation;
     SimCellLinker *simcell;
     IBOutlet NSProgressIndicator *progBar;
     IBOutlet NSArrayController *configurationsController;
