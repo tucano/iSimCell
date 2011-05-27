@@ -29,6 +29,7 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [taskData release];
     [super dealloc];
 }
 
@@ -37,6 +38,9 @@
 
 - (void)launchTask
 {
+    // KILL previous data
+    //[taskData init];
+    
     // PATH
     path = [ [NSBundle mainBundle] pathForAuxiliaryExecutable:@"simCell"];
     
@@ -106,6 +110,7 @@
 
 -(void)endTask:(NSNotification *)notification
 {
+    // FIXME
     int exitCode = [[notification object] terminationStatus];
     NSLog(@"End Task with ExitCode: %i", exitCode);
     
@@ -114,18 +119,21 @@
     }
     
     // Do whatever else you need to do when the task finished
-    
+    //[taskData initWithData:[taskOutput readDataToEndOfFile]];
+    NSLog(@"DATA FILE HANDLE %@", [[NSString alloc] initWithData:[taskOutput readDataToEndOfFile] encoding:NSASCIIStringEncoding]);
     // Post completed task
     [[NSNotificationCenter defaultCenter] postNotificationName:@"SimCellTaskComplete" object:self];
 }
 
 - (void)taskDataAvailable:(NSNotification *)notification
 {
+    // FIXME
     NSData *incomingData = [[notification userInfo] objectForKey:NSFileHandleNotificationDataItem];
     if (incomingData && [incomingData length])
     {
         // Do whatever with incomingText, the string that has some text in it
-        [taskData appendData:incomingData];
+        // [taskData appendData:incomingData];
+        
         [taskOutput readInBackgroundAndNotify];
         return;
     }
