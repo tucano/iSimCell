@@ -9,11 +9,14 @@
 #import <Cocoa/Cocoa.h>
 #import "Simulation.h"
 #import "Configuration.h"
-
+#import "SimCellLinker.h"
 
 @interface MySimulation : NSPersistentDocument {
 @private
     Simulation *simulation;
+    // TODO MEOVE LINKER LOGIC HERE !!!
+    SimCellLinker *simcell;
+    
 }
 
 @property(readwrite, retain) Simulation * simulation;

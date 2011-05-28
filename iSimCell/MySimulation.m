@@ -42,7 +42,7 @@
         NSLog(@"NSPersistenDocument: Simulation Object loaded: %@", simulation.name);
         NSLog(@"NSPersistenDocument: Configuration Default Object loaded: %@", [[[simulation.configurations allObjects] objectAtIndex:0] name]);
     }
-     NSLog(@"NSPersistentDocument: open. type: %@, error: %@",type,error);
+    NSLog(@"NSPersistentDocument: open. type: %@, error: %@",type,error);
     return self;
 }
 
