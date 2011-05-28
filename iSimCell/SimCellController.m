@@ -20,16 +20,32 @@
 {
     self = [super initWithWindow:window];
     if (self) {
+        
         // Initialization code here.
-        NSLog(@"SimCellController: Window alloc, created linker: %@", simcell);
+        NSLog(@"SimCellController: Window init, created linker: %@", simcell);
+        
         simcell = [[SimCellLinker alloc] init];
         simcellLock = NO;
+        
+        [[NSNotificationCenter defaultCenter] 
+         addObserver:self 
+         selector:@selector(taskStarted:)
+         name:@"SimCellTaskStarted"
+         object:simcell];
+        
+        [[NSNotificationCenter defaultCenter] 
+         addObserver:self 
+         selector:@selector(taskFinished:)
+         name:@"SimCellTaskComplete"
+         object:simcell];        
     }
+    
     return self;
 }
 
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [simcell release];
     [super dealloc];
 }
@@ -69,17 +85,12 @@
     
     simcellLock = YES;
     
-    // register observer for start task
-    [self addNotification:@"SimCellTaskStarted" selector:@"taskStarted:"];
-
     NSArray *myargs = [[self selectedConfiguration] arrayOfOptions];
     NSLog(@"Arguments: %@",myargs);
     
     [simcell setArguments: myargs];
     [simcell launchTask];
-
-    // register observer for complete task
-    [self addNotification:@"SimCellTaskComplete" selector:@"taskFinished:"];
+    
 }
 
 -(IBAction)terminateSim:(id)sender
@@ -99,7 +110,7 @@
 
 -(void)taskStarted:(NSNotification *)notification
 {
-   [progBar startAnimation:self];
+    [progBar startAnimation:self];
     NSLog(@"Controller for window %@. Task Control Start.", [mydocument displayName]);
 }
 
@@ -109,7 +120,6 @@
     NSLog(@"Controller for window %@. Task Control End.", [mydocument displayName]);
     
     simcellLock = NO;
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark -
@@ -117,17 +127,6 @@
 -(Configuration *)selectedConfiguration
 {
     return [[configurationsController selectedObjects] objectAtIndex:0];
-}
-
--(void)addNotification:(NSString *)message selector:(NSString *)selector
-{
-    SEL method;
-    method = NSSelectorFromString(selector);
-    [[NSNotificationCenter defaultCenter] 
-     addObserver:self 
-     selector:method
-     name:message
-     object:simcell];
 }
 
 @end
