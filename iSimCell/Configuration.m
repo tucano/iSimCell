@@ -48,9 +48,25 @@
     [self generateUniqueID];
 }
 
+#pragma mark -
+#pragma mark Custom Accessors
+-(NSInteger)nspheres
+{
+    [self willAccessValueForKey:@"nspheres"];
+    long n = nspheres;
+    [self didAccessValueForKey:@"nspheres"];
+    return n;
+}
+
+-(void)setNspheres:(NSInteger)newSpheres
+{
+    [self willAccessValueForKey:@"nspheres"];
+    nspheres = newSpheres;
+    [self didAccessValueForKey:@"nspheres"];
+}
 
 #pragma mark -
-#pragma mark Custom
+#pragma mark Custom Actions
 
 - (void) generateUniqueID 
 {

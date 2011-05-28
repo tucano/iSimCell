@@ -12,7 +12,7 @@
 @class Simulation;
 
 @interface Configuration : NSManagedObject {
-@private
+    NSInteger nspheres;
 }
 
 @property (nonatomic, retain) NSString * name;
@@ -35,9 +35,11 @@
 @property (nonatomic, retain) NSNumber * pkh_temp;
 @property (nonatomic, retain) NSNumber * divisions;
 @property (nonatomic, retain) NSNumber * headers;
-@property (nonatomic, retain) NSNumber * nspheres;
 @property (nonatomic, retain) NSNumber * prob;
 @property (nonatomic, retain) Simulation * simulation;
+
+// CUSTOM
+@property NSInteger nspheres;
 
 - (void) generateUniqueID;
 -(NSArray *)arrayOfOptions;
