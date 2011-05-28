@@ -16,8 +16,10 @@
     Simulation *simulation;
 }
 
--(void)createNewSimulation;
+@property(readwrite, retain) Simulation * simulation;
+
+-(void)newSimulation;
 -(void)fetchSimulation;
--(Simulation *)getSimulation;
+-(void)newConfiguration:(NSString *)name;
 
 @end

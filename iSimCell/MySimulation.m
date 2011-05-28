@@ -11,6 +11,8 @@
 
 @implementation MySimulation
 
+@synthesize simulation;
+
 #pragma mark -
 #pragma mark Initialization
 
@@ -23,7 +25,7 @@
         // If an error occurs here, send a [self release] message and return nil.
         NSLog(@"NSPersistentDocument: InitWithType with CoreData object models");
         
-        [self createNewSimulation];
+        [self newSimulation];
 
         NSLog(@"NSPersistenDocument: Simulation Object loaded: %@", simulation.name);
         NSLog(@"NSPersistenDocument: Configuration Default Object loaded: %@", [[[simulation.configurations allObjects] objectAtIndex:0] name]);
@@ -56,35 +58,36 @@
     return @"SimCellWindow";
 }
 
-#pragma mark -
-#pragma mark Accessors
-
--(Simulation *)getSimulation
-{
-    return simulation;
-}
-
 
 #pragma mark -
 #pragma mark Core Data Methods
--(void)createNewSimulation
+-(void)newSimulation
 {
     //  Create CoreData Object PREWINDOW LOAD (to init things)
     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+    
+    // disable save..
     [[managedObjectContext undoManager] disableUndoRegistration];
 
     simulation = [NSEntityDescription insertNewObjectForEntityForName:@"Simulation" 
                                                inManagedObjectContext:managedObjectContext];
-    
-    Configuration *defaultConfig = [NSEntityDescription insertNewObjectForEntityForName:@"Configuration" 
-                                                                 inManagedObjectContext:managedObjectContext];
-    
-    defaultConfig.name = @"Default Config";
-    [simulation addConfigurationsObject:defaultConfig];
-    
+        
+    [self newConfiguration:@"Default Config"];
+        
     [managedObjectContext processPendingChanges];
+    
+    // enable save ...
     [[managedObjectContext undoManager] enableUndoRegistration];
 }
+
+-(void)newConfiguration:(NSString *)name
+{
+    Configuration *config = [NSEntityDescription insertNewObjectForEntityForName:@"Configuration" 
+                                                          inManagedObjectContext:[self managedObjectContext]];
+    config.name = name;
+    [simulation addConfigurationsObject:config];
+}
+
 
 -(void)fetchSimulation
 {

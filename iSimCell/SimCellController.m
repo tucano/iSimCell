@@ -56,7 +56,7 @@
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     mydocument = [self document];
-    simulation = [mydocument getSimulation];
+    simulation = [mydocument simulation];
     
     // SET INTERFACE DEFAULTS
     [outputPouUp selectItemWithTitle:[[self selectedConfiguration] output] ];
