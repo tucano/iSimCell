@@ -12,6 +12,7 @@
 @implementation MySimulation
 
 @synthesize simulation;
+@synthesize simcell;
 
 #pragma mark -
 #pragma mark Initialization
@@ -20,7 +21,24 @@
 {
     self = [super initWithType:type error:error];
     if (self != nil) {
+
         // Add your subclass-specific initialization here.
+        
+        // init linker
+        simcell = [[SimCellLinker alloc] init];
+        simcellLock = NO;
+        
+        [[NSNotificationCenter defaultCenter] 
+         addObserver:self 
+         selector:@selector(taskStarted:)
+         name:@"SimCellTaskStarted"
+         object:simcell];
+        
+        [[NSNotificationCenter defaultCenter] 
+         addObserver:self 
+         selector:@selector(taskFinished:)
+         name:@"SimCellTaskComplete"
+         object:simcell]; 
         
         // If an error occurs here, send a [self release] message and return nil.
         NSLog(@"NSPersistentDocument: InitWithType with CoreData object models. type: %@, error: %@",type,error);
@@ -45,6 +63,52 @@
     NSLog(@"NSPersistentDocument: open. type: %@, error: %@",type,error);
     return self;
 }
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [simcell release];
+    [super dealloc];
+}
+
+#pragma mark -
+#pragma mark Linker
+-(void)runSimCell:(Configuration *)conf
+{
+    // back if Locked
+    if (simcellLock) {
+        return;
+    }
+    
+    simcellLock = YES;
+    
+    NSArray *myargs = [conf arrayOfOptions];
+    NSLog(@"Arguments: %@",myargs);
+    
+    [simcell setArguments: myargs];
+    [simcell launchTask];
+
+}
+
+-(void)killSimCell
+{
+    [simcell killTask];
+}
+
+#pragma mark -
+#pragma mark Notifications
+
+-(void)taskStarted:(NSNotification *)notification
+{
+    NSLog(@"MySimulation: Task Control Start.");
+}
+
+-(void)taskFinished:(NSNotification *)notification
+{
+    NSLog(@"MySimulationDoc: Task Control End.");
+    simcellLock = NO;
+}
+
 
 #pragma mark -
 #pragma mark WindowController

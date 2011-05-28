@@ -14,10 +14,8 @@
 @private
     MySimulation *mydocument;
     Simulation   *simulation;
-    SimCellLinker *simcell;
     IBOutlet NSProgressIndicator *progBar;
     IBOutlet NSArrayController *configurationsController;
-    IBOutlet BOOL simcellLock;
     IBOutlet NSPopUpButton *outputPouUp;
 }
 

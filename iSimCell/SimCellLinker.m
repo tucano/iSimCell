@@ -126,7 +126,7 @@
 
     if (incomingData && [incomingData length])
     {
-        NSLog(@"DATA TO END OF FILE. FILE HANDLE\n: %@", [[NSString alloc] initWithData:incomingData encoding:NSASCIIStringEncoding]);
+       // NSLog(@"DATA TO END OF FILE. FILE HANDLE\n: %@", [[NSString alloc] initWithData:incomingData encoding:NSASCIIStringEncoding]);
     }
 }
 

@@ -22,23 +22,19 @@
     if (self) {
         
         // Initialization code here.
-        
-        simcell = [[SimCellLinker alloc] init];
-        simcellLock = NO;
-        
-        NSLog(@"SimCellController: Window init. Name: %@, created linker: %@", window, simcell);
+        NSLog(@"SimCellController: Window init.");
 
         [[NSNotificationCenter defaultCenter] 
          addObserver:self 
          selector:@selector(taskStarted:)
          name:@"SimCellTaskStarted"
-         object:simcell];
+         object:[mydocument simcell]];
         
         [[NSNotificationCenter defaultCenter] 
          addObserver:self 
          selector:@selector(taskFinished:)
          name:@"SimCellTaskComplete"
-         object:simcell];        
+         object:[mydocument simcell]];        
     }
     
     return self;
@@ -46,8 +42,6 @@
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [simcell release];
     [super dealloc];
 }
 
@@ -79,24 +73,12 @@
 
 - (IBAction)launchSim:(id)sender
 {
-    // back if Locked
-    if (simcellLock) {
-        return;
-    }
-    
-    simcellLock = YES;
-    
-    NSArray *myargs = [[self selectedConfiguration] arrayOfOptions];
-    NSLog(@"Arguments: %@",myargs);
-    
-    [simcell setArguments: myargs];
-    [simcell launchTask];
-    
+    [mydocument runSimCell:[self selectedConfiguration]];
 }
 
 -(IBAction)terminateSim:(id)sender
 {
-    [simcell killTask];
+    [mydocument killSimCell];
 }
 
 -(IBAction)changeOutput:(id)sender
@@ -119,8 +101,6 @@
 {
     [progBar stopAnimation:self];
     NSLog(@"Controller for window %@. Task Control End.", [mydocument displayName]);
-    
-    simcellLock = NO;
 }
 
 #pragma mark -
