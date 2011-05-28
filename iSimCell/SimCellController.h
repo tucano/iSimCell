@@ -18,6 +18,7 @@
     IBOutlet NSProgressIndicator *progBar;
     IBOutlet NSArrayController *configurationsController;
     IBOutlet BOOL simcellLock;
+    IBOutlet NSPopUpButton *outputPouUp;
 }
 
 -(IBAction)launchSim:(id)sender;

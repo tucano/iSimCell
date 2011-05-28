@@ -41,9 +41,15 @@
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     mydocument = [self document];
     simulation = [mydocument getSimulation];
+    
+    // SET INTERFACE DEFAULTS
+    [outputPouUp selectItemWithTitle:[[self selectedConfiguration] output] ];
+    
+    // Logging various things
     NSLog(@"SimCellController: Window Loaded. Calling Document is: %@", mydocument);
     NSLog(@"SimCellController: MySimulation Model: %@", simulation.uniqueID);
     NSLog(@"SimCellController: simulation first configuration: %@", [[[simulation.configurations allObjects] objectAtIndex:0] valueForKey:@"uniqueID"]);
+    NSLog(@"Selected configuration name: %@, output: %@", [[self selectedConfiguration] name], [[self selectedConfiguration] output]);
 }
 
 - (NSString *)windowTitleForDocumentDisplayName:(NSString *)displayName

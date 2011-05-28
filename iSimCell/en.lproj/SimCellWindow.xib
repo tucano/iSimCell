@@ -760,7 +760,7 @@
 															<string key="NSFrameSize">{236, 95}</string>
 															<reference key="NSSuperview" ref="1069457118"/>
 															<reference key="NSWindow"/>
-															<reference key="NSNextKeyView" ref="818906638"/>
+															<reference key="NSNextKeyView" ref="963748138"/>
 															<bool key="NSEnabled">YES</bool>
 															<object class="NSTableHeaderView" key="NSHeaderView" id="751117033">
 																<reference key="NSNextResponder" ref="963748138"/>
@@ -877,7 +877,7 @@
 											<string key="NSFrame">{{20, 390}, {238, 113}}</string>
 											<reference key="NSSuperview" ref="417265164"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="963748138"/>
+											<reference key="NSNextKeyView" ref="1069457118"/>
 											<int key="NSsFlags">562</int>
 											<reference key="NSVScroller" ref="818906638"/>
 											<reference key="NSHScroller" ref="459895675"/>
@@ -917,7 +917,6 @@
 											<string key="NSFrame">{{302, 264}, {32, 32}}</string>
 											<reference key="NSSuperview" ref="417265164"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView"/>
 											<int key="NSpiFlags">28682</int>
 											<double key="NSMaxValue">100</double>
 										</object>
@@ -1162,6 +1161,14 @@
 						</object>
 					</object>
 					<int key="connectionID">100384</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">outputPouUp</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="990895068"/>
+					</object>
+					<int key="connectionID">100385</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1676,7 +1683,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">100384</int>
+			<int key="maxID">100385</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1729,6 +1736,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>configurationsController</string>
 							<string>managedObjectContext</string>
+							<string>outputPouUp</string>
 							<string>progBar</string>
 							<string>simulationController</string>
 						</object>
@@ -1736,6 +1744,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>NSArrayController</string>
 							<string>NSManagedObjectContext</string>
+							<string>NSPopUpButton</string>
 							<string>NSProgressIndicator</string>
 							<string>NSObjectController</string>
 						</object>
@@ -1746,6 +1755,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>configurationsController</string>
 							<string>managedObjectContext</string>
+							<string>outputPouUp</string>
 							<string>progBar</string>
 							<string>simulationController</string>
 						</object>
@@ -1758,6 +1768,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">managedObjectContext</string>
 								<string key="candidateClassName">NSManagedObjectContext</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">outputPouUp</string>
+								<string key="candidateClassName">NSPopUpButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">progBar</string>
