@@ -12,7 +12,6 @@
 @implementation SimCellLinker
 
 @synthesize arguments;
-@synthesize taskData;
 
 #pragma mark -
 #pragma mark Initialization
@@ -21,7 +20,20 @@
 {
     self = [super init];
     if (self) {
-        taskData = [[NSMutableData alloc] init ];
+        
+        //Register Notification for taskEnd
+        [ [NSNotificationCenter defaultCenter] 
+         addObserver:self 
+         selector:@selector(endTask:) 
+         name:NSTaskDidTerminateNotification 
+         object:task];
+
+        //Register Notification for NSfileHandle ReadToEnd
+        [ [NSNotificationCenter defaultCenter] 
+         addObserver:self 
+         selector:@selector(readPipe:) 
+         name:NSFileHandleReadToEndOfFileCompletionNotification
+         object:taskOutput];
     }    
     return self;
 }
@@ -29,7 +41,6 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [taskData release];
     [super dealloc];
 }
 
@@ -38,12 +49,8 @@
 
 - (void)launchTask
 {
-    // KILL previous data
-    //[taskData init];
-    
-    // PATH
     path = [ [NSBundle mainBundle] pathForAuxiliaryExecutable:@"simCell"];
-    
+
     // PIPES
     outputPipe = [NSPipe pipe];
     outputPipeError = [NSPipe pipe];
@@ -70,24 +77,12 @@
     [environment setObject:@"YES" forKey:@"NSUnbufferedIO"];
     [task setEnvironment:environment];
     
-    [ [NSNotificationCenter defaultCenter] 
-     addObserver:self 
-     selector:@selector(endTask:) 
-     name:NSTaskDidTerminateNotification 
-     object:task];
-    
-    [ [NSNotificationCenter defaultCenter] 
-     addObserver:self 
-     selector:@selector(taskDataAvailable:) 
-     name:NSFileHandleReadCompletionNotification
-     object:taskOutput];
-    
     [task launch];
     
     // Post started task
     [[NSNotificationCenter defaultCenter] postNotificationName:@"SimCellTaskStarted" object:self];
     
-    [taskOutput readInBackgroundAndNotify];
+    [taskOutput readToEndOfFileInBackgroundAndNotify];
 
     [environment release];
 }
@@ -105,29 +100,33 @@
 {
     // FIXME
     int exitCode = [[notification object] terminationStatus];
+    
     NSLog(@"End Task with ExitCode: %i", exitCode);
     
     if (exitCode != 0) {
-        NSLog(@"Task error: %@", [[NSString alloc] initWithData:[taskLog readDataToEndOfFile] encoding:NSASCIIStringEncoding]);
+        NSLog(@"Task failed with error: %@", [[NSString alloc] initWithData:[taskLog readDataToEndOfFile] 
+                                                                   encoding:NSASCIIStringEncoding]);
     }
     
     // Do whatever else you need to do when the task finished
     
     // Post completed task
     [[NSNotificationCenter defaultCenter] postNotificationName:@"SimCellTaskComplete" object:self];
+    
+    [task release];
 }
 
-- (void)taskDataAvailable:(NSNotification *)notification
+- (void)readPipe:(NSNotification *)notification
 {
-    // FIXME
+    NSLog(@"Reading...");
+    
+    if( [notification object] != taskOutput ) return;
+    
     NSData *incomingData = [[notification userInfo] objectForKey:NSFileHandleNotificationDataItem];
+
     if (incomingData && [incomingData length])
     {
-        // Do whatever with incomingText, the string that has some text in it
-        // [taskData appendData:incomingData];
-        NSLog(@"DATA FILE HANDLE %@", [[NSString alloc] initWithData:incomingData encoding:NSASCIIStringEncoding]);
-        [taskOutput readInBackgroundAndNotify];
-        return;
+        NSLog(@"DATA TO END OF FILE. FILE HANDLE\n: %@", [[NSString alloc] initWithData:incomingData encoding:NSASCIIStringEncoding]);
     }
 }
 

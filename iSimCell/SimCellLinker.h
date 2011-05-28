@@ -22,15 +22,12 @@
     
     NSString *path;
     NSArray *arguments;
-    
-    NSMutableData *taskData;
 }
 
 
 @property(assign) NSArray *arguments;
-@property(readonly) NSMutableData *taskData;
 
 -(void)launchTask;
--(void)sendData:(NSString *)dataString;
 -(void)killTask;
+
 @end

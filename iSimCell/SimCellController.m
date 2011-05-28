@@ -102,8 +102,6 @@
     [progBar stopAnimation:self];
     NSLog(@"Controller for window %@. Task Control End.", [mydocument displayName]);
     
-    simulation.data = [simcell taskData];
-    NSLog(@"Data: %@", [[NSString alloc] initWithData:[simcell taskData] encoding:NSASCIIStringEncoding]);
     simcellLock = NO;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
