@@ -22,11 +22,12 @@
     if (self) {
         
         // Initialization code here.
-        NSLog(@"SimCellController: Window init, created linker: %@", simcell);
         
         simcell = [[SimCellLinker alloc] init];
         simcellLock = NO;
         
+        NSLog(@"SimCellController: Window init. Name: %@, created linker: %@", window, simcell);
+
         [[NSNotificationCenter defaultCenter] 
          addObserver:self 
          selector:@selector(taskStarted:)

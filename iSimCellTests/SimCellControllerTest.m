@@ -14,7 +14,7 @@
 - (void)setUp
 {
     [super setUp];
-    ctl = [[SimCellController alloc] init];
+    ctl = [[SimCellController alloc] initWithWindow:NULL];
 }
 
 - (void)tearDown
@@ -26,7 +26,6 @@
 
 - (void)testAllocAndRelease
 {
-    
     STAssertNotNil(ctl, @"test if object is not nil, got nil", ctl);
 }
 

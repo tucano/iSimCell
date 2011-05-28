@@ -15,7 +15,7 @@
 {
     [super setUp];
     
-    testsimulation = [[MySimulation alloc] init];
+    testsimulation = [[MySimulation alloc] initWithType:@"XML" error:0];
 }
 
 - (void)tearDown
@@ -38,4 +38,15 @@
     STAssertEqualObjects(@"SimCellWindow", nibName, @"test if nib connected is SimCellWindow, got %@", nibName);
 }
 
+- (void)testSimulationName
+{
+    NSString *simulation_name = [[testsimulation simulation] name];
+    STAssertEqualObjects(@"New Simulation", simulation_name, @"test if simulation name, got %@", simulation_name);
+}
+
+- (void)testConfigName
+{
+    NSString *config_name = [[[[testsimulation simulation].configurations allObjects] objectAtIndex:0] name];
+    STAssertEqualObjects(@"Default Config", config_name, @"test config default name, got %@", config_name);
+}
 @end
