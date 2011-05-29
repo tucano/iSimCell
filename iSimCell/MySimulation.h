@@ -21,11 +21,12 @@
 
 @property(readwrite, retain) Simulation * simulation;
 @property(readonly, assign) SimCellLinker * simcell;
+@property(readonly, assign) bool simcellLock;
 
 -(void)runSimCell:(Configuration *)conf;
 -(void)killSimCell;
 -(void)newSimulation;
 -(void)fetchSimulation;
--(void)newConfiguration:(NSString *)name;
+-(Configuration *)newConfiguration:(NSString *)name;
 
 @end

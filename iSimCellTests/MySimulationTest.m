@@ -11,42 +11,57 @@
 
 @implementation MySimulationTest
 
-- (void)setUp
+-(void)setUp
 {
-    [super setUp];
-    
+    [super setUp];    
     testsimulation = [[MySimulation alloc] initWithType:@"XML" error:0];
 }
 
-- (void)tearDown
+-(void)tearDown
 {
     [testsimulation release];
-    
     [super tearDown];
 }
 
-- (void)testAllocAndRelease
-{
-   
-    STAssertNotNil(testsimulation, @"test if object is not nil, got nil", testsimulation);
+-(void)testAllocAndRelease
+{   
+    STAssertNotNil(testsimulation, @"test if object is not nil, got nil: %@", testsimulation);
+    STAssertNotNil([testsimulation simcell], @"test if object is not nil, got nil: %@", [testsimulation simcell]);
+    STAssertNotNil([testsimulation simulation], @"test if object is not nil, got nil: %@", [testsimulation simulation]);
+    STAssertFalse([testsimulation simcellLock], @"test if simcell lock id FALSE, got TRUE.");
+    STAssertNotNil([testsimulation managedObjectContext], @"test if there is a managed object context. Got nilL %@", [testsimulation managedObjectContext]);
 }
 
-- (void)testNibLoad
+-(void)testNibLoad
 {
     // test strings with equalObjects
     NSString *nibName = [testsimulation windowNibName];
     STAssertEqualObjects(@"SimCellWindow", nibName, @"test if nib connected is SimCellWindow, got %@", nibName);
 }
 
-- (void)testSimulationName
+-(void)testSimulationName
 {
     NSString *simulation_name = [[testsimulation simulation] name];
     STAssertEqualObjects(@"New Simulation", simulation_name, @"test if simulation name, got %@", simulation_name);
 }
 
-- (void)testConfigName
+-(void)testConfigName
 {
     NSString *config_name = [[[[testsimulation simulation].configurations allObjects] objectAtIndex:0] name];
     STAssertEqualObjects(@"Default Config", config_name, @"test config default name, got %@", config_name);
 }
+
+-(void)testNewSimulation
+{
+    STAssertNoThrow([testsimulation newSimulation], @"Test newSimulation");
+}
+
+-(void)testNewConfiguration
+{
+    Configuration *config = [testsimulation newConfiguration:@"NewConfig"];
+    STAssertNotNil(config, @"Test New configuration, got nil");
+    STAssertEqualObjects(@"NewConfig", config.name, @"test name of new config equal to NewConfig, got", config.name);
+}
+
+
 @end

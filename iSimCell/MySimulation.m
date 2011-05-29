@@ -13,6 +13,7 @@
 
 @synthesize simulation;
 @synthesize simcell;
+@synthesize simcellLock;
 
 #pragma mark -
 #pragma mark Initialization
@@ -20,14 +21,18 @@
 -(id)initWithType:(NSString *)type error:(NSError **)error
 {
     self = [super initWithType:type error:error];
+        
     if (self != nil) {
 
         // Add your subclass-specific initialization here.
+        // If an error occurs here, send a [self release] message and return nil.
+        NSLog(@"NSPersistentDocument: InitWithType with CoreData object models. type: %@",type);
         
         // init linker
         simcell = [[SimCellLinker alloc] init];
         simcellLock = NO;
         
+        // NOTOFICATIONS
         [[NSNotificationCenter defaultCenter] 
          addObserver:self 
          selector:@selector(taskStarted:)
@@ -40,9 +45,6 @@
          name:@"SimCellTaskComplete"
          object:simcell]; 
         
-        // If an error occurs here, send a [self release] message and return nil.
-        NSLog(@"NSPersistentDocument: InitWithType with CoreData object models. type: %@, error: %@",type,error);
-
         //  Create CoreData Object PREWINDOW LOAD (to init things)
         NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
         
@@ -60,7 +62,6 @@
         NSLog(@"NSPersistenDocument: Simulation Object loaded: %@", simulation.name);
         NSLog(@"NSPersistenDocument: Configuration Default Object loaded: %@", [[[simulation.configurations allObjects] objectAtIndex:0] name]);
     }
-    NSLog(@"NSPersistentDocument: open. type: %@, error: %@",type,error);
     return self;
 }
 
@@ -143,12 +144,13 @@
                                                inManagedObjectContext:[self managedObjectContext]];
 }
 
--(void)newConfiguration:(NSString *)name
+-(Configuration *)newConfiguration:(NSString *)name
 {
     Configuration *config = [NSEntityDescription insertNewObjectForEntityForName:@"Configuration" 
                                                           inManagedObjectContext:[self managedObjectContext]];
     config.name = name;
     [simulation addConfigurationsObject:config];
+    return config;
 }
 
 
