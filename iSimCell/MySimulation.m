@@ -118,6 +118,13 @@
 -(void)endReadingData:(NSNotification *)notification
 {
     NSLog(@"MySimulationDoc: End reading data.");
+    unsigned long numberOfLines, index, stringLength = [[simcell currentData] length];
+    for (index = 0, numberOfLines = 0; index < stringLength; numberOfLines++)
+        index = NSMaxRange([[simcell currentData] lineRangeForRange:NSMakeRange(index, 0)]);
+    
+    NSLog(@"data length: %lu", stringLength);
+    NSLog(@"data lines: %lu", numberOfLines);
+    
     simcellLock = NO;
 }
 

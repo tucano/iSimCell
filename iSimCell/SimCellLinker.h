@@ -26,7 +26,7 @@
     NSString *currentData;
 }
 
-
+@property(readonly, assign) NSString *currentData;
 @property(assign) NSArray *arguments;
 
 -(void)launchTask;

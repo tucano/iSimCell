@@ -12,6 +12,7 @@
 @implementation SimCellLinker
 
 @synthesize arguments;
+@synthesize currentData;
 
 #pragma mark -
 #pragma mark Initialization
