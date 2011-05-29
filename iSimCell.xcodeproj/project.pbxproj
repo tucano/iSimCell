@@ -20,6 +20,7 @@
 		554256D2138A701900FD94C6 /* iSimCellTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 554256D1138A701900FD94C6 /* iSimCellTests.h */; };
 		554256D4138A701900FD94C6 /* iSimCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 554256D3138A701900FD94C6 /* iSimCellTests.m */; };
 		55425732138A78CB00FD94C6 /* MySimulationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 55425730138A78A500FD94C6 /* MySimulationTest.m */; };
+		5590B43B13929C61005F8678 /* Application.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5590B43A13929C61005F8678 /* Application.icns */; };
 		55B82CC3138AA1C30078BC6A /* simCell in CopyFiles */ = {isa = PBXBuildFile; fileRef = 55B82CC2138AA1C30078BC6A /* simCell */; };
 		55B82CC7138AA4A20078BC6A /* SimCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B82CC6138AA4A20078BC6A /* SimCellController.m */; };
 		55B82CCA138AA6EB0078BC6A /* SimCellLinker.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B82CC9138AA6EB0078BC6A /* SimCellLinker.m */; };
@@ -76,6 +77,7 @@
 		554256D3138A701900FD94C6 /* iSimCellTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iSimCellTests.m; sourceTree = "<group>"; };
 		5542572F138A78A500FD94C6 /* MySimulationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySimulationTest.h; sourceTree = "<group>"; };
 		55425730138A78A500FD94C6 /* MySimulationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySimulationTest.m; sourceTree = "<group>"; };
+		5590B43A13929C61005F8678 /* Application.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Application.icns; path = ../Application.icns; sourceTree = "<group>"; };
 		55B82CC2138AA1C30078BC6A /* simCell */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = simCell; path = ../../simCell/src/simCell; sourceTree = "<group>"; };
 		55B82CC5138AA4A20078BC6A /* SimCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimCellController.h; sourceTree = "<group>"; };
 		55B82CC6138AA4A20078BC6A /* SimCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimCellController.m; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 		55B82CC4138AA1F10078BC6A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5590B43A13929C61005F8678 /* Application.icns */,
 				55B82CC2138AA1C30078BC6A /* simCell */,
 			);
 			name = Resources;
@@ -332,6 +335,7 @@
 				554256B4138A701900FD94C6 /* Credits.rtf in Resources */,
 				554256BA138A701900FD94C6 /* SimCellWindow.xib in Resources */,
 				554256BD138A701900FD94C6 /* MainMenu.xib in Resources */,
+				5590B43B13929C61005F8678 /* Application.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
