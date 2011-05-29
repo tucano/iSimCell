@@ -41,6 +41,7 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    if (currentData) [currentData release];
     [super dealloc];
 }
 
@@ -48,7 +49,7 @@
 #pragma mark Actions
 
 - (void)launchTask
-{
+{    
     path = [ [NSBundle mainBundle] pathForAuxiliaryExecutable:@"simCell"];
 
     // PIPES
@@ -126,8 +127,11 @@
 
     if (incomingData && [incomingData length])
     {
-       // NSLog(@"DATA TO END OF FILE. FILE HANDLE\n: %@", [[NSString alloc] initWithData:incomingData encoding:NSASCIIStringEncoding]);
+       currentData = [[NSString alloc] initWithData:incomingData encoding:NSASCIIStringEncoding];
     }
+    
+    // Post completed task
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"SimCellEndReadingData" object:self];
 }
 
 @end

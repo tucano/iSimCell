@@ -22,6 +22,8 @@
     
     NSString *path;
     NSArray *arguments;
+    
+    NSString *currentData;
 }
 
 

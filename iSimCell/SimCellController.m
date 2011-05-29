@@ -34,7 +34,13 @@
          addObserver:self 
          selector:@selector(taskFinished:)
          name:@"SimCellTaskComplete"
-         object:[mydocument simcell]];        
+         object:[mydocument simcell]];
+        
+        [[NSNotificationCenter defaultCenter] 
+         addObserver:self 
+         selector:@selector(endReadingData:)
+         name:@"SimCellEndReadingData"
+         object:[mydocument simcell]];
     }
     
     return self;
@@ -94,13 +100,18 @@
 -(void)taskStarted:(NSNotification *)notification
 {
     [progBar startAnimation:self];
-    NSLog(@"Controller for window %@. Task Control Start.", [mydocument displayName]);
+    NSLog(@"Controller for window %@. Task Start.", [mydocument displayName]);
 }
 
 -(void)taskFinished:(NSNotification *)notification
 {
+    NSLog(@"Controller for window %@. Task End.", [mydocument displayName]);
+}
+
+-(void)endReadingData:(NSNotification *)notification
+{
     [progBar stopAnimation:self];
-    NSLog(@"Controller for window %@. Task Control End.", [mydocument displayName]);
+    NSLog(@"Controller for window %@. End Reading Data.", [mydocument displayName]);
 }
 
 #pragma mark -

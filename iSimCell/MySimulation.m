@@ -43,7 +43,13 @@
          addObserver:self 
          selector:@selector(taskFinished:)
          name:@"SimCellTaskComplete"
-         object:simcell]; 
+         object:simcell];
+        
+        [[NSNotificationCenter defaultCenter] 
+         addObserver:self 
+         selector:@selector(endReadingData:)
+         name:@"SimCellEndReadingData"
+         object:simcell];
         
         //  Create CoreData Object PREWINDOW LOAD (to init things)
         NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
@@ -107,6 +113,11 @@
 -(void)taskFinished:(NSNotification *)notification
 {
     NSLog(@"MySimulationDoc: Task Control End.");
+}
+
+-(void)endReadingData:(NSNotification *)notification
+{
+    NSLog(@"MySimulationDoc: End reading data.");
     simcellLock = NO;
 }
 

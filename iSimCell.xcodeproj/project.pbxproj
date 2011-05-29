@@ -208,7 +208,6 @@
 		554256DE138A715500FD94C6 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				55B0BF08138FB50100C8C0FA /* Models */,
 				554256B5138A701900FD94C6 /* MySimulation.h */,
 				554256B6138A701900FD94C6 /* MySimulation.m */,
 				55B82CC5138AA4A20078BC6A /* SimCellController.h */,
@@ -223,6 +222,10 @@
 			isa = PBXGroup;
 			children = (
 				554256BE138A701900FD94C6 /* MySimulation.xcdatamodeld */,
+				55FC150D138E823700BBCBD0 /* Simulation.h */,
+				55FC150E138E823700BBCBD0 /* Simulation.m */,
+				55FC1511138E825300BBCBD0 /* Configuration.h */,
+				55FC1512138E825300BBCBD0 /* Configuration.m */,
 			);
 			name = DataModels;
 			sourceTree = "<group>";
@@ -238,17 +241,6 @@
 				55F48102138BA8C100406891 /* SimCellLinkerTest.m */,
 			);
 			name = "Test Cases";
-			sourceTree = "<group>";
-		};
-		55B0BF08138FB50100C8C0FA /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				55FC150D138E823700BBCBD0 /* Simulation.h */,
-				55FC150E138E823700BBCBD0 /* Simulation.m */,
-				55FC1511138E825300BBCBD0 /* Configuration.h */,
-				55FC1512138E825300BBCBD0 /* Configuration.m */,
-			);
-			name = Models;
 			sourceTree = "<group>";
 		};
 		55B82CC4138AA1F10078BC6A /* Resources */ = {
