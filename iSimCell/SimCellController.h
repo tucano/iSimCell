@@ -17,6 +17,8 @@
     IBOutlet NSProgressIndicator *progBar;
     IBOutlet NSArrayController *configurationsController;
     IBOutlet NSPopUpButton *outputPouUp;
+    IBOutlet NSManagedObjectContext *managedObjectContext;
+    IBOutlet NSObjectController *simulationController;
 }
 
 -(IBAction)launchSim:(id)sender;
