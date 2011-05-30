@@ -374,7 +374,7 @@
 										<bool key="EncodedWithXMLCoder">YES</bool>
 										<object class="NSScrollView" id="1046091534">
 											<reference key="NSNextResponder" ref="354876743"/>
-											<int key="NSvFlags">268</int>
+											<int key="NSvFlags">274</int>
 											<object class="NSMutableArray" key="NSSubviews">
 												<bool key="EncodedWithXMLCoder">YES</bool>
 												<object class="NSClipView" id="948882440">
@@ -457,10 +457,15 @@
 																</object>
 															</object>
 															<double key="NSIntercellSpacingWidth">3</double>
-															<double key="NSIntercellSpacingHeight">2</double>
-															<object class="NSColor" key="NSBackgroundColor" id="826698502">
-																<int key="NSColorSpace">3</int>
-																<bytes key="NSWhite">MQA</bytes>
+															<double key="NSIntercellSpacingHeight">0.0</double>
+															<object class="NSColor" key="NSBackgroundColor">
+																<int key="NSColorSpace">6</int>
+																<string key="NSCatalogName">System</string>
+																<string key="NSColorName">_sourceListBackgroundColor</string>
+																<object class="NSColor" key="NSColor">
+																	<int key="NSColorSpace">1</int>
+																	<bytes key="NSRGB">MC44MzkyMTU2OTU5IDAuODY2NjY2Njc0NiAwLjg5ODAzOTIyMTgAA</bytes>
+																</object>
 															</object>
 															<object class="NSColor" key="NSGridColor" id="842649051">
 																<int key="NSColorSpace">6</int>
@@ -471,15 +476,17 @@
 																	<bytes key="NSWhite">MC41AA</bytes>
 																</object>
 															</object>
-															<double key="NSRowHeight">17</double>
-															<int key="NSTvFlags">-767557632</int>
+															<double key="NSRowHeight">20</double>
+															<int key="NSTvFlags">1514143744</int>
 															<reference key="NSDelegate"/>
 															<reference key="NSDataSource"/>
 															<int key="NSColumnAutoresizingStyle">4</int>
 															<int key="NSDraggingSourceMaskForLocal">15</int>
 															<int key="NSDraggingSourceMaskForNonLocal">0</int>
 															<bool key="NSAllowsTypeSelect">YES</bool>
-															<int key="NSTableViewDraggingDestinationStyle">0</int>
+															<int key="NSTableViewSelectionHighlightStyle">1</int>
+															<int key="NSTableViewDraggingDestinationStyle">1</int>
+															<float key="NSOutlineViewIndentationPerLevelKey">14</float>
 														</object>
 													</object>
 													<string key="NSFrame">{{1, 1}, {160, 558}}</string>
@@ -488,7 +495,7 @@
 													<reference key="NSNextKeyView" ref="254633786"/>
 													<reference key="NSDocView" ref="254633786"/>
 													<reference key="NSBGColor" ref="362269539"/>
-													<int key="NScvFlags">6</int>
+													<int key="NScvFlags">2</int>
 												</object>
 												<object class="NSScroller" id="373421992">
 													<reference key="NSNextResponder" ref="1046091534"/>
@@ -522,7 +529,7 @@
 											<reference key="NSVScroller" ref="373421992"/>
 											<reference key="NSHScroller" ref="254971635"/>
 											<reference key="NSContentView" ref="948882440"/>
-											<bytes key="NSScrollAmts">QSAAAEEgAABBmAAAQZgAAA</bytes>
+											<bytes key="NSScrollAmts">QSAAAEEgAABBoAAAQaAAAA</bytes>
 										</object>
 									</object>
 									<string key="NSFrameSize">{162, 560}</string>
@@ -758,7 +765,10 @@
 													<int key="NSColorSpace">6</int>
 													<string key="NSCatalogName">System</string>
 													<string key="NSColorName">textBackgroundColor</string>
-													<reference key="NSColor" ref="826698502"/>
+													<object class="NSColor" key="NSColor" id="826698502">
+														<int key="NSColorSpace">3</int>
+														<bytes key="NSWhite">MQA</bytes>
+													</object>
 												</object>
 												<object class="NSColor" key="NSTextColor">
 													<int key="NSColorSpace">3</int>
@@ -1328,6 +1338,14 @@
 					</object>
 					<int key="connectionID">100466</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">myOutlineView</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="254633786"/>
+					</object>
+					<int key="connectionID">100475</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -1361,7 +1379,7 @@
 							<reference ref="672043225"/>
 						</object>
 						<reference key="parent" ref="0"/>
-						<string key="objectName">Window</string>
+						<string key="objectName">Main Window</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">6</int>
@@ -1756,6 +1774,7 @@
 							<reference ref="220006383"/>
 						</object>
 						<reference key="parent" ref="254633786"/>
+						<string key="objectName">outlineView Column</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">100424</int>
@@ -1883,7 +1902,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">100466</int>
+			<int key="maxID">100475</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1936,6 +1955,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>configurationsController</string>
 							<string>managedObjectContext</string>
+							<string>myOutlineView</string>
 							<string>outlineContents</string>
 							<string>outlineController</string>
 							<string>outputPouUp</string>
@@ -1946,6 +1966,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>NSArrayController</string>
 							<string>NSManagedObjectContext</string>
+							<string>NSOutlineView</string>
 							<string>NSMutableArray</string>
 							<string>NSTreeController</string>
 							<string>NSPopUpButton</string>
@@ -1959,6 +1980,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>configurationsController</string>
 							<string>managedObjectContext</string>
+							<string>myOutlineView</string>
 							<string>outlineContents</string>
 							<string>outlineController</string>
 							<string>outputPouUp</string>
@@ -1974,6 +1996,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">managedObjectContext</string>
 								<string key="candidateClassName">NSManagedObjectContext</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">myOutlineView</string>
+								<string key="candidateClassName">NSOutlineView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">outlineContents</string>

@@ -13,6 +13,7 @@
 
 @interface SimCellController : NSWindowController {
 @private
+    
     MySimulation *mydocument;
     Simulation   *simulation;
     IBOutlet NSProgressIndicator *progBar;
@@ -20,8 +21,11 @@
     IBOutlet NSPopUpButton *outputPouUp;
     IBOutlet NSManagedObjectContext *managedObjectContext;
     IBOutlet NSObjectController *simulationController;
-    IBOutlet NSTreeController *outlineController;
-    IBOutlet NSMutableArray *outlineContents;
+    
+    IBOutlet NSOutlineView		*myOutlineView;
+    IBOutlet NSTreeController   *outlineController;
+    IBOutlet NSMutableArray     *outlineContents;
+    BOOL					    buildingOutlineView;	// signifies we are building the outline view at launch time
 }
 
 -(IBAction)launchSim:(id)sender;
@@ -30,9 +34,10 @@
 
 @property(nonatomic, retain) IBOutlet NSManagedObjectContext *managedObjectContext;
 @property(nonatomic, retain) IBOutlet NSObjectController *simulationController;
-@property(nonatomic, retain) IBOutlet NSMutableArray *outlineContents;
 
 -(Configuration *)selectedConfiguration;
+
 -(NSMutableArray *)outlineContents;
+- (void)setOutlineContents:(NSArray*)newContents;
 
 @end
