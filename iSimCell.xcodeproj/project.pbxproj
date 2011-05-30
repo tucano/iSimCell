@@ -32,6 +32,7 @@
 		55FC150F138E823700BBCBD0 /* Simulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FC150E138E823700BBCBD0 /* Simulation.m */; };
 		55FC1513138E825300BBCBD0 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FC1512138E825300BBCBD0 /* Configuration.m */; };
 		ED92A11E1393C73400AD9E26 /* outlineView.dict in Resources */ = {isa = PBXBuildFile; fileRef = ED92A11D1393C73400AD9E26 /* outlineView.dict */; };
+		ED973E48139416CD00424F8D /* SimCellController+OutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED973E47139416CD00424F8D /* SimCellController+OutlineView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,8 @@
 		55FC1511138E825300BBCBD0 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
 		55FC1512138E825300BBCBD0 /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; };
 		ED92A11D1393C73400AD9E26 /* outlineView.dict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = outlineView.dict; sourceTree = "<group>"; };
+		ED973E46139416CD00424F8D /* SimCellController+OutlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SimCellController+OutlineView.h"; sourceTree = "<group>"; };
+		ED973E47139416CD00424F8D /* SimCellController+OutlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SimCellController+OutlineView.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,10 +168,11 @@
 		554256A9138A701900FD94C6 /* iSimCell */ = {
 			isa = PBXGroup;
 			children = (
+				ED973E451394165400424F8D /* Controllers */,
 				55AD8A5F139396CD00AC6600 /* TreeSupport */,
 				55B82CC4138AA1F10078BC6A /* Resources */,
 				554256DF138A71AE00FD94C6 /* DataModels */,
-				554256DE138A715500FD94C6 /* Classes */,
+				554256DE138A715500FD94C6 /* Models */,
 				554256DD138A704C00FD94C6 /* Interface */,
 				554256AA138A701900FD94C6 /* Supporting Files */,
 			);
@@ -217,17 +221,15 @@
 			name = Interface;
 			sourceTree = "<group>";
 		};
-		554256DE138A715500FD94C6 /* Classes */ = {
+		554256DE138A715500FD94C6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				554256B5138A701900FD94C6 /* MySimulation.h */,
 				554256B6138A701900FD94C6 /* MySimulation.m */,
-				55B82CC5138AA4A20078BC6A /* SimCellController.h */,
-				55B82CC6138AA4A20078BC6A /* SimCellController.m */,
 				55B82CC8138AA6EB0078BC6A /* SimCellLinker.h */,
 				55B82CC9138AA6EB0078BC6A /* SimCellLinker.m */,
 			);
-			name = Classes;
+			name = Models;
 			sourceTree = "<group>";
 		};
 		554256DF138A71AE00FD94C6 /* DataModels */ = {
@@ -276,6 +278,17 @@
 				ED92A11D1393C73400AD9E26 /* outlineView.dict */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		ED973E451394165400424F8D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				55B82CC5138AA4A20078BC6A /* SimCellController.h */,
+				55B82CC6138AA4A20078BC6A /* SimCellController.m */,
+				ED973E46139416CD00424F8D /* SimCellController+OutlineView.h */,
+				ED973E47139416CD00424F8D /* SimCellController+OutlineView.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -400,6 +413,7 @@
 				55AD8A5C139396C900AC6600 /* BaseNode.m in Sources */,
 				55AD8A5D139396C900AC6600 /* ChildNode.m in Sources */,
 				55AD8A631393971F00AC6600 /* NSArray_Extensions.m in Sources */,
+				ED973E48139416CD00424F8D /* SimCellController+OutlineView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

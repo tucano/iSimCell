@@ -7,9 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "SimCellLinker.h"
 #import "MySimulation.h"
-#import "ChildNode.h"
 
 @interface SimCellController : NSWindowController {
 @private
@@ -36,8 +34,5 @@
 @property(nonatomic, retain) IBOutlet NSObjectController *simulationController;
 
 -(Configuration *)selectedConfiguration;
-
--(NSMutableArray *)outlineContents;
-- (void)setOutlineContents:(NSArray*)newContents;
 
 @end

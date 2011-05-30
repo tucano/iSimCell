@@ -11,11 +11,15 @@
 			<array>
                 <dict>
 					<key>group</key>
+					<string>Info</string>
+				</dict>
+                <dict>
+					<key>group</key>
 					<string>Parameters</string>
                     <key>entries</key>
                     <array>
                         <dict>
-                            <key>configurations</key>
+                            <key>configuration</key>
                             <string></string>
                         </dict>
                     </array>

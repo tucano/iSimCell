@@ -56,16 +56,27 @@
 
 #pragma mark -
 #pragma mark Core Data Methods
-- (void) awakeFromInsert {
+- (void) awakeFromInsert 
+{
     // called when the object is first created.
     [self generateUniqueID];
 }
 
+-(void)didSave
+{
+    NSLog(@"SimulationModel: Saved");
+}
+
+- (void)didChangeValueForKey:(NSString *)key
+{
+    NSLog(@"SimulationModel: changed key: %@", key);
+}
 
 #pragma mark -
 #pragma mark Custom Methods
 
-- (void) generateUniqueID {
+- (void) generateUniqueID 
+{
     NSString* uniqueID = self.uniqueID;
     if ( uniqueID != nil ) return;
     self.uniqueID = [[NSProcessInfo processInfo] globallyUniqueString];
