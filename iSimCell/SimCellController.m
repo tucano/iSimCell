@@ -529,7 +529,7 @@
     id entry;
 	while ((entry = [entryEnum nextObject]))
     {
-        //NSString *urlStr = [entry objectForKey:KEY_URL];
+        NSString *urlStr = [entry objectForKey:KEY_URL];
         
         if ([entry objectForKey:KEY_SIMULATION]) {
             // add simulation FIXME SIMULATION STATIC
@@ -556,14 +556,14 @@
         {
             // its a file system based folder,
             // we treat is as a leaf and show its contents in the NSCollectionView
-            // NSString *folderName = [entry objectForKey:KEY_FOLDER];
-            // [self addChild:urlStr withName:folderName selectParent:YES];
+            NSString *folderName = [entry objectForKey:KEY_FOLDER];
+            [self addChild:urlStr withName:folderName selectParent:YES];
         }
         else if ([entry objectForKey:KEY_URL])
         {
             // its a leaf item with a URL
-            //NSString *nameStr = [entry objectForKey:KEY_NAME];
-            //[self addChild:urlStr withName:nameStr selectParent:YES];
+            NSString *nameStr = [entry objectForKey:KEY_NAME];
+            [self addChild:urlStr withName:nameStr selectParent:YES];
         }
         else
         {
