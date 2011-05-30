@@ -1002,7 +1002,7 @@
 				<bool key="NSFilterRestrictsInsertion">YES</bool>
 				<bool key="NSClearsFilterPredicateOnInsertion">YES</bool>
 			</object>
-			<object class="NSTreeController" id="908773817">
+			<object class="NSTreeController" id="422646644">
 				<string key="NSObjectClassName">ChildNode</string>
 				<bool key="NSEditable">YES</bool>
 				<object class="_NSManagedProxy" key="_NSManagedProxy"/>
@@ -1243,7 +1243,7 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">outlineController</string>
 						<reference key="source" ref="512844837"/>
-						<reference key="destination" ref="908773817"/>
+						<reference key="destination" ref="422646644"/>
 					</object>
 					<int key="connectionID">100446</int>
 				</object>
@@ -1251,10 +1251,10 @@
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">content: arrangedObjects</string>
 						<reference key="source" ref="254633786"/>
-						<reference key="destination" ref="908773817"/>
-						<object class="NSNibBindingConnector" key="connector">
+						<reference key="destination" ref="422646644"/>
+						<object class="NSNibBindingConnector" key="connector" id="631982358">
 							<reference key="NSSource" ref="254633786"/>
-							<reference key="NSDestination" ref="908773817"/>
+							<reference key="NSDestination" ref="422646644"/>
 							<string key="NSLabel">content: arrangedObjects</string>
 							<string key="NSBinding">content</string>
 							<string key="NSKeyPath">arrangedObjects</string>
@@ -1267,10 +1267,10 @@
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">value: arrangedObjects.nodeTitle</string>
 						<reference key="source" ref="305241625"/>
-						<reference key="destination" ref="908773817"/>
+						<reference key="destination" ref="422646644"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="305241625"/>
-							<reference key="NSDestination" ref="908773817"/>
+							<reference key="NSDestination" ref="422646644"/>
 							<string key="NSLabel">value: arrangedObjects.nodeTitle</string>
 							<string key="NSBinding">value</string>
 							<string key="NSKeyPath">arrangedObjects.nodeTitle</string>
@@ -1282,10 +1282,10 @@
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">contentArray: outlineContents</string>
-						<reference key="source" ref="908773817"/>
+						<reference key="source" ref="422646644"/>
 						<reference key="destination" ref="512844837"/>
 						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="908773817"/>
+							<reference key="NSSource" ref="422646644"/>
 							<reference key="NSDestination" ref="512844837"/>
 							<string key="NSLabel">contentArray: outlineContents</string>
 							<string key="NSBinding">contentArray</string>
@@ -1294,6 +1294,39 @@
 						</object>
 					</object>
 					<int key="connectionID">100461</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">selectionIndexPaths: selectionIndexPaths</string>
+						<reference key="source" ref="254633786"/>
+						<reference key="destination" ref="422646644"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="254633786"/>
+							<reference key="NSDestination" ref="422646644"/>
+							<string key="NSLabel">selectionIndexPaths: selectionIndexPaths</string>
+							<string key="NSBinding">selectionIndexPaths</string>
+							<string key="NSKeyPath">selectionIndexPaths</string>
+							<reference key="NSPreviousConnector" ref="631982358"/>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">100464</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">dataSource</string>
+						<reference key="source" ref="254633786"/>
+						<reference key="destination" ref="512844837"/>
+					</object>
+					<int key="connectionID">100465</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="254633786"/>
+						<reference key="destination" ref="512844837"/>
+					</object>
+					<int key="connectionID">100466</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1681,7 +1714,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">100445</int>
-						<reference key="object" ref="908773817"/>
+						<reference key="object" ref="422646644"/>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">outlineController</string>
 					</object>
@@ -1850,7 +1883,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">100461</int>
+			<int key="maxID">100466</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

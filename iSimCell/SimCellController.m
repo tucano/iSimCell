@@ -25,6 +25,7 @@
         // Initialization code here.
         NSLog(@"SimCellController: Window init.");
         
+        // test outlineVIEW
         // outlineView check example (smaple Code) sourceView
         outlineContents = [[NSMutableArray alloc] init];
         ChildNode *node = [[ChildNode alloc] init];
@@ -68,8 +69,10 @@
     mydocument = [self document];
     simulation = [mydocument simulation];
     
+    // test outlineVIEW
     NSLog(@"SimName: %@", simulation.name);
     [[outlineContents objectAtIndex:0] setNodeTitle:simulation.name];
+    [[outlineContents objectAtIndex:0] setDescription:@"Simulation"];
     NSLog(@"SimCellController: outlineview data: %@", outlineContents);
     
     // SET INTERFACE DEFAULTS
@@ -126,6 +129,21 @@
     [progBar stopAnimation:self];
     NSLog(@"Controller for window %@. End Reading Data.", [mydocument displayName]);
 }
+
+// -------------------------------------------------------------------------------
+//	outlineView: notifications
+// -------------------------------------------------------------------------------
+
+- (void)outlineViewSelectionDidChange:(NSNotification *)notification
+{
+    NSLog(@"Controller for window %@. Selection changed", [mydocument displayName]);
+}
+
+- (void)outlineViewSelectionIsChanging:(NSNotification *)notification
+{
+    NSLog(@"Controller for window %@. Selection is changing", [mydocument displayName]);
+}
+
 
 #pragma mark -
 #pragma mark Private
