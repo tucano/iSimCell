@@ -169,7 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				ED973E451394165400424F8D /* Controllers */,
-				55AD8A5F139396CD00AC6600 /* TreeSupport */,
+				55AD8A5F139396CD00AC6600 /* outlineTreeSupport */,
 				55B82CC4138AA1F10078BC6A /* Resources */,
 				554256DF138A71AE00FD94C6 /* DataModels */,
 				554256DE138A715500FD94C6 /* Models */,
@@ -257,7 +257,7 @@
 			name = "Test Cases";
 			sourceTree = "<group>";
 		};
-		55AD8A5F139396CD00AC6600 /* TreeSupport */ = {
+		55AD8A5F139396CD00AC6600 /* outlineTreeSupport */ = {
 			isa = PBXGroup;
 			children = (
 				55AD8A611393971F00AC6600 /* NSArray_Extensions.h */,
@@ -267,7 +267,7 @@
 				55AD8A5A139396C800AC6600 /* ChildNode.m */,
 				55AD8A5B139396C800AC6600 /* ChildNode.h */,
 			);
-			name = TreeSupport;
+			name = outlineTreeSupport;
 			sourceTree = "<group>";
 		};
 		55B82CC4138AA1F10078BC6A /* Resources */ = {

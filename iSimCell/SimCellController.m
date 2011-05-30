@@ -25,21 +25,24 @@
         NSLog(@"SimCellController: Window init.");
         
         // test outlineVIEW
-        // outlineView check example (smaple Code) sourceView
+        // outlineView check example (sample Code) sourceView
         outlineContents = [[NSMutableArray alloc] init];
         
+        // Notify START TASK
         [[NSNotificationCenter defaultCenter] 
          addObserver:self 
          selector:@selector(taskStarted:)
          name:@"SimCellTaskStarted"
          object:[mydocument simcell]];
-        
+
+        // Notify START COMPLETE
         [[NSNotificationCenter defaultCenter] 
          addObserver:self 
          selector:@selector(taskFinished:)
          name:@"SimCellTaskComplete"
          object:[mydocument simcell]];
         
+        // Notify START COMPLETE
         [[NSNotificationCenter defaultCenter] 
          addObserver:self 
          selector:@selector(endReadingData:)
