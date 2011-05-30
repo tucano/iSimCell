@@ -25,7 +25,7 @@
         // Initialization code here.
         NSLog(@"SimCellController: Window init.");
         
-        // outlineView
+        // outlineView check example (smaple Code) sourceView
         outlineContents = [[NSMutableArray alloc] init];
         ChildNode *node = [[ChildNode alloc] init];
         [outlineContents addObject:node];
