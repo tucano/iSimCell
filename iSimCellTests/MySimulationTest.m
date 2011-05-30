@@ -26,7 +26,6 @@
 -(void)testAllocAndRelease
 {   
     STAssertNotNil(testsimulation, @"test if object is not nil, got nil: %@", testsimulation);
-    STAssertNotNil([testsimulation simcell], @"test if object is not nil, got nil: %@", [testsimulation simcell]);
     STAssertNotNil([testsimulation simulation], @"test if object is not nil, got nil: %@", [testsimulation simulation]);
     STAssertFalse([testsimulation simcellLock], @"test if simcell lock id FALSE, got TRUE.");
     STAssertNotNil([testsimulation managedObjectContext], @"test if there is a managed object context. Got nilL %@", [testsimulation managedObjectContext]);

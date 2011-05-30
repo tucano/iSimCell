@@ -64,12 +64,12 @@
 
 -(void)didSave
 {
-    NSLog(@"SimulationModel: Saved");
+   // NSLog(@"SimulationModel: Saved");
 }
 
 - (void)didChangeValueForKey:(NSString *)key
 {
-    NSLog(@"SimulationModel: changed key: %@", key);
+   // NSLog(@"SimulationModel: changed key: %@", key);
 }
 
 #pragma mark -

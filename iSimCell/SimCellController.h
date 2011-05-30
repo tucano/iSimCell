@@ -13,7 +13,7 @@
 @private
     
     MySimulation *mydocument;
-    Simulation   *simulation;
+    
     IBOutlet NSProgressIndicator *progBar;
     IBOutlet NSArrayController *configurationsController;
     IBOutlet NSPopUpButton *outputPouUp;

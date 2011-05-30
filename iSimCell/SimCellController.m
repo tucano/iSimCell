@@ -35,14 +35,14 @@
          name:@"SimCellTaskStarted"
          object:[mydocument simcell]];
 
-        // Notify START COMPLETE
+        // Notify TASK COMPLETE
         [[NSNotificationCenter defaultCenter] 
          addObserver:self 
          selector:@selector(taskFinished:)
          name:@"SimCellTaskComplete"
          object:[mydocument simcell]];
         
-        // Notify START COMPLETE
+        // Notify END READING DATA
         [[NSNotificationCenter defaultCenter] 
          addObserver:self 
          selector:@selector(endReadingData:)
@@ -65,7 +65,6 @@
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     mydocument = [self document];
-    simulation = [mydocument simulation];
     
     // build our default tree on a separate thread,
 	// some portions are from disk which could get expensive depending on the size of the dictionary file:
@@ -84,12 +83,12 @@
 	[myOutlineView setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleSourceList];
     
     // Logging various things
-    NSLog(@"SimName: %@", simulation.name);
-    NSLog(@"SimCellController: outlineview data: %@", outlineContents);
+    NSLog(@"Simulations: %@", [mydocument fetchSimulations]);
+    //NSLog(@"SimCellController: outlineview data: %@", outlineContents);
     NSLog(@"SimCellController: Window Loaded. Calling Document is: %@", mydocument);
-    NSLog(@"SimCellController: MySimulation Model: %@", simulation.uniqueID);
-    NSLog(@"SimCellController: simulation first configuration: %@", [[[simulation.configurations allObjects] objectAtIndex:0] valueForKey:@"uniqueID"]);
-    NSLog(@"SimCellController: selected configuration name: %@, output: %@", [[self selectedConfiguration] name], [[self selectedConfiguration] output]);
+    NSLog(@"SimCellController: simulations: %@", [mydocument fetchSimulations]);
+    //NSLog(@"SimCellController: simulation first configuration: %@", [[[simulation.configurations allObjects] objectAtIndex:0] valueForKey:@"uniqueID"]);
+    //NSLog(@"SimCellController: selected configuration name: %@, output: %@", [[self selectedConfiguration] name], [[self selectedConfiguration] output]);
 }
 
 - (NSString *)windowTitleForDocumentDisplayName:(NSString *)displayName
@@ -143,12 +142,12 @@
 
 - (void)outlineViewSelectionDidChange:(NSNotification *)notification
 {
-    NSLog(@"Controller for window %@. Selection changed", [mydocument displayName]);
+    //NSLog(@"Controller for window %@. Selection changed", [mydocument displayName]);
 }
 
 - (void)outlineViewSelectionIsChanging:(NSNotification *)notification
 {
-    NSLog(@"Controller for window %@. Selection is changing", [mydocument displayName]);
+    //NSLog(@"Controller for window %@. Selection is changing", [mydocument displayName]);
 }
 
 

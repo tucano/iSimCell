@@ -11,22 +11,58 @@
 
 @implementation MySimulation
 
-@synthesize simulation;
 @synthesize simcell;
 @synthesize simcellLock;
 
 #pragma mark -
 #pragma mark Initialization
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        // Common entry point
+        NSLog(@"NSPersistentDocument: INIT common entry point to open and new functions.");
+        
+        simulations = [[NSArray alloc] init];
+        
+        // init linker
+        simcell = [[SimCellLinker alloc] init];
+        simcellLock = NO;
+        
+        // Notify START TASK
+        [[NSNotificationCenter defaultCenter] 
+         addObserver:self 
+         selector:@selector(taskStarted:)
+         name:@"SimCellTaskStarted"
+         object:simcell];
+        
+        // Notify TASK COMPLETE
+        [[NSNotificationCenter defaultCenter] 
+         addObserver:self 
+         selector:@selector(taskFinished:)
+         name:@"SimCellTaskComplete"
+         object:simcell];
+        
+        // Notify END READING DATA
+        [[NSNotificationCenter defaultCenter] 
+         addObserver:self 
+         selector:@selector(endReadingData:)
+         name:@"SimCellEndReadingData"
+         object:simcell];
+
+    }
+    return self;
+}
+
 -(id)initWithType:(NSString *)type error:(NSError **)error
 {
+    NSLog(@"NSPersistentDocument: Init and create file");
     self = [super initWithType:type error:error];
-        
+    
     if (self != nil) {
 
         // Add your subclass-specific initialization here.
         // If an error occurs here, send a [self release] message and return nil.
-        
         NSLog(@"NSPersistentDocument: InitWithType with CoreData object models. type: %@",type);
         
         //  Create CoreData Object PREWINDOW LOAD (to init things)
@@ -36,15 +72,15 @@
         [[managedObjectContext undoManager] disableUndoRegistration];
 
         [self newSimulation];
-        [self newConfiguration:@"Default Config"];
+        
+        [self newSimulation];
         
         [managedObjectContext processPendingChanges];
         
         // enable save ...
         [[managedObjectContext undoManager] enableUndoRegistration];
         
-        NSLog(@"NSPersistenDocument: Simulation Object loaded: %@", simulation.name);
-        NSLog(@"NSPersistenDocument: Configuration Default Object loaded: %@", [[[simulation.configurations allObjects] objectAtIndex:0] name]);
+        NSLog(@"NSPersistenDocument: Simulation and Configurations Objects Created");
     }
     return self;
 }
@@ -52,6 +88,7 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [simulations release];
     [simcell release];
     [super dealloc];
 }
@@ -90,12 +127,12 @@
 
 -(void)taskFinished:(NSNotification *)notification
 {
-    NSLog(@"MySimulationDoc: Task Control End.");
+    NSLog(@"NSPersistentDocument: Task Control End.");
 }
 
 -(void)endReadingData:(NSNotification *)notification
 {
-    NSLog(@"MySimulationDoc: End reading data.");
+    NSLog(@"NSPersistentDocument: End reading data.");
     unsigned long numberOfLines, index, stringLength = [[simcell currentData] length];
     for (index = 0, numberOfLines = 0; index < stringLength; numberOfLines++)
         index = NSMaxRange([[simcell currentData] lineRangeForRange:NSMakeRange(index, 0)]);
@@ -116,36 +153,8 @@
     SimCellController *ctl = [ [SimCellController alloc] initWithWindowNibName: [self windowNibName] ];
     [ctl autorelease];
     [self addWindowController:ctl];
-    // IF NOT object
-    if (simulation == nil) {
-        [self fetchSimulation];
-        NSLog(@"Simulation was nil, now is: %@", simulation.name);
-    }
     
-    // init linker
-    simcell = [[SimCellLinker alloc] init];
-    simcellLock = NO;
-    
-    // NOTOFICATIONS
-    [[NSNotificationCenter defaultCenter] 
-     addObserver:self 
-     selector:@selector(taskStarted:)
-     name:@"SimCellTaskStarted"
-     object:simcell];
-    
-    [[NSNotificationCenter defaultCenter] 
-     addObserver:self 
-     selector:@selector(taskFinished:)
-     name:@"SimCellTaskComplete"
-     object:simcell];
-    
-    [[NSNotificationCenter defaultCenter] 
-     addObserver:self 
-     selector:@selector(endReadingData:)
-     name:@"SimCellEndReadingData"
-     object:simcell];
-
-    NSLog(@"NSPersistentDocument: passing control to the window controller. Current Object: %@", simulation.name);
+    NSLog(@"NSPersistentDocument: passing control to the window controller.");
     
 }
 
@@ -155,16 +164,16 @@
     return @"SimCellWindow";
 }
 
-
 #pragma mark -
 #pragma mark Core Data Methods
 -(void)newSimulation
 {
-    simulation = [NSEntityDescription insertNewObjectForEntityForName:@"Simulation" 
+    Simulation *simulation = [NSEntityDescription insertNewObjectForEntityForName:@"Simulation" 
                                                inManagedObjectContext:[self managedObjectContext]];
+    [self newConfiguration:@"Default Config" forSimulation:simulation];
 }
 
--(Configuration *)newConfiguration:(NSString *)name
+-(Configuration *)newConfiguration:(NSString *)name forSimulation:(Simulation *)simulation;
 {
     Configuration *config = [NSEntityDescription insertNewObjectForEntityForName:@"Configuration" 
                                                           inManagedObjectContext:[self managedObjectContext]];
@@ -174,9 +183,30 @@
 }
 
 
--(void)fetchSimulation
+-(void)fetchSimulation:(NSString *)uniqueID
 {
-    NSLog(@"fetchRequest: -->");
+//    NSLog(@"fetchRequest: -->");
+//    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+//    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Simulation" 
+//                                                         inManagedObjectContext:managedObjectContext];
+//    NSFetchRequest *request = [[[NSFetchRequest alloc] init ] autorelease];
+//    
+//    [request setEntity:entityDescription];
+//    NSError *error = nil;
+//    NSArray *array = [managedObjectContext executeFetchRequest:request error:&error];
+//    
+//    if (array == nil) {
+//        // Deal with error
+//        NSLog(@"fetchRequest NODATA");
+//    }
+//    
+//    simulation = [array objectAtIndex:0];
+//    NSLog(@"fetchRequest: %@", simulation.name);
+}
+
+-(NSArray *)fetchSimulations
+{
+    NSLog(@"fetch Simulations Request: -->");
     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
     NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Simulation" 
                                                          inManagedObjectContext:managedObjectContext];
@@ -191,8 +221,7 @@
         NSLog(@"fetchRequest NODATA");
     }
     
-    simulation = [array objectAtIndex:0];
-    NSLog(@"fetchRequest: %@", simulation.name);
+    return array;
 }
 
 @end

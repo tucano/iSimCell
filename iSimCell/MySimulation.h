@@ -14,19 +14,22 @@
 @interface MySimulation : NSPersistentDocument {
 @private
     
-    Simulation *simulation;
+    NSArray *simulations;
+
     SimCellLinker *simcell;
     bool simcellLock;
 }
 
-@property(readwrite, retain) Simulation * simulation;
 @property(readonly, assign) SimCellLinker * simcell;
 @property(readonly, assign) bool simcellLock;
 
 -(void)runSimCell:(Configuration *)conf;
 -(void)killSimCell;
+
 -(void)newSimulation;
--(void)fetchSimulation;
--(Configuration *)newConfiguration:(NSString *)name;
+-(NSArray *)fetchSimulations;
+-(void)fetchSimulation:(NSString *)uniqueID;
+-(Configuration *)newConfiguration:(NSString *)name forSimulation:(Simulation *)simulation;
+
 
 @end

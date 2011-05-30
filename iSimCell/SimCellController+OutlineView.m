@@ -387,18 +387,18 @@
         
         if ([entry objectForKey:KEY_SIMULATION]) {
             // add simulation FIXME SIMULATION STATIC
-            [self addSimulation:simulation.name selectParent:YES];
+            [self addSimulation:@"test" selectParent:YES];
             // add its children
             NSDictionary *entries = [entry objectForKey:KEY_ENTRIES];
             [self addEntries:entries];
             [self selectParentFromSelection];
-            NSLog(@"simulation: %@", [entry objectForKey:KEY_SIMULATION]);
-            NSLog(@"with entries: %@", entries);
+            //NSLog(@"simulation: %@", [entry objectForKey:KEY_SIMULATION]);
+            //NSLog(@"with entries: %@", entries);
         }
         else if ([entry objectForKey:KEY_CONFIGURATION])
         {
             // add configurations FIXME STATIC ON FIRST
-            [self addConfiguration:[[[simulation.configurations allObjects] objectAtIndex:0] valueForKey:@"name"] selectParent:YES];
+            [self addConfiguration:@"test" selectParent:YES];
             [self selectParentFromSelection];
         }
         else if ([entry objectForKey:KEY_SEPARATOR])
