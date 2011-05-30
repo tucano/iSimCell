@@ -183,25 +183,32 @@
 }
 
 
--(void)fetchSimulation:(NSString *)uniqueID
+-(Simulation *)fetchSimulation:(NSString *)uniqueID
 {
-//    NSLog(@"fetchRequest: -->");
-//    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
-//    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Simulation" 
-//                                                         inManagedObjectContext:managedObjectContext];
-//    NSFetchRequest *request = [[[NSFetchRequest alloc] init ] autorelease];
-//    
-//    [request setEntity:entityDescription];
-//    NSError *error = nil;
-//    NSArray *array = [managedObjectContext executeFetchRequest:request error:&error];
-//    
-//    if (array == nil) {
-//        // Deal with error
-//        NSLog(@"fetchRequest NODATA");
-//    }
-//    
-//    simulation = [array objectAtIndex:0];
-//    NSLog(@"fetchRequest: %@", simulation.name);
+    NSLog(@"fetch Simulation Request: -->");
+    NSManagedObjectModel *model = [[Simulation alloc] init];
+    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Simulation" 
+                                                         inManagedObjectContext:managedObjectContext];
+    NSFetchRequest *request = [[[NSFetchRequest alloc] init ] autorelease];
+    
+    [request setEntity:entityDescription];
+    
+    NSPredicate *predicateTemplate = [NSPredicate predicateWithFormat:
+                                      @"uniqueID == %@", uniqueID];
+    [request setPredicate:predicateTemplate];
+    
+    [model setFetchRequestTemplate:request forName:@"uniqueID"];
+    
+    NSError *error = nil;
+    NSArray *array = [managedObjectContext executeFetchRequest:request error:&error];
+    
+    if (array == nil) {
+        // Deal with error
+        NSLog(@"fetchRequest NODATA");
+    }
+    
+    return [array objectAtIndex:0];
 }
 
 -(NSArray *)fetchSimulations

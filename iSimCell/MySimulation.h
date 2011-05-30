@@ -28,7 +28,7 @@
 
 -(void)newSimulation;
 -(NSArray *)fetchSimulations;
--(void)fetchSimulation:(NSString *)uniqueID;
+-(Simulation *)fetchSimulation:(NSString *)uniqueID;
 -(Configuration *)newConfiguration:(NSString *)name forSimulation:(Simulation *)simulation;
 
 

@@ -386,18 +386,22 @@
         NSString *urlStr = [entry objectForKey:KEY_URL];
         
         if ([entry objectForKey:KEY_SIMULATION]) {
-            // add simulation FIXME SIMULATION STATIC
-            [self addSimulation:@"test" selectParent:YES];
-            // add its children
-            NSDictionary *entries = [entry objectForKey:KEY_ENTRIES];
-            [self addEntries:entries];
-            [self selectParentFromSelection];
-            //NSLog(@"simulation: %@", [entry objectForKey:KEY_SIMULATION]);
-            //NSLog(@"with entries: %@", entries);
+            // add simulations
+            NSEnumerator *enumerator = [[mydocument fetchSimulations] objectEnumerator];
+            id anObject;
+            while ((anObject = [enumerator nextObject])) {
+                Simulation *simulation = anObject;
+                [self addSimulation:simulation.name selectParent:YES];
+                // add its children
+                NSDictionary *entries = [entry objectForKey:KEY_ENTRIES];
+                [self addEntries:entries];
+                [self selectParentFromSelection];
+            }            
         }
         else if ([entry objectForKey:KEY_CONFIGURATION])
         {
             // add configurations FIXME STATIC ON FIRST
+            
             [self addConfiguration:@"test" selectParent:YES];
             [self selectParentFromSelection];
         }
