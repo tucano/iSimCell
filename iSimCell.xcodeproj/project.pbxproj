@@ -21,6 +21,9 @@
 		554256D4138A701900FD94C6 /* iSimCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 554256D3138A701900FD94C6 /* iSimCellTests.m */; };
 		55425732138A78CB00FD94C6 /* MySimulationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 55425730138A78A500FD94C6 /* MySimulationTest.m */; };
 		5590B43B13929C61005F8678 /* Application.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5590B43A13929C61005F8678 /* Application.icns */; };
+		55AD8A5C139396C900AC6600 /* BaseNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AD8A59139396C800AC6600 /* BaseNode.m */; };
+		55AD8A5D139396C900AC6600 /* ChildNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AD8A5A139396C800AC6600 /* ChildNode.m */; };
+		55AD8A631393971F00AC6600 /* NSArray_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AD8A621393971F00AC6600 /* NSArray_Extensions.m */; };
 		55B82CC3138AA1C30078BC6A /* simCell in CopyFiles */ = {isa = PBXBuildFile; fileRef = 55B82CC2138AA1C30078BC6A /* simCell */; };
 		55B82CC7138AA4A20078BC6A /* SimCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B82CC6138AA4A20078BC6A /* SimCellController.m */; };
 		55B82CCA138AA6EB0078BC6A /* SimCellLinker.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B82CC9138AA6EB0078BC6A /* SimCellLinker.m */; };
@@ -78,6 +81,12 @@
 		5542572F138A78A500FD94C6 /* MySimulationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySimulationTest.h; sourceTree = "<group>"; };
 		55425730138A78A500FD94C6 /* MySimulationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySimulationTest.m; sourceTree = "<group>"; };
 		5590B43A13929C61005F8678 /* Application.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Application.icns; path = ../Application.icns; sourceTree = "<group>"; };
+		55AD8A58139396C800AC6600 /* BaseNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNode.h; sourceTree = "<group>"; };
+		55AD8A59139396C800AC6600 /* BaseNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNode.m; sourceTree = "<group>"; };
+		55AD8A5A139396C800AC6600 /* ChildNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildNode.m; sourceTree = "<group>"; };
+		55AD8A5B139396C800AC6600 /* ChildNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildNode.h; sourceTree = "<group>"; };
+		55AD8A611393971F00AC6600 /* NSArray_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSArray_Extensions.h; sourceTree = "<group>"; };
+		55AD8A621393971F00AC6600 /* NSArray_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArray_Extensions.m; sourceTree = "<group>"; };
 		55B82CC2138AA1C30078BC6A /* simCell */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = simCell; path = ../../simCell/src/simCell; sourceTree = "<group>"; };
 		55B82CC5138AA4A20078BC6A /* SimCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimCellController.h; sourceTree = "<group>"; };
 		55B82CC6138AA4A20078BC6A /* SimCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimCellController.m; sourceTree = "<group>"; };
@@ -154,6 +163,7 @@
 		554256A9138A701900FD94C6 /* iSimCell */ = {
 			isa = PBXGroup;
 			children = (
+				55AD8A5F139396CD00AC6600 /* TreeSupport */,
 				55B82CC4138AA1F10078BC6A /* Resources */,
 				554256DF138A71AE00FD94C6 /* DataModels */,
 				554256DE138A715500FD94C6 /* Classes */,
@@ -241,6 +251,19 @@
 				55F48102138BA8C100406891 /* SimCellLinkerTest.m */,
 			);
 			name = "Test Cases";
+			sourceTree = "<group>";
+		};
+		55AD8A5F139396CD00AC6600 /* TreeSupport */ = {
+			isa = PBXGroup;
+			children = (
+				55AD8A611393971F00AC6600 /* NSArray_Extensions.h */,
+				55AD8A621393971F00AC6600 /* NSArray_Extensions.m */,
+				55AD8A58139396C800AC6600 /* BaseNode.h */,
+				55AD8A59139396C800AC6600 /* BaseNode.m */,
+				55AD8A5A139396C800AC6600 /* ChildNode.m */,
+				55AD8A5B139396C800AC6600 /* ChildNode.h */,
+			);
+			name = TreeSupport;
 			sourceTree = "<group>";
 		};
 		55B82CC4138AA1F10078BC6A /* Resources */ = {
@@ -370,6 +393,9 @@
 				55B82CCA138AA6EB0078BC6A /* SimCellLinker.m in Sources */,
 				55FC150F138E823700BBCBD0 /* Simulation.m in Sources */,
 				55FC1513138E825300BBCBD0 /* Configuration.m in Sources */,
+				55AD8A5C139396C900AC6600 /* BaseNode.m in Sources */,
+				55AD8A5D139396C900AC6600 /* ChildNode.m in Sources */,
+				55AD8A631393971F00AC6600 /* NSArray_Extensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

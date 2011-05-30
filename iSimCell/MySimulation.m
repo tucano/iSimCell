@@ -26,30 +26,8 @@
 
         // Add your subclass-specific initialization here.
         // If an error occurs here, send a [self release] message and return nil.
+        
         NSLog(@"NSPersistentDocument: InitWithType with CoreData object models. type: %@",type);
-        
-        // init linker
-        simcell = [[SimCellLinker alloc] init];
-        simcellLock = NO;
-        
-        // NOTOFICATIONS
-        [[NSNotificationCenter defaultCenter] 
-         addObserver:self 
-         selector:@selector(taskStarted:)
-         name:@"SimCellTaskStarted"
-         object:simcell];
-        
-        [[NSNotificationCenter defaultCenter] 
-         addObserver:self 
-         selector:@selector(taskFinished:)
-         name:@"SimCellTaskComplete"
-         object:simcell];
-        
-        [[NSNotificationCenter defaultCenter] 
-         addObserver:self 
-         selector:@selector(endReadingData:)
-         name:@"SimCellEndReadingData"
-         object:simcell];
         
         //  Create CoreData Object PREWINDOW LOAD (to init things)
         NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
@@ -143,7 +121,31 @@
         [self fetchSimulation];
         NSLog(@"Simulation was nil, now is: %@", simulation.name);
     }
-     NSLog(@"NSPersistentDocument: passing control to the window controller. Current Object: %@", simulation.name);
+    
+    // init linker
+    simcell = [[SimCellLinker alloc] init];
+    simcellLock = NO;
+    
+    // NOTOFICATIONS
+    [[NSNotificationCenter defaultCenter] 
+     addObserver:self 
+     selector:@selector(taskStarted:)
+     name:@"SimCellTaskStarted"
+     object:simcell];
+    
+    [[NSNotificationCenter defaultCenter] 
+     addObserver:self 
+     selector:@selector(taskFinished:)
+     name:@"SimCellTaskComplete"
+     object:simcell];
+    
+    [[NSNotificationCenter defaultCenter] 
+     addObserver:self 
+     selector:@selector(endReadingData:)
+     name:@"SimCellEndReadingData"
+     object:simcell];
+
+    NSLog(@"NSPersistentDocument: passing control to the window controller. Current Object: %@", simulation.name);
     
 }
 

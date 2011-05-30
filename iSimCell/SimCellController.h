@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "SimCellLinker.h"
 #import "MySimulation.h"
+#import "ChildNode.h"
 
 @interface SimCellController : NSWindowController {
 @private
@@ -19,6 +20,8 @@
     IBOutlet NSPopUpButton *outputPouUp;
     IBOutlet NSManagedObjectContext *managedObjectContext;
     IBOutlet NSObjectController *simulationController;
+    IBOutlet NSTreeController *outlineController;
+    IBOutlet NSMutableArray *outlineContents;
 }
 
 -(IBAction)launchSim:(id)sender;
@@ -27,7 +30,9 @@
 
 @property(nonatomic, retain) IBOutlet NSManagedObjectContext *managedObjectContext;
 @property(nonatomic, retain) IBOutlet NSObjectController *simulationController;
+@property(nonatomic, retain) IBOutlet NSMutableArray *outlineContents;
 
 -(Configuration *)selectedConfiguration;
+-(NSMutableArray *)outlineContents;
 
 @end

@@ -15,6 +15,7 @@
 
 @synthesize managedObjectContext;
 @synthesize simulationController;
+@synthesize outlineContents;
 
 - (id)initWithWindow:(NSWindow *)window
 {
@@ -23,7 +24,14 @@
         
         // Initialization code here.
         NSLog(@"SimCellController: Window init.");
+        
+        // outlineView
+        outlineContents = [[NSMutableArray alloc] init];
+        ChildNode *node = [[ChildNode alloc] init];
+        [outlineContents addObject:node];
+        [node release];
 
+        
         [[NSNotificationCenter defaultCenter] 
          addObserver:self 
          selector:@selector(taskStarted:)
@@ -48,6 +56,7 @@
 
 - (void)dealloc
 {
+    [outlineContents release];
     [super dealloc];
 }
 
@@ -58,6 +67,10 @@
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     mydocument = [self document];
     simulation = [mydocument simulation];
+    
+    NSLog(@"SimName: %@", simulation.name);
+    [[outlineContents objectAtIndex:0] setNodeTitle:simulation.name];
+    NSLog(@"SimCellController: outlineview data: %@", outlineContents);
     
     // SET INTERFACE DEFAULTS
     [outputPouUp selectItemWithTitle:[[self selectedConfiguration] output] ];
@@ -116,9 +129,18 @@
 
 #pragma mark -
 #pragma mark Private
+
 -(Configuration *)selectedConfiguration
 {
     return [[configurationsController selectedObjects] objectAtIndex:0];
+}
+
+#pragma mark -
+#pragma mark oulineView
+
+- (NSMutableArray *)outlineContents
+{
+    return outlineContents;
 }
 
 @end
