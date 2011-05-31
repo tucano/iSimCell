@@ -545,7 +545,6 @@
 									<string key="NSFrame">{{163, 0}, {637, 560}}</string>
 									<reference key="NSSuperview" ref="885508871"/>
 									<reference key="NSWindow"/>
-									<reference key="NSNextKeyView"/>
 									<string key="NSClassName">NSView</string>
 								</object>
 							</object>

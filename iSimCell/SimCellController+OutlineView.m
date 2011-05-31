@@ -22,18 +22,23 @@
 	NSIndexPath *indexPath;
 	NSString	*nodeURL;
 	NSString	*nodeName;
+    NSString    *uniqueID;
 	BOOL		selectItsParent;
 }
 
 @property (readonly) NSIndexPath *indexPath;
 @property (readonly) NSString *nodeURL;
 @property (readonly) NSString *nodeName;
+@property (readonly) NSString *uniqueID;
 @property (readonly) BOOL selectItsParent;
+
 @end
 
 @implementation TreeAdditionObj
-@synthesize indexPath, nodeURL, nodeName, selectItsParent;
+@synthesize indexPath, nodeURL, nodeName, selectItsParent, uniqueID;
 
+// -------------------------------------------------------------------------------
+//   INITIALIZATIONS
 // -------------------------------------------------------------------------------
 - (id)initWithURL:(NSString *)url withName:(NSString *)name selectItsParent:(BOOL)select
 {
@@ -45,6 +50,16 @@
 	
 	return self;
 }
+
+-(id)initWithUniqueID:(NSString *)uid withName:(NSString *)name selectItsParent:(BOOL)select
+{
+    self = [super init];
+    nodeName = name;
+	uniqueID = uid;
+	selectItsParent = select;
+    return self;
+}
+
 @end
 
 #pragma mark -
@@ -102,6 +117,34 @@
 			[outlineController removeSelectionIndexPaths:selectionIndexPaths];
 		}
 	}
+}
+
+// -------------------------------------------------------------------------------
+//	identifyCurrentSimulation:
+//
+//	Take the currently selected node and identify is parent: a simulation.
+// -------------------------------------------------------------------------------
+-(Simulation *)identifyCurrentSimulation
+{
+    if ([[outlineController selectedNodes] count] > 0)
+    {
+        NSTreeNode* firstSelectedNode = [[outlineController selectedNodes] objectAtIndex:0];
+		NSTreeNode* parentNode = [firstSelectedNode parentNode];
+        if (parentNode) {
+            NSString *uid = [[parentNode representedObject] description];
+            Simulation *aSimulation = [mydocument fetchSimulation:uid];
+            //NSLog(@"IDENTIFY SIMULATION: %@", aSimulation);
+            return aSimulation;
+        } 
+        else
+        {
+            // no parent exists (we are at the top of tree)
+            NSLog(@"OutlineView Controller: Can't find Simulation");
+            return nil;
+        }
+            
+    }
+    return nil;
 }
 
 #pragma mark -
@@ -202,14 +245,17 @@
     
     ChildNode *node = [[ChildNode alloc] init];
     [node setNodeTitle:[treeAddition nodeName]];
+    [node setDescription:[treeAddition uniqueID]];
     [outlineController insertObject:node atArrangedObjectIndexPath:indexPath];
     [node release];
     
 }
 
--(void)addConfiguration:(NSString *)nameStr selectParent:(BOOL)select
+-(void)addConfiguration:(NSString *)nameStr selectParent:(BOOL)select withUniqueID:(NSString *)uid
 {
-    TreeAdditionObj *treeObjInfo = [[TreeAdditionObj alloc] initWithURL:nil withName:nameStr selectItsParent:YES];
+    TreeAdditionObj *treeObjInfo = [[TreeAdditionObj alloc] initWithUniqueID:uid 
+                                                                    withName:nameStr 
+                                                             selectItsParent:YES];
 	
 	if (buildingOutlineView)
 	{
@@ -258,14 +304,17 @@
     
     ChildNode *node = [[ChildNode alloc] init];
     [node setNodeTitle:[treeAddition nodeName]];
+    [node setDescription:[treeAddition uniqueID]];
     [outlineController insertObject:node atArrangedObjectIndexPath:indexPath];
     [node release];
     
 }
 
-- (void)addSimulation:(NSString *)nameStr selectParent:(BOOL)select
+- (void)addSimulation:(NSString *)nameStr selectParent:(BOOL)select withUniqueID:(NSString *)uid
 {
-	TreeAdditionObj *treeObjInfo = [[TreeAdditionObj alloc] initWithURL:nil withName:nameStr selectItsParent:YES];
+	TreeAdditionObj *treeObjInfo = [[TreeAdditionObj alloc] initWithUniqueID:uid 
+                                                                    withName:nameStr 
+                                                             selectItsParent:YES];
 	
 	if (buildingOutlineView)
 	{
@@ -385,25 +434,38 @@
     {
         NSString *urlStr = [entry objectForKey:KEY_URL];
         
-        if ([entry objectForKey:KEY_SIMULATION]) {
+        if ([entry objectForKey:KEY_SIMULATION]) 
+        {
             // add simulations
             NSEnumerator *enumerator = [[mydocument fetchSimulations] objectEnumerator];
             id anObject;
-            while ((anObject = [enumerator nextObject])) {
+
+            while ((anObject = [enumerator nextObject])) 
+            {
                 Simulation *simulation = anObject;
-                [self addSimulation:simulation.name selectParent:YES];
+                [self addSimulation:simulation.name selectParent:YES withUniqueID:simulation.uniqueID];
                 // add its children
                 NSDictionary *entries = [entry objectForKey:KEY_ENTRIES];
                 [self addEntries:entries];
+                NSLog(@"Builded simulation: %@", [outlineController selectedObjects]);
                 [self selectParentFromSelection];
             }            
         }
         else if ([entry objectForKey:KEY_CONFIGURATION])
         {
-            // add configurations FIXME STATIC ON FIRST
-            
-            [self addConfiguration:@"test" selectParent:YES];
-            [self selectParentFromSelection];
+            // add configurations
+            Simulation *aSimulation = [self identifyCurrentSimulation];
+            if (aSimulation != nil)
+            {
+                NSEnumerator *enumerator = [aSimulation.configurations objectEnumerator];
+                id anObject;
+                while ((anObject = [enumerator nextObject])) 
+                {
+                    Configuration *aConfig = anObject;
+                    [self addConfiguration:aConfig.name selectParent:YES withUniqueID:aConfig.uniqueID];
+                    [self selectParentFromSelection];
+                }
+            }
         }
         else if ([entry objectForKey:KEY_SEPARATOR])
         {
@@ -488,5 +550,28 @@
 	
 	[pool release];
 }
+
+#pragma mark -
+#pragma mark Notifications
+
+// -------------------------------------------------------------------------------
+//	outlineView: notifications
+// -------------------------------------------------------------------------------
+
+- (void)outlineViewSelectionDidChange:(NSNotification *)notification
+{
+    if (buildingOutlineView)	// we are currently building the outline view, don't change any view selections
+		return;
+    
+    NSLog(@"Controller for window %@. Selection changed now is: %@", [mydocument displayName], [outlineController selectedObjects]);
+}
+
+- (void)outlineViewSelectionIsChanging:(NSNotification *)notification
+{
+    if (buildingOutlineView)	// we are currently building the outline view, don't change any view selections
+		return;
+    NSLog(@"Controller for window %@. Selection is changing.", [mydocument displayName]);
+}
+
 
 @end

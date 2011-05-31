@@ -71,9 +71,9 @@
         // disable save..
         [[managedObjectContext undoManager] disableUndoRegistration];
 
-        [self newSimulation];
+        [self newSimulation:@"New Simulation"];
         
-        [self newSimulation];
+        [self newSimulation:@"Another SImulation"];
         
         [managedObjectContext processPendingChanges];
         
@@ -166,11 +166,13 @@
 
 #pragma mark -
 #pragma mark Core Data Methods
--(void)newSimulation
+-(void)newSimulation:(NSString *)name
 {
     Simulation *simulation = [NSEntityDescription insertNewObjectForEntityForName:@"Simulation" 
                                                inManagedObjectContext:[self managedObjectContext]];
+    simulation.name = name;
     [self newConfiguration:@"Default Config" forSimulation:simulation];
+    [self newConfiguration:@"Another Config" forSimulation:simulation];
 }
 
 -(Configuration *)newConfiguration:(NSString *)name forSimulation:(Simulation *)simulation;
@@ -185,8 +187,6 @@
 
 -(Simulation *)fetchSimulation:(NSString *)uniqueID
 {
-    NSLog(@"fetch Simulation Request: -->");
-    NSManagedObjectModel *model = [[Simulation alloc] init];
     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
     NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Simulation" 
                                                          inManagedObjectContext:managedObjectContext];
@@ -198,7 +198,6 @@
                                       @"uniqueID == %@", uniqueID];
     [request setPredicate:predicateTemplate];
     
-    [model setFetchRequestTemplate:request forName:@"uniqueID"];
     
     NSError *error = nil;
     NSArray *array = [managedObjectContext executeFetchRequest:request error:&error];
@@ -213,7 +212,6 @@
 
 -(NSArray *)fetchSimulations
 {
-    NSLog(@"fetch Simulations Request: -->");
     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
     NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Simulation" 
                                                          inManagedObjectContext:managedObjectContext];

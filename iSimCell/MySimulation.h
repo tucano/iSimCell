@@ -26,7 +26,7 @@
 -(void)runSimCell:(Configuration *)conf;
 -(void)killSimCell;
 
--(void)newSimulation;
+-(void)newSimulation:(NSString *)name;
 -(NSArray *)fetchSimulations;
 -(Simulation *)fetchSimulation:(NSString *)uniqueID;
 -(Configuration *)newConfiguration:(NSString *)name forSimulation:(Simulation *)simulation;

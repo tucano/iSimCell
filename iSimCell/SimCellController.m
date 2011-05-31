@@ -83,7 +83,6 @@
 	[myOutlineView setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleSourceList];
     
     // Logging various things
-    NSLog(@"Simulations: %@", [mydocument fetchSimulations]);
     //NSLog(@"SimCellController: outlineview data: %@", outlineContents);
     NSLog(@"SimCellController: Window Loaded. Calling Document is: %@", mydocument);
     NSLog(@"SimCellController: simulations: %@", [mydocument fetchSimulations]);
@@ -135,21 +134,6 @@
     [progBar stopAnimation:self];
     NSLog(@"Controller for window %@. End Reading Data.", [mydocument displayName]);
 }
-
-// -------------------------------------------------------------------------------
-//	outlineView: notifications
-// -------------------------------------------------------------------------------
-
-- (void)outlineViewSelectionDidChange:(NSNotification *)notification
-{
-    //NSLog(@"Controller for window %@. Selection changed", [mydocument displayName]);
-}
-
-- (void)outlineViewSelectionIsChanging:(NSNotification *)notification
-{
-    //NSLog(@"Controller for window %@. Selection is changing", [mydocument displayName]);
-}
-
 
 #pragma mark -
 #pragma mark Private
