@@ -23,8 +23,6 @@
         // Common entry point
         NSLog(@"NSPersistentDocument: INIT common entry point to open and new functions.");
         
-        simulations = [[NSArray alloc] init];
-        
         // init linker
         simcell = [[SimCellLinker alloc] init];
         simcellLock = NO;
@@ -86,7 +84,6 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [simulations release];
     [simcell release];
     [super dealloc];
 }
@@ -148,18 +145,12 @@
 // override -makeWindowControllers to set a window Controller attached to the document
 -(void)makeWindowControllers
 {
-    SimCellController *ctl = [ [SimCellController alloc] initWithWindowNibName: [self windowNibName] ];
+    SimCellController *ctl = [ [SimCellController alloc] initWithManagedObjectContext:[self managedObjectContext]  ];
     [ctl autorelease];
     [self addWindowController:ctl];
     
     NSLog(@"NSPersistentDocument: passing control to the window controller.");
     
-}
-
-- (NSString *)windowNibName
-{
-    // Override returning the nib file name of the document
-    return @"SimCellWindow";
 }
 
 #pragma mark -

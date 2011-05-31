@@ -21,6 +21,7 @@
 			<string>NSScrollView</string>
 			<string>NSTextFieldCell</string>
 			<string>NSToolbarSpaceItem</string>
+			<string>NSArrayController</string>
 			<string>NSProgressIndicator</string>
 			<string>NSToolbarSeparatorItem</string>
 			<string>NSOutlineView</string>
@@ -539,6 +540,7 @@
 											<string key="NSFrame">{{302, 264}, {32, 32}}</string>
 											<reference key="NSSuperview" ref="417265164"/>
 											<reference key="NSWindow"/>
+											<reference key="NSNextKeyView"/>
 											<int key="NSpiFlags">28682</int>
 											<double key="NSMaxValue">100</double>
 										</object>
@@ -546,6 +548,7 @@
 									<string key="NSFrame">{{163, 0}, {637, 560}}</string>
 									<reference key="NSSuperview" ref="885508871"/>
 									<reference key="NSWindow"/>
+									<reference key="NSNextKeyView" ref="543902566"/>
 									<string key="NSClassName">NSView</string>
 								</object>
 							</object>
@@ -582,6 +585,19 @@
 				<bool key="NSSelectsInsertedObjects">YES</bool>
 				<string key="NSTreeContentChildrenKey">children</string>
 				<string key="NSTreeContentLeafKey">isLeaf</string>
+			</object>
+			<object class="NSArrayController" id="792878408">
+				<bool key="NSEditable">YES</bool>
+				<bool key="NSAutomaticallyPreparesContent">YES</bool>
+				<object class="_NSManagedProxy" key="_NSManagedProxy">
+					<string key="NSEntityName">Simulation</string>
+				</object>
+				<bool key="_NSIsUsingManagedProxy">YES</bool>
+				<bool key="NSAvoidsEmptySelection">YES</bool>
+				<bool key="NSPreservesSelection">YES</bool>
+				<bool key="NSSelectsInsertedObjects">YES</bool>
+				<bool key="NSFilterRestrictsInsertion">YES</bool>
+				<bool key="NSClearsFilterPredicateOnInsertion">YES</bool>
 			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -715,6 +731,38 @@
 						<reference key="destination" ref="254633786"/>
 					</object>
 					<int key="connectionID">100475</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="275939982"/>
+						<reference key="destination" ref="512844837"/>
+					</object>
+					<int key="connectionID">100516</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">managedObjectContext: managedObjectContext</string>
+						<reference key="source" ref="792878408"/>
+						<reference key="destination" ref="512844837"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="792878408"/>
+							<reference key="NSDestination" ref="512844837"/>
+							<string key="NSLabel">managedObjectContext: managedObjectContext</string>
+							<string key="NSBinding">managedObjectContext</string>
+							<string key="NSKeyPath">managedObjectContext</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">100519</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">simulationController</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="792878408"/>
+					</object>
+					<int key="connectionID">100520</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -927,6 +975,12 @@
 						<reference key="object" ref="220006383"/>
 						<reference key="parent" ref="305241625"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">100507</int>
+						<reference key="object" ref="792878408"/>
+						<reference key="parent" ref="0"/>
+						<string key="objectName">simulationsController</string>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -952,6 +1006,7 @@
 					<string>100419.IBPluginDependency</string>
 					<string>100420.IBPluginDependency</string>
 					<string>100445.IBPluginDependency</string>
+					<string>100507.IBPluginDependency</string>
 					<string>5.IBEditorWindowLastContentRect</string>
 					<string>5.IBPluginDependency</string>
 					<string>5.IBWindowTemplateEditedContentRect</string>
@@ -962,6 +1017,7 @@
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1002,7 +1058,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">100475</int>
+			<int key="maxID">100520</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1014,13 +1070,11 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>changeOutput:</string>
 							<string>launchSim:</string>
 							<string>terminateSim:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 						</object>
@@ -1029,16 +1083,11 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>changeOutput:</string>
 							<string>launchSim:</string>
 							<string>terminateSim:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBActionInfo">
-								<string key="name">changeOutput:</string>
-								<string key="candidateClassName">id</string>
-							</object>
 							<object class="IBActionInfo">
 								<string key="name">launchSim:</string>
 								<string key="candidateClassName">id</string>
@@ -1053,50 +1102,33 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>configurationsController</string>
-							<string>managedObjectContext</string>
 							<string>myOutlineView</string>
 							<string>outlineContents</string>
 							<string>outlineController</string>
-							<string>outputPouUp</string>
 							<string>progBar</string>
 							<string>simulationController</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>NSArrayController</string>
-							<string>NSManagedObjectContext</string>
 							<string>NSOutlineView</string>
 							<string>NSMutableArray</string>
 							<string>NSTreeController</string>
-							<string>NSPopUpButton</string>
 							<string>NSProgressIndicator</string>
-							<string>NSObjectController</string>
+							<string>NSArrayController</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>configurationsController</string>
-							<string>managedObjectContext</string>
 							<string>myOutlineView</string>
 							<string>outlineContents</string>
 							<string>outlineController</string>
-							<string>outputPouUp</string>
 							<string>progBar</string>
 							<string>simulationController</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBToOneOutletInfo">
-								<string key="name">configurationsController</string>
-								<string key="candidateClassName">NSArrayController</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">managedObjectContext</string>
-								<string key="candidateClassName">NSManagedObjectContext</string>
-							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">myOutlineView</string>
 								<string key="candidateClassName">NSOutlineView</string>
@@ -1110,16 +1142,12 @@
 								<string key="candidateClassName">NSTreeController</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">outputPouUp</string>
-								<string key="candidateClassName">NSPopUpButton</string>
-							</object>
-							<object class="IBToOneOutletInfo">
 								<string key="name">progBar</string>
 								<string key="candidateClassName">NSProgressIndicator</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">simulationController</string>
-								<string key="candidateClassName">NSObjectController</string>
+								<string key="candidateClassName">NSArrayController</string>
 							</object>
 						</object>
 					</object>

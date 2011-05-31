@@ -524,7 +524,6 @@
             NSTreeNode *node = [self getParentNode];
             NSString *uid = [[node representedObject] description];
             Simulation *aSimulation = [mydocument fetchSimulation:uid];
-            NSLog(@"IDENTIFY SIMULATION: %@", aSimulation);
 
             if (aSimulation != nil)
             {

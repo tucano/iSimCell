@@ -45,17 +45,16 @@
 
 
 @class SeparatorCell;
+@class MySimulation;
 
 @interface SimCellController : NSWindowController {
 @private
     
     MySimulation *mydocument;
+    NSManagedObjectContext *_moc;
     
     IBOutlet NSProgressIndicator *progBar;
-    IBOutlet NSArrayController *configurationsController;
-    IBOutlet NSPopUpButton *outputPouUp;
-    IBOutlet NSManagedObjectContext *managedObjectContext;
-    IBOutlet NSObjectController *simulationController;
+    IBOutlet NSArrayController *simulationController;
     
     IBOutlet NSOutlineView		*myOutlineView;
     IBOutlet NSTreeController   *outlineController;
@@ -68,16 +67,16 @@
 	NSImage						*urlImage;
 }
 
+- (void)setManagedObjectContext:(NSManagedObjectContext *)value;
+- (NSManagedObjectContext *)managedObjectContext;
+
+- (SimCellController *)initWithManagedObjectContext:(NSManagedObjectContext *)inMoc;
+
 -(IBAction)launchSim:(id)sender;
 -(IBAction)terminateSim:(id)sender;
--(IBAction)changeOutput:(id)sender;
 
+// BINDING FOR TREE CONTROLLER
 -(NSMutableArray *)outlineContents;
 - (void)setOutlineContents:(NSArray*)newContents;
-
-@property(nonatomic, retain) IBOutlet NSManagedObjectContext *managedObjectContext;
-@property(nonatomic, retain) IBOutlet NSObjectController *simulationController;
-
--(Configuration *)selectedConfiguration;
 
 @end

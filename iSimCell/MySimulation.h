@@ -10,12 +10,10 @@
 #import "Simulation.h"
 #import "Configuration.h"
 #import "SimCellLinker.h"
+#import "SimCellController.h"
 
 @interface MySimulation : NSPersistentDocument {
 @private
-    
-    NSArray *simulations;
-
     SimCellLinker *simcell;
     bool simcellLock;
 }

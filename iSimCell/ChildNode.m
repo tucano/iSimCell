@@ -134,7 +134,7 @@
 - (NSArray*)mutableKeys
 {
 	return [[super mutableKeys] arrayByAddingObjectsFromArray:
-				[NSArray arrayWithObjects:@"description", @"text", nil]];
+				[NSArray arrayWithObjects:@"description", @"text", @"category", nil]];
 }
 
 @end

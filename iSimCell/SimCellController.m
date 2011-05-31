@@ -13,8 +13,13 @@
 #pragma mark -
 #pragma mark Initialization & Dealloc
 
-@synthesize managedObjectContext;
-@synthesize simulationController;
+- (SimCellController *)initWithManagedObjectContext:(NSManagedObjectContext *)inMoc
+{
+    NSLog(@"OVERRRIDE OK: taking control of managed object Context: %@", [self managedObjectContext]);
+    self = [super initWithWindowNibName:@"SimCellWindow"];
+    [self setManagedObjectContext:inMoc];
+    return self;
+}
 
 - (id)initWithWindow:(NSWindow *)window
 {
@@ -86,9 +91,6 @@
                              toTarget:self		// we are the target
                            withObject:nil];
     
-    // SET INTERFACE DEFAULTS
-    [outputPouUp selectItemWithTitle:[[self selectedConfiguration] output] ];
-    
     // scroll to the top in case the outline contents is very long
 	[[[myOutlineView enclosingScrollView] verticalScroller] setFloatValue:0.0];
 	[[[myOutlineView enclosingScrollView] contentView] scrollToPoint:NSMakePoint(0,0)];
@@ -120,19 +122,15 @@
 
 - (IBAction)launchSim:(id)sender
 {
-    [mydocument runSimCell:[self selectedConfiguration]];
+    NSLog(@"SimCellController: simulations OBJECTS: %@",[simulationController arrangedObjects]);
+    Simulation *aS = [[mydocument fetchSimulations] objectAtIndex:0];
+    Configuration *aC = [[aS configurations] anyObject];
+    [mydocument runSimCell:aC];
 }
 
 -(IBAction)terminateSim:(id)sender
 {
     [mydocument killSimCell];
-}
-
--(IBAction)changeOutput:(id)sender
-{
-    NSLog(@"Current configuration: %@. Sender: %@",[[self selectedConfiguration] name],[[sender selectedItem] title]);
-    [[self selectedConfiguration] setValue:[[sender selectedItem] title] 
-                                    forKey:@"output"];
 }
 
 #pragma mark -
@@ -156,15 +154,7 @@
 }
 
 #pragma mark -
-#pragma mark Private
-
--(Configuration *)selectedConfiguration
-{
-    return [[configurationsController selectedObjects] objectAtIndex:0];
-}
-
-#pragma mark -
-#pragma mark Accessors to NSTreeController binding value
+#pragma mark Accessors to binding values
 
 // -------------------------------------------------------------------------------
 //	setContents:newContents
@@ -185,5 +175,19 @@
 {
 	return outlineContents;
 }
+
+- (void)setManagedObjectContext:(NSManagedObjectContext *)value
+{
+	// keep only weak ref
+	_moc = value;
+}
+
+- (NSManagedObjectContext *)managedObjectContext
+{
+	return _moc;
+}
+
+#pragma mark -
+#pragma mark Private
 
 @end
