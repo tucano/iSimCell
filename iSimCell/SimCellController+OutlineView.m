@@ -120,6 +120,15 @@
 }
 
 // -------------------------------------------------------------------------------
+//	isSpecialGroup:
+// -------------------------------------------------------------------------------
+- (BOOL)isSpecialGroup:(BaseNode *)groupNode
+{ 
+	return ([groupNode nodeIcon] == nil &&
+			[[groupNode nodeTitle] isEqualToString:SIMULATIONS_NAME]);
+}
+
+// -------------------------------------------------------------------------------
 //	identifyCurrentSimulation:
 //
 //	Take the currently selected node and identify is parent: a simulation.
@@ -419,6 +428,15 @@
 	[treeObjInfo release];
 }
 
+// -------------------------------------------------------------------------------
+//	addSeparator
+// -------------------------------------------------------------------------------
+- (void)addSeparator
+{
+	// its a separator mark, we treat is as a leaf
+    [self addChild:nil withName:nil selectParent:YES];
+}
+
 #pragma mark -
 #pragma mark AddEntries (main loop)
 
@@ -536,14 +554,18 @@
 	buildingOutlineView = YES;		// indicate to ourselves we are building the default tree at startup
     
 	[myOutlineView setHidden:YES];	// hide the outline view - don't show it as we are building the contents
-	
 	[self addSimulationsSection];   // add the "Devices" outline section
 	[self populateOutline];			// populateOutline (under SimulationsSections)
-	
+
+    // remove the current selection
+	NSArray *selection = [outlineController selectionIndexPaths];
+	[outlineController removeSelectionIndexPaths:selection];
+    
+    [self addSeparator];
 	buildingOutlineView = NO;		// we're done building our default tree
 	
 	// remove the current selection
-	NSArray *selection = [outlineController selectionIndexPaths];
+	selection = [outlineController selectionIndexPaths];
 	[outlineController removeSelectionIndexPaths:selection];
 	
 	[myOutlineView setHidden:NO];	// we are done populating the outline view content, show it again
@@ -553,6 +575,66 @@
 
 #pragma mark -
 #pragma mark Notifications
+
+// -------------------------------------------------------------------------------
+//	outlineView:willDisplayCell
+// -------------------------------------------------------------------------------
+- (void)outlineView:(NSOutlineView *)olv willDisplayCell:(NSCell*)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item
+{	
+	if ([[tableColumn identifier] isEqualToString:COLUMNID_NAME])
+	{
+		// we are displaying the single and only column
+		if ([cell isKindOfClass:[ImageAndTextCell class]])
+		{
+			item = [item representedObject];
+			if (item)
+			{
+				if ([item isLeaf])
+				{
+					// does it have a URL string?
+					NSString *urlStr = [item urlString];
+					if (urlStr)
+					{
+						if ([item isLeaf])
+						{
+							NSImage *iconImage;
+							if ([[item urlString] hasPrefix:HTTP_PREFIX])
+								iconImage = urlImage;
+							else
+								iconImage = [[NSWorkspace sharedWorkspace] iconForFile:urlStr];
+							[item setNodeIcon:iconImage];
+						}
+						else
+						{
+							NSImage* iconImage = [[NSWorkspace sharedWorkspace] iconForFile:urlStr];
+							[item setNodeIcon:iconImage];
+						}
+					}
+					else
+					{
+						// it's a separator, don't bother with the icon
+					}
+				}
+				else
+				{
+					// check if it's a special folder (DEVICES or PLACES), we don't want it to have an icon
+					if ([self isSpecialGroup:item])
+					{
+						[item setNodeIcon:nil];
+					}
+					else
+					{
+						// it's a folder, use the folderImage as its icon
+						[item setNodeIcon:folderImage];
+					}
+				}
+			}
+			
+			// set the cell's image
+			[(ImageAndTextCell*)cell setImage:[item nodeIcon]];
+		}
+	}
+}
 
 // -------------------------------------------------------------------------------
 //	outlineView: notifications
@@ -573,5 +655,35 @@
     NSLog(@"Controller for window %@. Selection is changing.", [mydocument displayName]);
 }
 
+
+#pragma mark - NSOutlineView delegate
+
+// -------------------------------------------------------------------------------
+//	shouldSelectItem:item
+// -------------------------------------------------------------------------------
+- (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item;
+{
+	// don't allow special group nodes (Devices and Places) to be selected
+	BaseNode* node = [item representedObject];
+	return (![self isSpecialGroup:node]);
+}
+
+// -------------------------------------------------------------------------------
+//	dataCellForTableColumn:tableColumn:row
+// -------------------------------------------------------------------------------
+- (NSCell *)outlineView:(NSOutlineView *)outlineView dataCellForTableColumn:(NSTableColumn *)tableColumn item:(id)item
+{
+	NSCell* returnCell = [tableColumn dataCell];
+	
+	if ([[tableColumn identifier] isEqualToString:COLUMNID_NAME])
+	{
+		// we are being asked for the cell for the single and only column
+		BaseNode* node = [item representedObject];
+		if ([node nodeIcon] == nil && [[node nodeTitle] length] == 0)
+			returnCell = separatorCell;
+	}
+	
+	return returnCell;
+}
 
 @end

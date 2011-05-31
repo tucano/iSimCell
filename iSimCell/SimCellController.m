@@ -24,9 +24,15 @@
         // Initialization code here.
         NSLog(@"SimCellController: Window init.");
         
-        // test outlineVIEW
-        // outlineView check example (sample Code) sourceView
+        // outlineView binding container
         outlineContents = [[NSMutableArray alloc] init];
+        
+        // cache the reused icon images
+		folderImage = [[[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(kGenericFolderIcon)] retain];
+		[folderImage setSize:NSMakeSize(16,16)];
+		
+		urlImage = [[[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(kGenericURLIcon)] retain];
+		[urlImage setSize:NSMakeSize(16,16)];
         
         // Notify START TASK
         [[NSNotificationCenter defaultCenter] 
@@ -55,16 +61,24 @@
 
 - (void)dealloc
 {
+    [folderImage release];
+	[urlImage release];
     [outlineContents release];
+    [separatorCell release];
     [super dealloc];
 }
 
-- (void)windowDidLoad
+-(void)awakeFromNib
 {
-    [super windowDidLoad];
+    NSLog(@"SimCellController: AWAKE FROM NIB");
+    // apply our custom ImageAndTextCell for rendering the first column's cells
+	NSTableColumn *tableColumn = [myOutlineView tableColumnWithIdentifier:COLUMNID_NAME];
+	ImageAndTextCell *imageAndTextCell = [[[ImageAndTextCell alloc] init] autorelease];
+	[imageAndTextCell setEditable:YES];
+	[tableColumn setDataCell:imageAndTextCell];
     
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
-    mydocument = [self document];
+	separatorCell = [[SeparatorCell alloc] init];
+    [separatorCell setEditable:NO];
     
     // build our default tree on a separate thread,
 	// some portions are from disk which could get expensive depending on the size of the dictionary file:
@@ -81,11 +95,18 @@
 	
 	// make our outline view appear with gradient selection, and behave like the Finder, iTunes, etc.
 	[myOutlineView setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleSourceList];
+}
+
+- (void)windowDidLoad
+{
+    [super windowDidLoad];
+    
+    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    mydocument = [self document];
     
     // Logging various things
-    //NSLog(@"SimCellController: outlineview data: %@", outlineContents);
     NSLog(@"SimCellController: Window Loaded. Calling Document is: %@", mydocument);
-    NSLog(@"SimCellController: simulations: %@", [mydocument fetchSimulations]);
+    //NSLog(@"SimCellController: simulations: %@", [mydocument fetchSimulations]);
     //NSLog(@"SimCellController: simulation first configuration: %@", [[[simulation.configurations allObjects] objectAtIndex:0] valueForKey:@"uniqueID"]);
     //NSLog(@"SimCellController: selected configuration name: %@, output: %@", [[self selectedConfiguration] name], [[self selectedConfiguration] output]);
 }

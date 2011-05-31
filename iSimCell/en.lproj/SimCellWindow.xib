@@ -386,6 +386,7 @@
 															<object class="NSMutableArray" key="NSTableColumns">
 																<bool key="EncodedWithXMLCoder">YES</bool>
 																<object class="NSTableColumn" id="305241625">
+																	<string key="NSIdentifier">NameColumn</string>
 																	<double key="NSWidth">157</double>
 																	<double key="NSMinWidth">16</double>
 																	<double key="NSMaxWidth">1000</double>
