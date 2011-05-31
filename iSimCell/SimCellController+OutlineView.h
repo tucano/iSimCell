@@ -10,6 +10,5 @@
 #import "ChildNode.h"
 
 @interface SimCellController (SimCellController_OutlineView)
-    -(NSMutableArray *)outlineContents;
-    - (void)setOutlineContents:(NSArray*)newContents;
+  
 @end

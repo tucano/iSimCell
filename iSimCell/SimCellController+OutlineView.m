@@ -68,29 +68,6 @@
 @implementation SimCellController (SimCellController_OutlineView)
 
 #pragma mark -
-#pragma mark Accessors to NSTreeController binding value
-
-// -------------------------------------------------------------------------------
-//	setContents:newContents
-// -------------------------------------------------------------------------------
-- (void)setOutlineContents:(NSArray*)newContents
-{
-	if (outlineContents != newContents)
-	{
-		[outlineContents release];
-		outlineContents = [[NSMutableArray alloc] initWithArray:newContents];
-	}
-}
-
-// -------------------------------------------------------------------------------
-//	contents:
-// -------------------------------------------------------------------------------
-- (NSMutableArray *)outlineContents
-{
-	return outlineContents;
-}
-
-#pragma mark -
 #pragma mark Selections
 
 // -------------------------------------------------------------------------------
@@ -571,10 +548,121 @@
 	[myOutlineView setHidden:NO];	// we are done populating the outline view content, show it again
 	
 	[pool release];
+    
+     NSLog(@"SimCellController: sidebar: %@", [self outlineContents]);
 }
 
 #pragma mark -
 #pragma mark Notifications
+
+// -------------------------------------------------------------------------------
+//	outlineView: notifications
+// -------------------------------------------------------------------------------
+
+- (void)outlineViewSelectionDidChange:(NSNotification *)notification
+{
+    if (buildingOutlineView)	// we are currently building the outline view, don't change any view selections
+		return;
+   
+    // ask the tree controller for the current selection
+	NSArray *selection = [outlineController selectedObjects];
+	if ([selection count] > 1)
+	{
+		// multiple selection - clear the right side view
+		
+	}
+	else
+	{
+		if ([selection count] == 1)
+		{
+			// single selection
+			
+		}
+		else
+		{
+			// there is no current selection - no view to display
+			
+		}
+	}
+    NSLog(@"Controller for window %@. Selection changed now is: %@", [mydocument displayName], [outlineController selectedObjects]);
+}
+
+- (void)outlineViewSelectionIsChanging:(NSNotification *)notification
+{
+    if (buildingOutlineView)	// we are currently building the outline view, don't change any view selections
+		return;
+    NSLog(@"Controller for window %@. Selection is changing.", [mydocument displayName]);
+}
+
+
+#pragma mark - NSOutlineView delegate
+
+// -------------------------------------------------------------------------------
+//	shouldSelectItem:item
+// -------------------------------------------------------------------------------
+- (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item;
+{
+	// don't allow special group nodes (Devices and Places) to be selected
+	BaseNode* node = [item representedObject];
+	return (![self isSpecialGroup:node]);
+}
+
+// -------------------------------------------------------------------------------
+//	dataCellForTableColumn:tableColumn:row
+// -------------------------------------------------------------------------------
+- (NSCell *)outlineView:(NSOutlineView *)outlineView dataCellForTableColumn:(NSTableColumn *)tableColumn item:(id)item
+{
+	NSCell* returnCell = [tableColumn dataCell];
+	
+	if ([[tableColumn identifier] isEqualToString:COLUMNID_NAME])
+	{
+		// we are being asked for the cell for the single and only column
+		BaseNode* node = [item representedObject];
+		if ([node nodeIcon] == nil && [[node nodeTitle] length] == 0)
+			returnCell = separatorCell;
+	}
+	
+	return returnCell;
+}
+
+// -------------------------------------------------------------------------------
+//	textShouldEndEditing:
+// -------------------------------------------------------------------------------
+- (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor
+{
+	if ([[fieldEditor string] length] == 0)
+	{
+		// don't allow empty node names
+		return NO;
+	}
+	else
+	{
+		return YES;
+	}
+}
+
+// -------------------------------------------------------------------------------
+//	shouldEditTableColumn:tableColumn:item
+//
+//	Decide to allow the edit of the given outline view "item".
+// -------------------------------------------------------------------------------
+- (BOOL)outlineView:(NSOutlineView *)outlineView shouldEditTableColumn:(NSTableColumn *)tableColumn item:(id)item
+{
+	BOOL result = YES;
+	
+	item = [item representedObject];
+	if ([self isSpecialGroup:item])
+	{
+		result = NO; // don't allow special group nodes to be renamed
+	}
+	else
+	{
+		if ([[item urlString] isAbsolutePath])
+			result = NO;	// don't allow file system objects to be renamed
+	}
+	
+	return result;
+}
 
 // -------------------------------------------------------------------------------
 //	outlineView:willDisplayCell
@@ -636,54 +724,5 @@
 	}
 }
 
-// -------------------------------------------------------------------------------
-//	outlineView: notifications
-// -------------------------------------------------------------------------------
-
-- (void)outlineViewSelectionDidChange:(NSNotification *)notification
-{
-    if (buildingOutlineView)	// we are currently building the outline view, don't change any view selections
-		return;
-    
-    NSLog(@"Controller for window %@. Selection changed now is: %@", [mydocument displayName], [outlineController selectedObjects]);
-}
-
-- (void)outlineViewSelectionIsChanging:(NSNotification *)notification
-{
-    if (buildingOutlineView)	// we are currently building the outline view, don't change any view selections
-		return;
-    NSLog(@"Controller for window %@. Selection is changing.", [mydocument displayName]);
-}
-
-
-#pragma mark - NSOutlineView delegate
-
-// -------------------------------------------------------------------------------
-//	shouldSelectItem:item
-// -------------------------------------------------------------------------------
-- (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item;
-{
-	// don't allow special group nodes (Devices and Places) to be selected
-	BaseNode* node = [item representedObject];
-	return (![self isSpecialGroup:node]);
-}
-
-// -------------------------------------------------------------------------------
-//	dataCellForTableColumn:tableColumn:row
-// -------------------------------------------------------------------------------
-- (NSCell *)outlineView:(NSOutlineView *)outlineView dataCellForTableColumn:(NSTableColumn *)tableColumn item:(id)item
-{
-	NSCell* returnCell = [tableColumn dataCell];
-	
-	if ([[tableColumn identifier] isEqualToString:COLUMNID_NAME])
-	{
-		// we are being asked for the cell for the single and only column
-		BaseNode* node = [item representedObject];
-		if ([node nodeIcon] == nil && [[node nodeTitle] length] == 0)
-			returnCell = separatorCell;
-	}
-	
-	return returnCell;
-}
 
 @end

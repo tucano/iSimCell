@@ -106,7 +106,6 @@
     
     // Logging various things
     NSLog(@"SimCellController: Window Loaded. Calling Document is: %@", mydocument);
-    //NSLog(@"SimCellController: simulations: %@", [mydocument fetchSimulations]);
     //NSLog(@"SimCellController: simulation first configuration: %@", [[[simulation.configurations allObjects] objectAtIndex:0] valueForKey:@"uniqueID"]);
     //NSLog(@"SimCellController: selected configuration name: %@, output: %@", [[self selectedConfiguration] name], [[self selectedConfiguration] output]);
 }
@@ -162,6 +161,29 @@
 -(Configuration *)selectedConfiguration
 {
     return [[configurationsController selectedObjects] objectAtIndex:0];
+}
+
+#pragma mark -
+#pragma mark Accessors to NSTreeController binding value
+
+// -------------------------------------------------------------------------------
+//	setContents:newContents
+// -------------------------------------------------------------------------------
+- (void)setOutlineContents:(NSArray*)newContents
+{
+	if (outlineContents != newContents)
+	{
+		[outlineContents release];
+		outlineContents = [[NSMutableArray alloc] initWithArray:newContents];
+	}
+}
+
+// -------------------------------------------------------------------------------
+//	contents:
+// -------------------------------------------------------------------------------
+- (NSMutableArray *)outlineContents
+{
+	return outlineContents;
 }
 
 @end

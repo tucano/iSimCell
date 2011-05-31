@@ -62,6 +62,9 @@
 -(IBAction)terminateSim:(id)sender;
 -(IBAction)changeOutput:(id)sender;
 
+-(NSMutableArray *)outlineContents;
+- (void)setOutlineContents:(NSArray*)newContents;
+
 @property(nonatomic, retain) IBOutlet NSManagedObjectContext *managedObjectContext;
 @property(nonatomic, retain) IBOutlet NSObjectController *simulationController;
 

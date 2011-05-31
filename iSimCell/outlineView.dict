@@ -12,6 +12,8 @@
                 <dict>
 					<key>group</key>
 					<string>Info</string>
+                    <key>url</key>
+                    <string>Info</string>
 				</dict>
                 <dict>
 					<key>group</key>
@@ -31,6 +33,12 @@
 				<dict>
 					<key>group</key>
 					<string>Plots</string>
+				</dict>
+                <dict>
+					<key>name</key>
+					<string>Apple</string>
+                    <key>url</key>
+					<string>http://www.apple.com</string>
 				</dict>
             </array>
 		</dict>
