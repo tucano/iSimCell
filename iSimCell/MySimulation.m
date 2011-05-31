@@ -73,8 +73,6 @@
 
         [self newSimulation:@"New Simulation"];
         
-        [self newSimulation:@"Another SImulation"];
-        
         [managedObjectContext processPendingChanges];
         
         // enable save ...
@@ -172,7 +170,6 @@
                                                inManagedObjectContext:[self managedObjectContext]];
     simulation.name = name;
     [self newConfiguration:@"Default Config" forSimulation:simulation];
-    [self newConfiguration:@"Another Config" forSimulation:simulation];
 }
 
 -(Configuration *)newConfiguration:(NSString *)name forSimulation:(Simulation *)simulation;

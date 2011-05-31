@@ -10,13 +10,11 @@
             <key>entries</key>
 			<array>
                 <dict>
-					<key>group</key>
+					<key>view</key>
 					<string>Info</string>
-                    <key>url</key>
-                    <string>Info</string>
 				</dict>
                 <dict>
-					<key>group</key>
+					<key>simulationgroup</key>
 					<string>Parameters</string>
                     <key>entries</key>
                     <array>
@@ -27,21 +25,41 @@
                     </array>
 				</dict>
 				<dict>
-					<key>group</key>
+					<key>simulationgroup</key>
 					<string>Results</string>
 				</dict>
 				<dict>
-					<key>group</key>
+					<key>simulationgroup</key>
 					<string>Plots</string>
-				</dict>
-                <dict>
-					<key>name</key>
-					<string>Apple</string>
-                    <key>url</key>
-					<string>http://www.apple.com</string>
 				</dict>
             </array>
 		</dict>
 	</array>
+    
+
+    <key>help</key>
+    <array>
+        <dict>
+            <key>name</key>
+            <string>Apple Inc.</string>
+            <key>url</key>
+            <string>http://www.apple.com</string>
+        </dict>
+        <dict>
+            <key>name</key>
+            <string>Mac OS X</string>
+            <key>url</key>
+            <string>http://www.apple.com/macosx/</string>
+        </dict>
+        <dict>
+            <key>name</key>
+            <string>iTunes</string>
+            <key>url</key>
+            <string>http://www.apple.com/itunes/</string>
+        </dict>
+    </array>
+
+    
 </dict>
+    
 </plist>

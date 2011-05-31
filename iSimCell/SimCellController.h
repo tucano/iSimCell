@@ -27,9 +27,13 @@
 #define KEY_ENTRIES				@"entries"
 #define KEY_SIMULATION			@"simulation"
 #define KEY_CONFIGURATION		@"configuration"
+#define KEY_VIEW                @"view"
+#define KEY_HELP                @"help"
+#define KEY_SIMULATIONGROUP     @"simulationgroup"
 
 // placeholders
 #define SIMULATIONS_NAME        @"SIMULATIONS"
+#define HELP_NAME               @"HELP"
 #define UNTITLED_NAME			@"Untitled"		// default name for added folders and leafs
 #define HTTP_PREFIX				@"http://"
 

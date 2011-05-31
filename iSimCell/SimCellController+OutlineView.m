@@ -23,6 +23,7 @@
 	NSString	*nodeURL;
 	NSString	*nodeName;
     NSString    *uniqueID;
+    NSString    *category;
 	BOOL		selectItsParent;
 }
 
@@ -30,12 +31,13 @@
 @property (readonly) NSString *nodeURL;
 @property (readonly) NSString *nodeName;
 @property (readonly) NSString *uniqueID;
+@property (readonly) NSString *category;
 @property (readonly) BOOL selectItsParent;
 
 @end
 
 @implementation TreeAdditionObj
-@synthesize indexPath, nodeURL, nodeName, selectItsParent, uniqueID;
+@synthesize indexPath, nodeURL, nodeName, selectItsParent, uniqueID, category;
 
 // -------------------------------------------------------------------------------
 //   INITIALIZATIONS
@@ -51,12 +53,13 @@
 	return self;
 }
 
--(id)initWithUniqueID:(NSString *)uid withName:(NSString *)name selectItsParent:(BOOL)select
+-(id)initWithUniqueID:(NSString *)uid withName:(NSString *)name withCategory:(NSString *)cat selectItsParent:(BOOL)select
 {
     self = [super init];
     nodeName = name;
 	uniqueID = uid;
 	selectItsParent = select;
+    category = cat;
     return self;
 }
 
@@ -102,7 +105,7 @@
 - (BOOL)isSpecialGroup:(BaseNode *)groupNode
 { 
 	return ([groupNode nodeIcon] == nil &&
-			[[groupNode nodeTitle] isEqualToString:SIMULATIONS_NAME]);
+			[[groupNode nodeTitle] isEqualToString:SIMULATIONS_NAME] || [[groupNode nodeTitle] isEqualToString:HELP_NAME]);
 }
 
 // -------------------------------------------------------------------------------
@@ -198,133 +201,6 @@
 }
 
 // -------------------------------------------------------------------------------
-//	addConfigurations:
-// -------------------------------------------------------------------------------
--(void)performAddConfiguration:(TreeAdditionObj *)treeAddition
-{
-    // NSTreeController inserts objects using NSIndexPath, so we need to calculate this
-	NSIndexPath *indexPath = nil;
-	
-	// if there is no selection, we will add a new group to the end of the contents array
-	if ([[outlineController selectedObjects] count] == 0)
-	{
-		// there's no selection so add the folder to the top-level and at the end
-		indexPath = [NSIndexPath indexPathWithIndex:[outlineContents count]];
-	}
-	else
-	{
-		// get the index of the currently selected node, then add the number its children to the path -
-		// this will give us an index which will allow us to add a node to the end of the currently selected node's children array.
-		//
-		indexPath = [outlineController selectionIndexPath];
-		if ([[[outlineController selectedObjects] objectAtIndex:0] isLeaf])
-		{
-			// user is trying to add a COnfiguration on a selected child,
-			// so deselect child and select its parent for addition
-			[self selectParentFromSelection];
-		}
-		else
-		{
-			indexPath = [indexPath indexPathByAddingIndex:[[[[outlineController selectedObjects] objectAtIndex:0] children] count]];
-		}
-	}
-    
-    ChildNode *node = [[ChildNode alloc] init];
-    [node setNodeTitle:[treeAddition nodeName]];
-    [node setDescription:[treeAddition uniqueID]];
-    [outlineController insertObject:node atArrangedObjectIndexPath:indexPath];
-    [node release];
-    
-}
-
--(void)addConfiguration:(NSString *)nameStr selectParent:(BOOL)select withUniqueID:(NSString *)uid
-{
-    TreeAdditionObj *treeObjInfo = [[TreeAdditionObj alloc] initWithUniqueID:uid 
-                                                                    withName:nameStr 
-                                                             selectItsParent:YES];
-	
-	if (buildingOutlineView)
-	{
-		// add the child node to the tree controller, but on the main thread to avoid lock ups
-		[self performSelectorOnMainThread:@selector(performAddConfiguration:) withObject:treeObjInfo waitUntilDone:YES];
-	}
-	else
-	{
-		[self performAddConfiguration:treeObjInfo];
-	}
-	
-	[treeObjInfo release];
-}
-
-// -------------------------------------------------------------------------------
-//	addSimulation:
-// -------------------------------------------------------------------------------
--(void)performAddSimulation:(TreeAdditionObj *)treeAddition 
-{
-    // NSTreeController inserts objects using NSIndexPath, so we need to calculate this
-	NSIndexPath *indexPath = nil;
-	
-	// if there is no selection, we will add a new group to the end of the contents array
-	if ([[outlineController selectedObjects] count] == 0)
-	{
-		// there's no selection so add the folder to the top-level and at the end
-		indexPath = [NSIndexPath indexPathWithIndex:[outlineContents count]];
-	}
-	else
-	{
-		// get the index of the currently selected node, then add the number its children to the path -
-		// this will give us an index which will allow us to add a node to the end of the currently selected node's children array.
-		//
-		indexPath = [outlineController selectionIndexPath];
-		if ([[[outlineController selectedObjects] objectAtIndex:0] isLeaf])
-		{
-			// user is trying to add a Simulation on a selected child,
-			// so deselect child and select its parent for addition
-			[self selectParentFromSelection];
-		}
-		else
-		{
-			indexPath = [indexPath indexPathByAddingIndex:[[[[outlineController selectedObjects] objectAtIndex:0] children] count]];
-		}
-	}
-    
-    ChildNode *node = [[ChildNode alloc] init];
-    [node setNodeTitle:[treeAddition nodeName]];
-    [node setDescription:[treeAddition uniqueID]];
-    [outlineController insertObject:node atArrangedObjectIndexPath:indexPath];
-    [node release];
-    
-}
-
-- (void)addSimulation:(NSString *)nameStr selectParent:(BOOL)select withUniqueID:(NSString *)uid
-{
-	TreeAdditionObj *treeObjInfo = [[TreeAdditionObj alloc] initWithUniqueID:uid 
-                                                                    withName:nameStr 
-                                                             selectItsParent:YES];
-	
-	if (buildingOutlineView)
-	{
-		// add the child node to the tree controller, but on the main thread to avoid lock ups
-		[self performSelectorOnMainThread:@selector(performAddSimulation:) withObject:treeObjInfo waitUntilDone:YES];
-	}
-	else
-	{
-		[self performAddSimulation:treeObjInfo];
-	}
-	
-	[treeObjInfo release];
-}
-
-// -------------------------------------------------------------------------------
-//	addSimulationsSection:
-// -------------------------------------------------------------------------------
-- (void)addSimulationsSection
-{
-	// add the "Simulations" section
-	[self addFolder:SIMULATIONS_NAME];
-}
-
-// -------------------------------------------------------------------------------
 //	performAddChild:treeAddition
 // -------------------------------------------------------------------------------
 -(void)performAddChild:(TreeAdditionObj *)treeAddition
@@ -405,6 +281,285 @@
 	[treeObjInfo release];
 }
 
+
+#pragma mark -
+#pragma mark Special Add Actions
+
+// -------------------------------------------------------------------------------
+//	addSimulationGroup:treeAddition
+// -------------------------------------------------------------------------------
+-(void)performAddSimulationGroup:(TreeAdditionObj *)treeAddition
+{
+	// NSTreeController inserts objects using NSIndexPath, so we need to calculate this
+	NSIndexPath *indexPath = nil;
+	
+	// if there is no selection, we will add a new group to the end of the contents array
+	if ([[outlineController selectedObjects] count] == 0)
+	{
+		// there's no selection so add the folder to the top-level and at the end
+		indexPath = [NSIndexPath indexPathWithIndex:[outlineContents count]];
+	}
+	else
+	{
+		// get the index of the currently selected node, then add the number its children to the path -
+		// this will give us an index which will allow us to add a node to the end of the currently selected node's children array.
+		//
+		indexPath = [outlineController selectionIndexPath];
+		if ([[[outlineController selectedObjects] objectAtIndex:0] isLeaf])
+		{
+			// user is trying to add a folder on a selected child,
+			// so deselect child and select its parent for addition
+			[self selectParentFromSelection];
+		}
+		else
+		{
+			indexPath = [indexPath indexPathByAddingIndex:[[[[outlineController selectedObjects] objectAtIndex:0] children] count]];
+		}
+	}
+	
+	ChildNode *node = [[ChildNode alloc] init];
+	[node setNodeTitle:[treeAddition nodeName]];
+    [node setDescription:[treeAddition uniqueID]];
+	[node setCategory:[treeAddition category]];
+    
+	// the user is adding a child node, tell the controller directly
+	[outlineController insertObject:node atArrangedObjectIndexPath:indexPath];
+	
+	[node release];
+}
+
+// -------------------------------------------------------------------------------
+//	addFolder:folderName:
+// -------------------------------------------------------------------------------
+- (void)addSimulationGroup:(NSString *)folderName withUniqueID:(NSString *)uid withCategory:(NSString *)category
+{
+	TreeAdditionObj *treeObjInfo = [[TreeAdditionObj alloc] initWithUniqueID:uid 
+                                                                    withName:folderName
+                                                                withCategory:category
+                                                             selectItsParent:YES];
+	
+	if (buildingOutlineView)
+	{
+		// add the folder to the tree controller, but on the main thread to avoid lock ups
+		[self performSelectorOnMainThread:@selector(performAddSimulationGroup:) withObject:treeObjInfo waitUntilDone:YES];
+	}
+	else
+	{
+		[self performAddSimulationGroup:treeObjInfo];
+	}
+	
+	[treeObjInfo release];
+}
+
+
+// -------------------------------------------------------------------------------
+//	addConfigurations:
+// -------------------------------------------------------------------------------
+-(void)performAddConfiguration:(TreeAdditionObj *)treeAddition
+{
+    if ([[outlineController selectedObjects] count] > 0)
+	{
+		// we have a selection
+		if ([[[outlineController selectedObjects] objectAtIndex:0] isLeaf])
+		{
+			// trying to add a child to a selected leaf node, so select its parent for add
+			[self selectParentFromSelection];
+		}
+	}
+	
+	// find the selection to insert our node
+	NSIndexPath *indexPath;
+	if ([[outlineController selectedObjects] count] > 0)
+	{
+		// we have a selection, insert at the end of the selection
+		indexPath = [outlineController selectionIndexPath];
+		indexPath = [indexPath indexPathByAddingIndex:[[[[outlineController selectedObjects] objectAtIndex:0] children] count]];
+	}
+	else
+	{
+		// no selection, just add the child to the end of the tree
+		indexPath = [NSIndexPath indexPathWithIndex:[outlineContents count]];
+	}
+	
+	// create a leaf node
+	ChildNode *node = [[ChildNode alloc] initLeaf];
+	[node setNodeTitle:[treeAddition nodeName]];
+	[node setDescription:[treeAddition uniqueID]];
+    [node setCategory:[treeAddition category]];
+    
+	// the user is adding a child node, tell the controller directly
+	[outlineController insertObject:node atArrangedObjectIndexPath:indexPath];
+    
+	[node release];
+	
+	// adding a child automatically becomes selected by NSOutlineView, so keep its parent selected
+	if ([treeAddition selectItsParent])
+		[self selectParentFromSelection];
+}
+
+-(void)addConfiguration:(NSString *)nameStr selectParent:(BOOL)select withUniqueID:(NSString *)uid withCategory:(NSString *)category
+{
+    TreeAdditionObj *treeObjInfo = [[TreeAdditionObj alloc] initWithUniqueID:uid 
+                                                                    withName:nameStr 
+                                                                withCategory:category
+                                                             selectItsParent:YES ];
+	
+	if (buildingOutlineView)
+	{
+		// add the child node to the tree controller, but on the main thread to avoid lock ups
+		[self performSelectorOnMainThread:@selector(performAddConfiguration:) withObject:treeObjInfo waitUntilDone:YES];
+	}
+	else
+	{
+		[self performAddConfiguration:treeObjInfo];
+	}
+	
+	[treeObjInfo release];
+}
+
+// -------------------------------------------------------------------------------
+//	addSimulation:
+// -------------------------------------------------------------------------------
+-(void)performAddSimulation:(TreeAdditionObj *)treeAddition 
+{
+    // NSTreeController inserts objects using NSIndexPath, so we need to calculate this
+	NSIndexPath *indexPath = nil;
+	
+	// if there is no selection, we will add a new group to the end of the contents array
+	if ([[outlineController selectedObjects] count] == 0)
+	{
+		// there's no selection so add the folder to the top-level and at the end
+		indexPath = [NSIndexPath indexPathWithIndex:[outlineContents count]];
+	}
+	else
+	{
+		// get the index of the currently selected node, then add the number its children to the path -
+		// this will give us an index which will allow us to add a node to the end of the currently selected node's children array.
+		//
+		indexPath = [outlineController selectionIndexPath];
+		if ([[[outlineController selectedObjects] objectAtIndex:0] isLeaf])
+		{
+			// user is trying to add a Simulation on a selected child,
+			// so deselect child and select its parent for addition
+			[self selectParentFromSelection];
+		}
+		else
+		{
+			indexPath = [indexPath indexPathByAddingIndex:[[[[outlineController selectedObjects] objectAtIndex:0] children] count]];
+		}
+	}
+    
+    ChildNode *node = [[ChildNode alloc] init];
+    [node setNodeTitle:[treeAddition nodeName]];
+    [node setDescription:[treeAddition uniqueID]];
+    [node setCategory:[treeAddition category]];
+    [outlineController insertObject:node atArrangedObjectIndexPath:indexPath];
+    [node release];
+    
+}
+
+- (void)addSimulation:(NSString *)nameStr selectParent:(BOOL)select withUniqueID:(NSString *)uid withCategory:(NSString *)category
+{
+	TreeAdditionObj *treeObjInfo = [[TreeAdditionObj alloc] initWithUniqueID:uid 
+                                                                    withName:nameStr
+                                                                withCategory:category
+                                                             selectItsParent:YES];
+	
+	if (buildingOutlineView)
+	{
+		// add the child node to the tree controller, but on the main thread to avoid lock ups
+		[self performSelectorOnMainThread:@selector(performAddSimulation:) withObject:treeObjInfo waitUntilDone:YES];
+	}
+	else
+	{
+		[self performAddSimulation:treeObjInfo];
+	}
+	
+	[treeObjInfo release];
+}
+
+// -------------------------------------------------------------------------------
+//	addView:
+// -------------------------------------------------------------------------------
+-(void)performAddView:(TreeAdditionObj *)treeAddition 
+{
+    if ([[outlineController selectedObjects] count] > 0)
+	{
+		// we have a selection
+		if ([[[outlineController selectedObjects] objectAtIndex:0] isLeaf])
+		{
+			// trying to add a child to a selected leaf node, so select its parent for add
+			[self selectParentFromSelection];
+		}
+	}
+	
+	// find the selection to insert our node
+	NSIndexPath *indexPath;
+	if ([[outlineController selectedObjects] count] > 0)
+	{
+		// we have a selection, insert at the end of the selection
+		indexPath = [outlineController selectionIndexPath];
+		indexPath = [indexPath indexPathByAddingIndex:[[[[outlineController selectedObjects] objectAtIndex:0] children] count]];
+	}
+	else
+	{
+		// no selection, just add the child to the end of the tree
+		indexPath = [NSIndexPath indexPathWithIndex:[outlineContents count]];
+	}
+	
+	// create a leaf node
+	ChildNode *node = [[ChildNode alloc] initLeaf];
+	[node setNodeTitle:[treeAddition nodeName]];
+	[node setDescription:[treeAddition uniqueID]];
+    [node setCategory:[treeAddition category]];
+    
+	// the user is adding a child node, tell the controller directly
+	[outlineController insertObject:node atArrangedObjectIndexPath:indexPath];
+    
+	[node release];
+	
+	// adding a child automatically becomes selected by NSOutlineView, so keep its parent selected
+	if ([treeAddition selectItsParent])
+		[self selectParentFromSelection];
+
+}
+
+- (void)addView:(NSString *)nameStr selectParent:(BOOL)select withUniqueID:(NSString *)uid withCategory:(NSString *)category
+{
+	TreeAdditionObj *treeObjInfo = [[TreeAdditionObj alloc] initWithUniqueID:uid 
+                                                                    withName:nameStr
+                                                                withCategory:category
+                                                             selectItsParent:YES];
+	
+	if (buildingOutlineView)
+	{
+		// add the child node to the tree controller, but on the main thread to avoid lock ups
+		[self performSelectorOnMainThread:@selector(performAddView:) withObject:treeObjInfo waitUntilDone:YES];
+	}
+	else
+	{
+		[self performAddView:treeObjInfo];
+	}
+	
+	[treeObjInfo release];
+}
+
+
+// -------------------------------------------------------------------------------
+//	add Special Sections:
+// -------------------------------------------------------------------------------
+- (void)addSimulationsSection
+{
+	// add the "Simulations" section
+	[self addFolder:SIMULATIONS_NAME];
+}
+
+- (void)addHelpSection
+{
+	// add the "Simulations" section
+	[self addFolder:HELP_NAME];
+}
+
 // -------------------------------------------------------------------------------
 //	addSeparator
 // -------------------------------------------------------------------------------
@@ -429,6 +584,7 @@
     {
         NSString *urlStr = [entry objectForKey:KEY_URL];
         
+        // MY SPECIAL CASES FIRSTS
         if ([entry objectForKey:KEY_SIMULATION]) 
         {
             // add simulations
@@ -438,11 +594,10 @@
             while ((anObject = [enumerator nextObject])) 
             {
                 Simulation *simulation = anObject;
-                [self addSimulation:simulation.name selectParent:YES withUniqueID:simulation.uniqueID];
+                [self addSimulation:simulation.name selectParent:YES withUniqueID:simulation.uniqueID withCategory:@"Simulation"];
                 // add its children
                 NSDictionary *entries = [entry objectForKey:KEY_ENTRIES];
                 [self addEntries:entries];
-                NSLog(@"Builded simulation: %@", [outlineController selectedObjects]);
                 [self selectParentFromSelection];
             }            
         }
@@ -457,10 +612,27 @@
                 while ((anObject = [enumerator nextObject])) 
                 {
                     Configuration *aConfig = anObject;
-                    [self addConfiguration:aConfig.name selectParent:YES withUniqueID:aConfig.uniqueID];
-                    [self selectParentFromSelection];
+                    [self addConfiguration:aConfig.name selectParent:YES withUniqueID:aConfig.uniqueID withCategory:@"Configuration"];
                 }
             }
+        }
+        else if ([entry objectForKey:KEY_SIMULATIONGROUP])
+        {
+            // is a group internal to a simulation
+            NSString *folderName = [entry objectForKey:KEY_SIMULATIONGROUP];
+            [self addSimulationGroup:folderName withUniqueID:folderName withCategory:@"SimulationGroup"];
+            
+            // add its children
+            NSDictionary *entries = [entry objectForKey:KEY_ENTRIES];
+            [self addEntries:entries];
+            
+            [self selectParentFromSelection];
+        }
+        else if ([entry objectForKey:KEY_VIEW])
+        {
+            // its a view
+            NSString *viewName = [entry objectForKey:KEY_VIEW];
+            [self addView:viewName selectParent:YES withUniqueID:viewName withCategory:@"SimulationView"];
         }
         else if ([entry objectForKey:KEY_SEPARATOR])
         {
@@ -518,6 +690,14 @@
 	[self addEntries:entries];
 }
 
+- (void)populateHelp
+{
+	NSDictionary *initData = [NSDictionary dictionaryWithContentsOfFile:
+                              [[NSBundle mainBundle] pathForResource:INITIAL_INFODICT ofType:@"dict"]];
+	NSDictionary *entries = [initData objectForKey:KEY_HELP];
+	[self addEntries:entries];
+}
+
 // -------------------------------------------------------------------------------
 //	populateOutlineContents:inObject
 //
@@ -533,12 +713,15 @@
 	[myOutlineView setHidden:YES];	// hide the outline view - don't show it as we are building the contents
 	[self addSimulationsSection];   // add the "Devices" outline section
 	[self populateOutline];			// populateOutline (under SimulationsSections)
-
+    
     // remove the current selection
 	NSArray *selection = [outlineController selectionIndexPaths];
 	[outlineController removeSelectionIndexPaths:selection];
     
     [self addSeparator];
+    [self addHelpSection];
+    [self populateHelp];
+    
 	buildingOutlineView = NO;		// we're done building our default tree
 	
 	// remove the current selection
@@ -548,8 +731,6 @@
 	[myOutlineView setHidden:NO];	// we are done populating the outline view content, show it again
 	
 	[pool release];
-    
-     NSLog(@"SimCellController: sidebar: %@", [self outlineContents]);
 }
 
 #pragma mark -
@@ -576,7 +757,9 @@
 		if ([selection count] == 1)
 		{
 			// single selection
-			
+            ChildNode *currentSelection = [[outlineController selectedObjects] objectAtIndex:0];
+            NSLog(@"Node title: %@ , category: %@, uniqueID: %@, URL: %@", [currentSelection nodeTitle], [currentSelection category], [currentSelection description], [currentSelection urlString]);
+            
 		}
 		else
 		{
@@ -584,14 +767,12 @@
 			
 		}
 	}
-    NSLog(@"Controller for window %@. Selection changed now is: %@", [mydocument displayName], [outlineController selectedObjects]);
 }
 
 - (void)outlineViewSelectionIsChanging:(NSNotification *)notification
 {
     if (buildingOutlineView)	// we are currently building the outline view, don't change any view selections
 		return;
-    NSLog(@"Controller for window %@. Selection is changing.", [mydocument displayName]);
 }
 
 
