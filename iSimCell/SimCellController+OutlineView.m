@@ -113,22 +113,18 @@
 //
 //	Take the currently selected node and identify is parent: a simulation.
 // -------------------------------------------------------------------------------
--(Simulation *)identifyCurrentSimulation
+-(NSTreeNode *)getParentNode
 {
     if ([[outlineController selectedNodes] count] > 0)
     {
         NSTreeNode* firstSelectedNode = [[outlineController selectedNodes] objectAtIndex:0];
 		NSTreeNode* parentNode = [firstSelectedNode parentNode];
         if (parentNode) {
-            NSString *uid = [[parentNode representedObject] description];
-            Simulation *aSimulation = [mydocument fetchSimulation:uid];
-            //NSLog(@"IDENTIFY SIMULATION: %@", aSimulation);
-            return aSimulation;
+            return parentNode;
         } 
         else
         {
             // no parent exists (we are at the top of tree)
-            NSLog(@"OutlineView Controller: Can't find Simulation");
             return nil;
         }
             
@@ -328,8 +324,50 @@
 	[node release];
 }
 
+-(void)performAddSimulationObject:(TreeAdditionObj *)treeAddition
+{
+    if ([[outlineController selectedObjects] count] > 0)
+	{
+		// we have a selection
+		if ([[[outlineController selectedObjects] objectAtIndex:0] isLeaf])
+		{
+			// trying to add a child to a selected leaf node, so select its parent for add
+			[self selectParentFromSelection];
+		}
+	}
+	
+	// find the selection to insert our node
+	NSIndexPath *indexPath;
+	if ([[outlineController selectedObjects] count] > 0)
+	{
+		// we have a selection, insert at the end of the selection
+		indexPath = [outlineController selectionIndexPath];
+		indexPath = [indexPath indexPathByAddingIndex:[[[[outlineController selectedObjects] objectAtIndex:0] children] count]];
+	}
+	else
+	{
+		// no selection, just add the child to the end of the tree
+		indexPath = [NSIndexPath indexPathWithIndex:[outlineContents count]];
+	}
+	
+	// create a leaf node
+	ChildNode *node = [[ChildNode alloc] initLeaf];
+	[node setNodeTitle:[treeAddition nodeName]];
+	[node setDescription:[treeAddition uniqueID]];
+    [node setCategory:[treeAddition category]];
+    
+	// the user is adding a child node, tell the controller directly
+	[outlineController insertObject:node atArrangedObjectIndexPath:indexPath];
+    
+	[node release];
+	
+	// adding a child automatically becomes selected by NSOutlineView, so keep its parent selected
+	if ([treeAddition selectItsParent])
+		[self selectParentFromSelection];
+}
+
 // -------------------------------------------------------------------------------
-//	addFolder:folderName:
+//	addSimulationGroup:
 // -------------------------------------------------------------------------------
 - (void)addSimulationGroup:(NSString *)folderName withUniqueID:(NSString *)uid withCategory:(NSString *)category
 {
@@ -355,47 +393,6 @@
 // -------------------------------------------------------------------------------
 //	addConfigurations:
 // -------------------------------------------------------------------------------
--(void)performAddConfiguration:(TreeAdditionObj *)treeAddition
-{
-    if ([[outlineController selectedObjects] count] > 0)
-	{
-		// we have a selection
-		if ([[[outlineController selectedObjects] objectAtIndex:0] isLeaf])
-		{
-			// trying to add a child to a selected leaf node, so select its parent for add
-			[self selectParentFromSelection];
-		}
-	}
-	
-	// find the selection to insert our node
-	NSIndexPath *indexPath;
-	if ([[outlineController selectedObjects] count] > 0)
-	{
-		// we have a selection, insert at the end of the selection
-		indexPath = [outlineController selectionIndexPath];
-		indexPath = [indexPath indexPathByAddingIndex:[[[[outlineController selectedObjects] objectAtIndex:0] children] count]];
-	}
-	else
-	{
-		// no selection, just add the child to the end of the tree
-		indexPath = [NSIndexPath indexPathWithIndex:[outlineContents count]];
-	}
-	
-	// create a leaf node
-	ChildNode *node = [[ChildNode alloc] initLeaf];
-	[node setNodeTitle:[treeAddition nodeName]];
-	[node setDescription:[treeAddition uniqueID]];
-    [node setCategory:[treeAddition category]];
-    
-	// the user is adding a child node, tell the controller directly
-	[outlineController insertObject:node atArrangedObjectIndexPath:indexPath];
-    
-	[node release];
-	
-	// adding a child automatically becomes selected by NSOutlineView, so keep its parent selected
-	if ([treeAddition selectItsParent])
-		[self selectParentFromSelection];
-}
 
 -(void)addConfiguration:(NSString *)nameStr selectParent:(BOOL)select withUniqueID:(NSString *)uid withCategory:(NSString *)category
 {
@@ -407,11 +404,11 @@
 	if (buildingOutlineView)
 	{
 		// add the child node to the tree controller, but on the main thread to avoid lock ups
-		[self performSelectorOnMainThread:@selector(performAddConfiguration:) withObject:treeObjInfo waitUntilDone:YES];
+		[self performSelectorOnMainThread:@selector(performAddSimulationObject:) withObject:treeObjInfo waitUntilDone:YES];
 	}
 	else
 	{
-		[self performAddConfiguration:treeObjInfo];
+		[self performAddSimulationObject:treeObjInfo];
 	}
 	
 	[treeObjInfo release];
@@ -420,43 +417,6 @@
 // -------------------------------------------------------------------------------
 //	addSimulation:
 // -------------------------------------------------------------------------------
--(void)performAddSimulation:(TreeAdditionObj *)treeAddition 
-{
-    // NSTreeController inserts objects using NSIndexPath, so we need to calculate this
-	NSIndexPath *indexPath = nil;
-	
-	// if there is no selection, we will add a new group to the end of the contents array
-	if ([[outlineController selectedObjects] count] == 0)
-	{
-		// there's no selection so add the folder to the top-level and at the end
-		indexPath = [NSIndexPath indexPathWithIndex:[outlineContents count]];
-	}
-	else
-	{
-		// get the index of the currently selected node, then add the number its children to the path -
-		// this will give us an index which will allow us to add a node to the end of the currently selected node's children array.
-		//
-		indexPath = [outlineController selectionIndexPath];
-		if ([[[outlineController selectedObjects] objectAtIndex:0] isLeaf])
-		{
-			// user is trying to add a Simulation on a selected child,
-			// so deselect child and select its parent for addition
-			[self selectParentFromSelection];
-		}
-		else
-		{
-			indexPath = [indexPath indexPathByAddingIndex:[[[[outlineController selectedObjects] objectAtIndex:0] children] count]];
-		}
-	}
-    
-    ChildNode *node = [[ChildNode alloc] init];
-    [node setNodeTitle:[treeAddition nodeName]];
-    [node setDescription:[treeAddition uniqueID]];
-    [node setCategory:[treeAddition category]];
-    [outlineController insertObject:node atArrangedObjectIndexPath:indexPath];
-    [node release];
-    
-}
 
 - (void)addSimulation:(NSString *)nameStr selectParent:(BOOL)select withUniqueID:(NSString *)uid withCategory:(NSString *)category
 {
@@ -468,11 +428,11 @@
 	if (buildingOutlineView)
 	{
 		// add the child node to the tree controller, but on the main thread to avoid lock ups
-		[self performSelectorOnMainThread:@selector(performAddSimulation:) withObject:treeObjInfo waitUntilDone:YES];
+		[self performSelectorOnMainThread:@selector(performAddSimulationGroup:) withObject:treeObjInfo waitUntilDone:YES];
 	}
 	else
 	{
-		[self performAddSimulation:treeObjInfo];
+		[self performAddSimulationGroup:treeObjInfo];
 	}
 	
 	[treeObjInfo release];
@@ -481,49 +441,6 @@
 // -------------------------------------------------------------------------------
 //	addView:
 // -------------------------------------------------------------------------------
--(void)performAddView:(TreeAdditionObj *)treeAddition 
-{
-    if ([[outlineController selectedObjects] count] > 0)
-	{
-		// we have a selection
-		if ([[[outlineController selectedObjects] objectAtIndex:0] isLeaf])
-		{
-			// trying to add a child to a selected leaf node, so select its parent for add
-			[self selectParentFromSelection];
-		}
-	}
-	
-	// find the selection to insert our node
-	NSIndexPath *indexPath;
-	if ([[outlineController selectedObjects] count] > 0)
-	{
-		// we have a selection, insert at the end of the selection
-		indexPath = [outlineController selectionIndexPath];
-		indexPath = [indexPath indexPathByAddingIndex:[[[[outlineController selectedObjects] objectAtIndex:0] children] count]];
-	}
-	else
-	{
-		// no selection, just add the child to the end of the tree
-		indexPath = [NSIndexPath indexPathWithIndex:[outlineContents count]];
-	}
-	
-	// create a leaf node
-	ChildNode *node = [[ChildNode alloc] initLeaf];
-	[node setNodeTitle:[treeAddition nodeName]];
-	[node setDescription:[treeAddition uniqueID]];
-    [node setCategory:[treeAddition category]];
-    
-	// the user is adding a child node, tell the controller directly
-	[outlineController insertObject:node atArrangedObjectIndexPath:indexPath];
-    
-	[node release];
-	
-	// adding a child automatically becomes selected by NSOutlineView, so keep its parent selected
-	if ([treeAddition selectItsParent])
-		[self selectParentFromSelection];
-
-}
-
 - (void)addView:(NSString *)nameStr selectParent:(BOOL)select withUniqueID:(NSString *)uid withCategory:(NSString *)category
 {
 	TreeAdditionObj *treeObjInfo = [[TreeAdditionObj alloc] initWithUniqueID:uid 
@@ -534,11 +451,11 @@
 	if (buildingOutlineView)
 	{
 		// add the child node to the tree controller, but on the main thread to avoid lock ups
-		[self performSelectorOnMainThread:@selector(performAddView:) withObject:treeObjInfo waitUntilDone:YES];
+		[self performSelectorOnMainThread:@selector(performAddSimulationObject:) withObject:treeObjInfo waitUntilDone:YES];
 	}
 	else
 	{
-		[self performAddView:treeObjInfo];
+		[self performAddSimulationObject:treeObjInfo];
 	}
 	
 	[treeObjInfo release];
@@ -594,7 +511,7 @@
             while ((anObject = [enumerator nextObject])) 
             {
                 Simulation *simulation = anObject;
-                [self addSimulation:simulation.name selectParent:YES withUniqueID:simulation.uniqueID withCategory:@"Simulation"];
+                [self addSimulation:simulation.name selectParent:YES withUniqueID:simulation.uniqueID withCategory:CATEGORY_SIMULATION];
                 // add its children
                 NSDictionary *entries = [entry objectForKey:KEY_ENTRIES];
                 [self addEntries:entries];
@@ -603,8 +520,12 @@
         }
         else if ([entry objectForKey:KEY_CONFIGURATION])
         {
-            // add configurations
-            Simulation *aSimulation = [self identifyCurrentSimulation];
+            // add configurations: simulation is the parent node of the current node
+            NSTreeNode *node = [self getParentNode];
+            NSString *uid = [[node representedObject] description];
+            Simulation *aSimulation = [mydocument fetchSimulation:uid];
+            NSLog(@"IDENTIFY SIMULATION: %@", aSimulation);
+
             if (aSimulation != nil)
             {
                 NSEnumerator *enumerator = [aSimulation.configurations objectEnumerator];
@@ -612,15 +533,19 @@
                 while ((anObject = [enumerator nextObject])) 
                 {
                     Configuration *aConfig = anObject;
-                    [self addConfiguration:aConfig.name selectParent:YES withUniqueID:aConfig.uniqueID withCategory:@"Configuration"];
+                    [self addConfiguration:aConfig.name selectParent:YES withUniqueID:aConfig.uniqueID withCategory:CATEGORY_CONFIGURATION];
                 }
             }
         }
         else if ([entry objectForKey:KEY_SIMULATIONGROUP])
         {
-            // is a group internal to a simulation
+            // is a group internal to a simulation, current simulation is the current node
+            NSTreeNode* node = [[outlineController selectedNodes] objectAtIndex:0];
+            NSString *uid = [[node representedObject] description];
+            Simulation *aSimulation = [mydocument fetchSimulation:uid];
+            
             NSString *folderName = [entry objectForKey:KEY_SIMULATIONGROUP];
-            [self addSimulationGroup:folderName withUniqueID:folderName withCategory:@"SimulationGroup"];
+            [self addSimulationGroup:folderName withUniqueID:aSimulation.uniqueID withCategory:CATEGORY_SIMULATIONGROUP];
             
             // add its children
             NSDictionary *entries = [entry objectForKey:KEY_ENTRIES];
@@ -630,9 +555,15 @@
         }
         else if ([entry objectForKey:KEY_VIEW])
         {
-            // its a view
+            // its a view (actually only the INFO view)
+            // current simulation is the current node
+            // is a group internal to a simulation, current simulation is the current node
+            NSTreeNode* node = [[outlineController selectedNodes] objectAtIndex:0];
+            NSString *uid = [[node representedObject] description];
+            Simulation *aSimulation = [mydocument fetchSimulation:uid];
+            
             NSString *viewName = [entry objectForKey:KEY_VIEW];
-            [self addView:viewName selectParent:YES withUniqueID:viewName withCategory:@"SimulationView"];
+            [self addView:viewName selectParent:YES withUniqueID:aSimulation.uniqueID withCategory:CATEGORY_SIMULATIONVIEW];
         }
         else if ([entry objectForKey:KEY_SEPARATOR])
         {
@@ -749,7 +680,7 @@
 	NSArray *selection = [outlineController selectedObjects];
 	if ([selection count] > 1)
 	{
-		// multiple selection - clear the right side view
+		// Actually not allowed ...
 		
 	}
 	else
@@ -758,8 +689,42 @@
 		{
 			// single selection
             ChildNode *currentSelection = [[outlineController selectedObjects] objectAtIndex:0];
-            NSLog(@"Node title: %@ , category: %@, uniqueID: %@, URL: %@", [currentSelection nodeTitle], [currentSelection category], [currentSelection description], [currentSelection urlString]);
             
+            if ([[currentSelection category] isEqualToString:CATEGORY_SIMULATION]) 
+            {
+                NSLog(@"SELECTED SIMULATION");
+                NSLog(@"Node title: %@ , category: %@, uniqueID: %@, URL: %@", 
+                      [currentSelection nodeTitle], [currentSelection category], 
+                      [currentSelection description], [currentSelection urlString]);
+            }
+            else if ([[currentSelection category] isEqualToString:CATEGORY_CONFIGURATION])
+            {
+                NSLog(@"SELECTED CONFIGURATION");
+                NSLog(@"Node title: %@ , category: %@, uniqueID: %@, URL: %@", 
+                      [currentSelection nodeTitle], [currentSelection category], 
+                      [currentSelection description], [currentSelection urlString]);
+            }
+            else if ([[currentSelection category] isEqualToString:CATEGORY_SIMULATIONVIEW])
+            {
+                NSLog(@"SELECTED SIMULATION VIEW");
+                NSLog(@"Node title: %@ , category: %@, uniqueID: %@, URL: %@", 
+                      [currentSelection nodeTitle], [currentSelection category], 
+                      [currentSelection description], [currentSelection urlString]);
+            }
+            else if ([[currentSelection category] isEqualToString:CATEGORY_SIMULATIONGROUP])
+            {
+                NSLog(@"SELECTED SIMULATION GROUP");
+                NSLog(@"Node title: %@ , category: %@, uniqueID: %@, URL: %@", 
+                      [currentSelection nodeTitle], [currentSelection category], 
+                      [currentSelection description], [currentSelection urlString]);
+            }
+            else
+            {
+                NSLog(@"SELECTED DEFAULT NODE");
+                NSLog(@"Node title: %@ , category: %@, uniqueID: %@, URL: %@", 
+                      [currentSelection nodeTitle], [currentSelection category], 
+                      [currentSelection description], [currentSelection urlString]);
+            }
 		}
 		else
 		{

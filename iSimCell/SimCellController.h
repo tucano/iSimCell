@@ -31,6 +31,12 @@
 #define KEY_HELP                @"help"
 #define KEY_SIMULATIONGROUP     @"simulationgroup"
 
+// Categories
+#define CATEGORY_SIMULATION       @"Simulation"
+#define CATEGORY_CONFIGURATION    @"Configuration"
+#define CATEGORY_SIMULATIONVIEW   @"SimulationView"
+#define CATEGORY_SIMULATIONGROUP  @"SimulationGroup"
+
 // placeholders
 #define SIMULATIONS_NAME        @"SIMULATIONS"
 #define HELP_NAME               @"HELP"
