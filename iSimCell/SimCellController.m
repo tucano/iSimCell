@@ -122,7 +122,7 @@
 
 - (IBAction)launchSim:(id)sender
 {
-    NSLog(@"SimCellController: simulations OBJECTS: %@",[simulationController arrangedObjects]);
+    NSLog(@"SimCellController: simulations Controller selection: %@",[[simulationController selectedObjects] objectAtIndex:0]);
     Simulation *aS = [[mydocument fetchSimulations] objectAtIndex:0];
     Configuration *aC = [[aS configurations] anyObject];
     [mydocument runSimCell:aC];
