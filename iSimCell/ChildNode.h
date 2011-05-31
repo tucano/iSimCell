@@ -54,11 +54,14 @@
 {
 	NSString *description;
 	NSTextStorage *text;
+    NSString *category;
 }
 
 - (void)setDescription:(NSString *)newDescription;
 - (NSString *)description;
 - (void)setText:(id)newText;
 - (NSTextStorage *)text;
+- (void)setCategory:(NSString *)newCategory;
+- (NSString *)category;
 
 @end

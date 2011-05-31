@@ -59,6 +59,7 @@
 	{
 		nodeTitle = [[NSString alloc] initWithString:@""];
 		description = [[NSString alloc] initWithString:@"- empty description -"];
+        category =[[NSString alloc] initWithString:@"default"];
 		text = [[NSTextStorage alloc] init];
 	}
 	return self;
@@ -69,6 +70,7 @@
 // -------------------------------------------------------------------------------
 - (void)dealloc
 {
+    [category release];
 	[description release];
 	[text release];
 	[super dealloc];
@@ -110,6 +112,19 @@
 {
 	return text;
 }
+
+- (void)setCategory:(NSString *)newCategory
+{
+    [newCategory retain];
+	[category release];
+	category = newCategory;
+}
+
+- (NSString *)category
+{
+    return category;
+}
+
 
 // -------------------------------------------------------------------------------
 //	mutableKeys:
