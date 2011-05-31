@@ -586,11 +586,24 @@
 				<string key="NSTreeContentChildrenKey">children</string>
 				<string key="NSTreeContentLeafKey">isLeaf</string>
 			</object>
-			<object class="NSArrayController" id="312687704">
+			<object class="NSArrayController" id="951942373">
 				<bool key="NSEditable">YES</bool>
 				<bool key="NSAutomaticallyPreparesContent">YES</bool>
 				<object class="_NSManagedProxy" key="_NSManagedProxy">
 					<string key="NSEntityName">Simulation</string>
+				</object>
+				<bool key="_NSIsUsingManagedProxy">YES</bool>
+				<bool key="NSAvoidsEmptySelection">YES</bool>
+				<bool key="NSPreservesSelection">YES</bool>
+				<bool key="NSSelectsInsertedObjects">YES</bool>
+				<bool key="NSFilterRestrictsInsertion">YES</bool>
+				<bool key="NSClearsFilterPredicateOnInsertion">YES</bool>
+			</object>
+			<object class="NSArrayController" id="846820458">
+				<bool key="NSEditable">YES</bool>
+				<bool key="NSAutomaticallyPreparesContent">YES</bool>
+				<object class="_NSManagedProxy" key="_NSManagedProxy">
+					<string key="NSEntityName">Configuration</string>
 				</object>
 				<bool key="_NSIsUsingManagedProxy">YES</bool>
 				<bool key="NSAvoidsEmptySelection">YES</bool>
@@ -743,10 +756,10 @@
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">managedObjectContext: managedObjectContext</string>
-						<reference key="source" ref="312687704"/>
+						<reference key="source" ref="951942373"/>
 						<reference key="destination" ref="512844837"/>
 						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="312687704"/>
+							<reference key="NSSource" ref="951942373"/>
 							<reference key="NSDestination" ref="512844837"/>
 							<string key="NSLabel">managedObjectContext: managedObjectContext</string>
 							<string key="NSBinding">managedObjectContext</string>
@@ -760,9 +773,49 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">simulationController</string>
 						<reference key="source" ref="512844837"/>
-						<reference key="destination" ref="312687704"/>
+						<reference key="destination" ref="951942373"/>
 					</object>
 					<int key="connectionID">100520</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">configurationController</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="846820458"/>
+					</object>
+					<int key="connectionID">100522</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">managedObjectContext: managedObjectContext</string>
+						<reference key="source" ref="846820458"/>
+						<reference key="destination" ref="512844837"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="846820458"/>
+							<reference key="NSDestination" ref="512844837"/>
+							<string key="NSLabel">managedObjectContext: managedObjectContext</string>
+							<string key="NSBinding">managedObjectContext</string>
+							<string key="NSKeyPath">managedObjectContext</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">100525</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">contentSet: selection.configurations</string>
+						<reference key="source" ref="846820458"/>
+						<reference key="destination" ref="951942373"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="846820458"/>
+							<reference key="NSDestination" ref="951942373"/>
+							<string key="NSLabel">contentSet: selection.configurations</string>
+							<string key="NSBinding">contentSet</string>
+							<string key="NSKeyPath">selection.configurations</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">100556</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -977,9 +1030,15 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">100507</int>
-						<reference key="object" ref="312687704"/>
+						<reference key="object" ref="951942373"/>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">simulationsController</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">100521</int>
+						<reference key="object" ref="846820458"/>
+						<reference key="parent" ref="0"/>
+						<string key="objectName">configurationsController</string>
 					</object>
 				</object>
 			</object>
@@ -1007,6 +1066,7 @@
 					<string>100420.IBPluginDependency</string>
 					<string>100445.IBPluginDependency</string>
 					<string>100507.IBPluginDependency</string>
+					<string>100521.IBPluginDependency</string>
 					<string>5.IBEditorWindowLastContentRect</string>
 					<string>5.IBPluginDependency</string>
 					<string>5.IBWindowTemplateEditedContentRect</string>
@@ -1017,6 +1077,7 @@
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1058,7 +1119,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">100520</int>
+			<int key="maxID">100556</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1102,6 +1163,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>configurationController</string>
 							<string>myOutlineView</string>
 							<string>outlineContents</string>
 							<string>outlineController</string>
@@ -1110,6 +1172,7 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>NSArrayController</string>
 							<string>NSOutlineView</string>
 							<string>NSMutableArray</string>
 							<string>NSTreeController</string>
@@ -1121,6 +1184,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>configurationController</string>
 							<string>myOutlineView</string>
 							<string>outlineContents</string>
 							<string>outlineController</string>
@@ -1129,6 +1193,10 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">configurationController</string>
+								<string key="candidateClassName">NSArrayController</string>
+							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">myOutlineView</string>
 								<string key="candidateClassName">NSOutlineView</string>

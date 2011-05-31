@@ -55,6 +55,7 @@
     
     IBOutlet NSProgressIndicator *progBar;
     IBOutlet NSArrayController *simulationController;
+    IBOutlet NSArrayController *configurationController;
     
     IBOutlet NSOutlineView		*myOutlineView;
     IBOutlet NSTreeController   *outlineController;

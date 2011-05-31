@@ -70,8 +70,6 @@
         [[managedObjectContext undoManager] disableUndoRegistration];
 
         [self newSimulation:@"New Simulation"];
-        [self newSimulation:@"New Simulation"];
-
         
         [managedObjectContext processPendingChanges];
         
