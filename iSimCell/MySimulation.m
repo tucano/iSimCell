@@ -161,7 +161,9 @@
     Simulation *simulation = [NSEntityDescription insertNewObjectForEntityForName:@"Simulation" 
                                                inManagedObjectContext:[self managedObjectContext]];
     simulation.name = name;
-    [self newConfiguration:@"Default Config" forSimulation:simulation];
+    [self newConfiguration:@"Time Zero" forSimulation:simulation];
+    [self newConfiguration:@"Final Population" forSimulation:simulation];
+    [self newConfiguration:@"Proliferation History" forSimulation:simulation];
 }
 
 -(Configuration *)newConfiguration:(NSString *)name forSimulation:(Simulation *)simulation;

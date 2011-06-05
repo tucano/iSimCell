@@ -20,5 +20,6 @@
 // parent window.
 @property (assign) SimCellController *mainWindowController;
 @property (assign) NSArrayController *simulationController;
+@property (assign) NSArrayController *configurationController;
 
 @end

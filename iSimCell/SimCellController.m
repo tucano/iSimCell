@@ -84,7 +84,7 @@
 	infoView = [[InfoView alloc] initWithNibName:INFOVIEW_NIB bundle:nil];
     [infoView setValue:self forKey:@"mainWindowController"];
     [infoView setValue:simulationController forKey:@"simulationController"];
-    
+    [infoView setValue:configurationController forKey:@"configurationController"];
     // apply our custom ImageAndTextCell for rendering the first column's cells
 	NSTableColumn *tableColumn = [myOutlineView tableColumnWithIdentifier:COLUMNID_NAME];
 	ImageAndTextCell *imageAndTextCell = [[[ImageAndTextCell alloc] init] autorelease];

@@ -13,6 +13,7 @@
 
 @synthesize mainWindowController;
 @synthesize simulationController;
+@synthesize configurationController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,6 +41,7 @@
     NSLog(@"AWAKE  from NIB for : INFOVIEW");
     NSLog(@"Parent: %@", self.mainWindowController);
     NSLog(@"Simulation Controller: %@", self.simulationController);
+    NSLog(@"Configuration Controller: %@", self.configurationController);
 }
 
 @end
