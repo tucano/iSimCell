@@ -31,13 +31,6 @@
     STAssertNotNil([testsimulation managedObjectContext], @"test if there is a managed object context. Got nilL %@", [testsimulation managedObjectContext]);
 }
 
--(void)testNibLoad
-{
-    // test strings with equalObjects
-    NSString *nibName = [testsimulation windowNibName];
-    STAssertEqualObjects(@"SimCellWindow", nibName, @"test if nib connected is SimCellWindow, got %@", nibName);
-}
-
 -(void)fetchSimulation
 {
     NSString *simulation_first = [[[testsimulation fetchSimulations] objectAtIndex:0] uniqueID];
@@ -58,7 +51,7 @@
 
 -(void)testNewSimulation
 {
-    STAssertNoThrow([testsimulation newSimulation], @"Test newSimulation");
+    STAssertNoThrow([testsimulation newSimulation:@"Test newSimulation"], @"Test newSimulation");
 }
 
 -(void)testNewConfiguration

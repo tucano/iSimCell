@@ -137,7 +137,7 @@
 {
     NSLog(@"SimCellController: simulations Controller selection: %@",[[simulationController selectedObjects] objectAtIndex:0]);
     NSLog(@"SimCellController: configuration Controller: %@",[configurationController selectedObjects]);
-    Simulation *aS = [[simulationController selectedObjects] objectAtIndex:0];
+   // Simulation *aS = [[simulationController selectedObjects] objectAtIndex:0];
     Configuration *aC = [[configurationController selectedObjects] objectAtIndex:0];
     [mydocument runSimCell:aC];
 }
