@@ -12,14 +12,18 @@
 #import "SimCellLinker.h"
 #import "SimCellController.h"
 
+@class SimCellController;
+
 @interface MySimulation : NSPersistentDocument {
 @private
     SimCellLinker *simcell;
+    SimCellController *mainWindow;
     bool simcellLock;
 }
 
 @property(readonly, assign) SimCellLinker * simcell;
 @property(readonly, assign) bool simcellLock;
+@property(nonatomic, retain) SimCellController *mainWindow;
 
 -(void)runSimCell:(Configuration *)conf;
 -(void)killSimCell;

@@ -18,6 +18,7 @@
 @dynamic configurations;
 @dynamic uniqueID;
 @dynamic data;
+@dynamic notes;
 
 #pragma mark -
 #pragma mark Accessors/Mutators

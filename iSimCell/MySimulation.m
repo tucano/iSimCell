@@ -13,6 +13,7 @@
 
 @synthesize simcell;
 @synthesize simcellLock;
+@synthesize mainWindow;
 
 #pragma mark -
 #pragma mark Initialization
@@ -145,9 +146,9 @@
 // override -makeWindowControllers to set a window Controller attached to the document
 -(void)makeWindowControllers
 {
-    SimCellController *ctl = [ [SimCellController alloc] initWithManagedObjectContext:[self managedObjectContext]  ];
-    [ctl autorelease];
-    [self addWindowController:ctl];
+    mainWindow = [ [SimCellController alloc] initWithManagedObjectContext:[self managedObjectContext]  ];
+    [mainWindow autorelease];
+    [self addWindowController:mainWindow];
     
     NSLog(@"NSPersistentDocument: passing control to the window controller.");
     

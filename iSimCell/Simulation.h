@@ -14,6 +14,7 @@
 @private
 }
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * notes;
 @property (nonatomic, retain) NSSet* configurations;
 @property (nonatomic, retain) NSString * uniqueID;
 @property (nonatomic, retain) NSData * data;

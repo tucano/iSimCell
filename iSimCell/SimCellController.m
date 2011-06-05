@@ -68,6 +68,9 @@
 {
     [folderImage release];
 	[urlImage release];
+    
+    [infoView release];
+    
     [outlineContents release];
     [separatorCell release];
     [super dealloc];
@@ -76,6 +79,12 @@
 -(void)awakeFromNib
 {
     NSLog(@"SimCellController: AWAKE FROM NIB");
+    
+    // load the info view controller for later use
+	infoView = [[InfoView alloc] initWithNibName:INFOVIEW_NIB bundle:nil];
+    [infoView setValue:self forKey:@"mainWindowController"];
+    [infoView setValue:simulationController forKey:@"simulationController"];
+    
     // apply our custom ImageAndTextCell for rendering the first column's cells
 	NSTableColumn *tableColumn = [myOutlineView tableColumnWithIdentifier:COLUMNID_NAME];
 	ImageAndTextCell *imageAndTextCell = [[[ImageAndTextCell alloc] init] autorelease];
@@ -105,6 +114,10 @@
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     mydocument = [self document];
+    
+    // test place InfoView
+    NSView *subView = [infoView view];
+    [placeHolderView addSubview: subView];
     
     // Logging various things
     NSLog(@"SimCellController: Window Loaded. Calling Document is: %@", mydocument);

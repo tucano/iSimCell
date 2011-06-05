@@ -10,6 +10,7 @@
 #import "MySimulation.h"
 #import "ImageAndTextCell.h"
 #import "SeparatorCell.h"
+#import "InfoView.h"
 
 //////////////////////////////////////////////////////////
 // SIDEBAR 
@@ -43,9 +44,12 @@
 #define UNTITLED_NAME			@"Untitled"		// default name for added folders and leafs
 #define HTTP_PREFIX				@"http://"
 
+// NIB FILES
+#define INFOVIEW_NIB            @"InfoView"
 
 @class SeparatorCell;
 @class MySimulation;
+@class InfoView;
 
 @interface SimCellController : NSWindowController {
 @private
@@ -66,6 +70,10 @@
     // cached images for generic folder and url document
 	NSImage						*folderImage;
 	NSImage						*urlImage;
+    
+    //VIEWS
+    IBOutlet NSView				*placeHolderView;
+    InfoView                    *infoView;
 }
 
 - (void)setManagedObjectContext:(NSManagedObjectContext *)value;

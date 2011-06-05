@@ -531,20 +531,6 @@
 								<object class="NSCustomView" id="417265164">
 									<reference key="NSNextResponder" ref="885508871"/>
 									<int key="NSvFlags">256</int>
-									<object class="NSMutableArray" key="NSSubviews">
-										<bool key="EncodedWithXMLCoder">YES</bool>
-										<object class="NSProgressIndicator" id="543902566">
-											<reference key="NSNextResponder" ref="417265164"/>
-											<int key="NSvFlags">1325</int>
-											<object class="NSPSMatrix" key="NSDrawMatrix"/>
-											<string key="NSFrame">{{302, 264}, {32, 32}}</string>
-											<reference key="NSSuperview" ref="417265164"/>
-											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView"/>
-											<int key="NSpiFlags">28682</int>
-											<double key="NSMaxValue">100</double>
-										</object>
-									</object>
 									<string key="NSFrame">{{163, 0}, {637, 560}}</string>
 									<reference key="NSSuperview" ref="885508871"/>
 									<reference key="NSWindow"/>
@@ -558,6 +544,16 @@
 							<reference key="NSNextKeyView" ref="354876743"/>
 							<bool key="NSIsVertical">YES</bool>
 							<int key="NSDividerStyle">2</int>
+						</object>
+						<object class="NSProgressIndicator" id="543902566">
+							<reference key="NSNextResponder" ref="568628114"/>
+							<int key="NSvFlags">1325</int>
+							<object class="NSPSMatrix" key="NSDrawMatrix"/>
+							<string key="NSFrame">{{20, 16}, {16, 16}}</string>
+							<reference key="NSSuperview" ref="568628114"/>
+							<reference key="NSWindow"/>
+							<int key="NSpiFlags">28938</int>
+							<double key="NSMaxValue">100</double>
 						</object>
 					</object>
 					<string key="NSFrame">{{7, 11}, {800, 600}}</string>
@@ -817,6 +813,14 @@
 					</object>
 					<int key="connectionID">100556</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">placeHolderView</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="417265164"/>
+					</object>
+					<int key="connectionID">100557</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -858,6 +862,7 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="885508871"/>
+							<reference ref="543902566"/>
 						</object>
 						<reference key="parent" ref="275939982"/>
 					</object>
@@ -893,7 +898,6 @@
 						<reference key="object" ref="417265164"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="543902566"/>
 						</object>
 						<reference key="parent" ref="885508871"/>
 						<string key="objectName">Main</string>
@@ -968,11 +972,6 @@
 						<reference key="parent" ref="672043225"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">100151</int>
-						<reference key="object" ref="543902566"/>
-						<reference key="parent" ref="417265164"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">100165</int>
 						<reference key="object" ref="544451701"/>
 						<reference key="parent" ref="0"/>
@@ -1039,6 +1038,11 @@
 						<reference key="object" ref="846820458"/>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">configurationsController</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">100151</int>
+						<reference key="object" ref="543902566"/>
+						<reference key="parent" ref="568628114"/>
 					</object>
 				</object>
 			</object>
@@ -1119,7 +1123,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">100556</int>
+			<int key="maxID">100557</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1167,6 +1171,7 @@
 							<string>myOutlineView</string>
 							<string>outlineContents</string>
 							<string>outlineController</string>
+							<string>placeHolderView</string>
 							<string>progBar</string>
 							<string>simulationController</string>
 						</object>
@@ -1176,6 +1181,7 @@
 							<string>NSOutlineView</string>
 							<string>NSMutableArray</string>
 							<string>NSTreeController</string>
+							<string>NSView</string>
 							<string>NSProgressIndicator</string>
 							<string>NSArrayController</string>
 						</object>
@@ -1188,6 +1194,7 @@
 							<string>myOutlineView</string>
 							<string>outlineContents</string>
 							<string>outlineController</string>
+							<string>placeHolderView</string>
 							<string>progBar</string>
 							<string>simulationController</string>
 						</object>
@@ -1208,6 +1215,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">outlineController</string>
 								<string key="candidateClassName">NSTreeController</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">placeHolderView</string>
+								<string key="candidateClassName">NSView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">progBar</string>
