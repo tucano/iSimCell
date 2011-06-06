@@ -687,8 +687,10 @@
 - (void)changeItemView
 {
     NSArray		*selection = [outlineController selectedNodes];	
-    BaseNode    *node = [[selection objectAtIndex:0] representedObject];
+    ChildNode   *node = [[selection objectAtIndex:0] representedObject];
     NSString    *name = [node nodeTitle];
+    NSString    *category = [node category];
+    
     NSLog(@"Attemping to change view to: %@", name);
     
     if (currentView != nil) {
@@ -697,9 +699,14 @@
         currentView = nil;
     }
     
-    if ([name isEqualToString:@"Info"])  {
+    if ([name isEqualToString:@"Info"] || [category isEqualToString:@"Simulation"])  
+    {
         NSView *subView = [infoView view];
         [placeHolderView addSubview: subView];
+    } 
+    else if ([category isEqualToString:@"Configuration"])
+    {
+        
     }
 }
 
@@ -736,6 +743,17 @@
                 NSLog(@"Node title: %@ , category: %@, uniqueID: %@, URL: %@", 
                       [currentSelection nodeTitle], [currentSelection category], 
                       [currentSelection description], [currentSelection urlString]);
+                Simulation *aSimulation = [mydocument fetchSimulation:[currentSelection description]];
+                NSLog(@"Sim: %@", aSimulation);
+                
+                BOOL result = [simulationController setSelectedObjects:[[[NSArray alloc] initWithObjects:aSimulation, nil] autorelease]];
+                
+                if  (result) {
+                    NSLog(@"Selecting simulation in the simulationController: %@", [[simulationController selectedObjects] objectAtIndex:0]);
+                } else {
+                    NSLog(@"Can't select current simulation in the NSArrayController");
+                }
+                [self changeItemView];
             }
             else if ([[currentSelection category] isEqualToString:CATEGORY_CONFIGURATION])
             {
@@ -743,6 +761,19 @@
                 NSLog(@"Node title: %@ , category: %@, uniqueID: %@, URL: %@", 
                       [currentSelection nodeTitle], [currentSelection category], 
                       [currentSelection description], [currentSelection urlString]);
+                NSLog(@"Collecting current configuration: %@",[currentSelection description]);
+                Configuration *aConfig = [mydocument fetchConfiguration:[currentSelection description]];
+                NSLog(@"Conf: %@", aConfig);
+                
+                BOOL result = [configurationController setSelectedObjects:[[[NSArray alloc] initWithObjects:aConfig, nil] autorelease]];
+                
+                if  (result) {
+                    NSLog(@"Selecting simulation in the configurationController: %@", [[configurationController selectedObjects] objectAtIndex:0]);
+                } else {
+                    NSLog(@"Can't select current configuration in the NSArrayController");
+                }
+                [self changeItemView];
+                
             }
             else if ([[currentSelection category] isEqualToString:CATEGORY_SIMULATIONVIEW])
             {

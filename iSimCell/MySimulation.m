@@ -178,6 +178,30 @@
 }
 
 
+-(Configuration *)fetchConfiguration:(NSString *)uniqueID
+{
+    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Configuration" 
+                                                         inManagedObjectContext:managedObjectContext];
+    NSFetchRequest *request = [[[NSFetchRequest alloc] init ] autorelease];
+    [request setEntity:entityDescription];
+    
+    NSPredicate *predicateTemplate = [NSPredicate predicateWithFormat:
+                                      @"uniqueID == %@", uniqueID];
+    [request setPredicate:predicateTemplate];
+    
+    
+    NSError *error = nil;
+    NSArray *array = [managedObjectContext executeFetchRequest:request error:&error];
+    
+    if (array == nil) {
+        // Deal with error
+        NSLog(@"fetchRequest NODATA");
+    }
+    
+    return [array objectAtIndex:0];
+}
+
 -(Simulation *)fetchSimulation:(NSString *)uniqueID
 {
     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
