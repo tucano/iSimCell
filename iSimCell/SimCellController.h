@@ -12,6 +12,9 @@
 #import "SeparatorCell.h"
 #import "InfoView.h"
 #import "ConfigView.h"
+#import "GraphView.h"
+
+
 
 //////////////////////////////////////////////////////////
 // SIDEBAR 
@@ -48,6 +51,7 @@
 // NIB FILES
 #define INFOVIEW_NIB            @"InfoView"
 #define CONFIGVIEW_NIB          @"ConfigView"
+#define GRAPHVIEW_NIB           @"GraphView"
 
 @class SeparatorCell;
 @class MySimulation;
@@ -78,6 +82,7 @@
     IBOutlet NSView				*placeHolderView;
     InfoView                    *infoView;
     ConfigView                  *configView;
+    GraphView                   *graphView;
     NSView						*currentView;    // current subView
 }
 

@@ -37,12 +37,6 @@
     STAssertEqualObjects(simulation_first, [testsimulation fetchSimulation:simulation_first], @"test if nib connected is SimCellWindow, got %@", [testsimulation fetchSimulation:simulation_first]);
 }
 
--(void)testSimulationName
-{
-    NSString *simulation_name = [[[testsimulation fetchSimulations]objectAtIndex:0] name];
-    STAssertEqualObjects(@"New Simulation", simulation_name, @"test if simulation name, got %@", simulation_name);
-}
-
 -(void)testConfigName
 {
 //    NSString *config_name = [[[[testsimulation simulation].configurations allObjects] objectAtIndex:0] name];

@@ -837,6 +837,11 @@
 		{
 			// there is no current selection - no view to display
 			[self removeSubview];
+            
+            // TEST
+            NSView *subView = [graphView view];
+            [placeHolderView addSubview: subView];
+            currentView = subView;
 		}
 	}
 }
