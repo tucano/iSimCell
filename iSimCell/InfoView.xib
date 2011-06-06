@@ -195,6 +195,7 @@
 								<string key="NSFrame">{{1, 119}, {223, 15}}</string>
 								<reference key="NSSuperview" ref="356825285"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<int key="NSsFlags">1</int>
 								<reference key="NSTarget" ref="356825285"/>
 								<string key="NSAction">_doScroller:</string>
@@ -244,7 +245,7 @@
 										<string key="NSFrame">{{0, 89}, {338, 14}}</string>
 										<reference key="NSSuperview" ref="464770784"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="755930658"/>
+										<reference key="NSNextKeyView" ref="229714324"/>
 										<object class="NSTextContainer" key="NSTextContainer" id="600058476">
 											<object class="NSLayoutManager" key="NSLayoutManager">
 												<object class="NSTextStorage" key="NSTextStorage">
@@ -343,7 +344,7 @@
 						<string key="NSFrame">{{120, 261}, {340, 224}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="464770784"/>
+						<reference key="NSNextKeyView" ref="755930658"/>
 						<int key="NSsFlags">530</int>
 						<reference key="NSVScroller" ref="229714324"/>
 						<reference key="NSHScroller" ref="755930658"/>

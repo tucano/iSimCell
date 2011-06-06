@@ -35,6 +35,8 @@
 		55FC1513138E825300BBCBD0 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FC1512138E825300BBCBD0 /* Configuration.m */; };
 		ED92A11E1393C73400AD9E26 /* outlineView.dict in Resources */ = {isa = PBXBuildFile; fileRef = ED92A11D1393C73400AD9E26 /* outlineView.dict */; };
 		ED973E48139416CD00424F8D /* SimCellController+OutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED973E47139416CD00424F8D /* SimCellController+OutlineView.m */; };
+		EDECF7A5139CDF0C001FB210 /* ConfigView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDECF7A3139CDF0C001FB210 /* ConfigView.m */; };
+		EDECF7A6139CDF0C001FB210 /* ConfigView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDECF7A4139CDF0C001FB210 /* ConfigView.xib */; };
 		EDF471B513958AF20048A75D /* InfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF471B313958AF20048A75D /* InfoView.m */; };
 		EDF471B613958AF20048A75D /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDF471B413958AF20048A75D /* InfoView.xib */; };
 /* End PBXBuildFile section */
@@ -113,6 +115,9 @@
 		ED92A11D1393C73400AD9E26 /* outlineView.dict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = outlineView.dict; sourceTree = "<group>"; };
 		ED973E46139416CD00424F8D /* SimCellController+OutlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SimCellController+OutlineView.h"; sourceTree = "<group>"; };
 		ED973E47139416CD00424F8D /* SimCellController+OutlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SimCellController+OutlineView.m"; sourceTree = "<group>"; };
+		EDECF7A2139CDF0C001FB210 /* ConfigView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigView.h; sourceTree = "<group>"; };
+		EDECF7A3139CDF0C001FB210 /* ConfigView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigView.m; sourceTree = "<group>"; };
+		EDECF7A4139CDF0C001FB210 /* ConfigView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfigView.xib; sourceTree = "<group>"; };
 		EDF471B213958AF20048A75D /* InfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoView.h; sourceTree = "<group>"; };
 		EDF471B313958AF20048A75D /* InfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoView.m; sourceTree = "<group>"; };
 		EDF471B413958AF20048A75D /* InfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoView.xib; sourceTree = "<group>"; };
@@ -227,6 +232,7 @@
 		554256DD138A704C00FD94C6 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				EDECF7A4139CDF0C001FB210 /* ConfigView.xib */,
 				EDF471B413958AF20048A75D /* InfoView.xib */,
 				554256B8138A701900FD94C6 /* SimCellWindow.xib */,
 				554256BB138A701900FD94C6 /* MainMenu.xib */,
@@ -313,6 +319,8 @@
 				ED973E47139416CD00424F8D /* SimCellController+OutlineView.m */,
 				EDF471B213958AF20048A75D /* InfoView.h */,
 				EDF471B313958AF20048A75D /* InfoView.m */,
+				EDECF7A2139CDF0C001FB210 /* ConfigView.h */,
+				EDECF7A3139CDF0C001FB210 /* ConfigView.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -395,6 +403,7 @@
 				5590B43B13929C61005F8678 /* Application.icns in Resources */,
 				ED92A11E1393C73400AD9E26 /* outlineView.dict in Resources */,
 				EDF471B613958AF20048A75D /* InfoView.xib in Resources */,
+				EDECF7A6139CDF0C001FB210 /* ConfigView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +453,7 @@
 				559093B51394E4B900573F3D /* ImageAndTextCell.m in Sources */,
 				559093B61394E4B900573F3D /* SeparatorCell.m in Sources */,
 				EDF471B513958AF20048A75D /* InfoView.m in Sources */,
+				EDECF7A5139CDF0C001FB210 /* ConfigView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

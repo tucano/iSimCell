@@ -86,6 +86,10 @@
     [infoView setValue:simulationController forKey:@"simulationController"];
     [infoView setValue:configurationController forKey:@"configurationController"];
     
+    configView = [[ConfigView alloc] initWithNibName:CONFIGVIEW_NIB bundle:nil];
+    [configView setValue:self forKey:@"mainWindowController"];
+    [configView setValue:simulationController forKey:@"simulationController"];
+    [configView setValue:configurationController forKey:@"configurationController"];
     
     // apply our custom ImageAndTextCell for rendering the first column's cells
 	NSTableColumn *tableColumn = [myOutlineView tableColumnWithIdentifier:COLUMNID_NAME];

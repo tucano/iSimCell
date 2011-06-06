@@ -11,6 +11,7 @@
 #import "ImageAndTextCell.h"
 #import "SeparatorCell.h"
 #import "InfoView.h"
+#import "ConfigView.h"
 
 //////////////////////////////////////////////////////////
 // SIDEBAR 
@@ -46,10 +47,12 @@
 
 // NIB FILES
 #define INFOVIEW_NIB            @"InfoView"
+#define CONFIGVIEW_NIB          @"ConfigView"
 
 @class SeparatorCell;
 @class MySimulation;
 @class InfoView;
+@class ConfigView;
 
 @interface SimCellController : NSWindowController {
 @private
@@ -74,6 +77,7 @@
     //VIEWS
     IBOutlet NSView				*placeHolderView;
     InfoView                    *infoView;
+    ConfigView                  *configView;
     NSView						*currentView;    // current subView
 }
 

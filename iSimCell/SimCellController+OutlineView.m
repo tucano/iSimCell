@@ -703,10 +703,13 @@
     {
         NSView *subView = [infoView view];
         [placeHolderView addSubview: subView];
+        currentView = subView;
     } 
     else if ([category isEqualToString:@"Configuration"])
     {
-        
+        NSView *subView = [configView view];
+        [placeHolderView addSubview: subView];
+        currentView = subView;
     }
 }
 
@@ -757,18 +760,36 @@
             }
             else if ([[currentSelection category] isEqualToString:CATEGORY_CONFIGURATION])
             {
+                // FIXME BUG: 
+                // should also select current Simulation otherwise if I choose a config from another simulation Index out of bounds....
+                
                 NSLog(@"SELECTED CONFIGURATION");
+                
+                ChildNode *simNode = [[[self getParentNode] parentNode] representedObject];
+                Simulation *aSimulation = [mydocument fetchSimulation:[simNode description]];
+                
+                BOOL simresult = [simulationController setSelectedObjects:[[[NSArray alloc] initWithObjects:aSimulation, nil] autorelease]];
+                
+                if  (simresult) {
+                    NSLog(@"Selecting simulation in the simulationController");
+                } else {
+                    NSLog(@"Can't select current simulation in the NSArrayController");
+                }
+                
+                NSLog(@"SELECTED parent Simulation: %@", aSimulation.name);                
                 NSLog(@"Node title: %@ , category: %@, uniqueID: %@, URL: %@", 
                       [currentSelection nodeTitle], [currentSelection category], 
                       [currentSelection description], [currentSelection urlString]);
                 NSLog(@"Collecting current configuration: %@",[currentSelection description]);
+                
                 Configuration *aConfig = [mydocument fetchConfiguration:[currentSelection description]];
-                NSLog(@"Conf: %@", aConfig);
+                
+                NSLog(@"Conf: %@", aConfig.name);
                 
                 BOOL result = [configurationController setSelectedObjects:[[[NSArray alloc] initWithObjects:aConfig, nil] autorelease]];
                 
                 if  (result) {
-                    NSLog(@"Selecting simulation in the configurationController: %@", [[configurationController selectedObjects] objectAtIndex:0]);
+                    NSLog(@"Selecting configuration in the configurationController: %@", [[configurationController selectedObjects] objectAtIndex:0]);
                 } else {
                     NSLog(@"Can't select current configuration in the NSArrayController");
                 }

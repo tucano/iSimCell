@@ -91,8 +91,10 @@
 
 -(void)killTask
 {
-    if ([task isRunning])
+    // FIXME CRASH AND BED ACCES HERE
+    if ([task isRunning]) {
         [task terminate];
+    }
 }
 
 #pragma mark -
