@@ -664,6 +664,46 @@
 }
 
 #pragma mark -
+#pragma mark SubViews
+
+// -------------------------------------------------------------------------------
+//	removeSubview:
+// -------------------------------------------------------------------------------
+- (void)removeSubview
+{
+	// empty selection
+	NSArray *subViews = [placeHolderView subviews];
+	if ([subViews count] > 0)
+	{
+		[[subViews objectAtIndex:0] removeFromSuperview];
+	}
+	
+	[placeHolderView displayIfNeeded];	// we want the removed views to disappear right away
+}
+
+// -------------------------------------------------------------------------------
+//	changeItemView:
+// ------------------------------------------------------------------------------
+- (void)changeItemView
+{
+    NSArray		*selection = [outlineController selectedNodes];	
+    BaseNode    *node = [[selection objectAtIndex:0] representedObject];
+    NSString    *name = [node nodeTitle];
+    NSLog(@"Attemping to change view to: %@", name);
+    
+    if (currentView != nil) {
+        // remove the old subview
+        [self removeSubview];
+        currentView = nil;
+    }
+    
+    if ([name isEqualToString:@"Info"])  {
+        NSView *subView = [infoView view];
+        [placeHolderView addSubview: subView];
+    }
+}
+
+#pragma mark -
 #pragma mark Notifications
 
 // -------------------------------------------------------------------------------
@@ -679,8 +719,9 @@
 	NSArray *selection = [outlineController selectedObjects];
 	if ([selection count] > 1)
 	{
-		// Actually not allowed ...
-		
+		// multiple selection - clear the right side view
+		[self removeSubview];
+		currentView = nil;
 	}
 	else
 	{
@@ -709,6 +750,21 @@
                 NSLog(@"Node title: %@ , category: %@, uniqueID: %@, URL: %@", 
                       [currentSelection nodeTitle], [currentSelection category], 
                       [currentSelection description], [currentSelection urlString]);
+                
+                if ([[currentSelection nodeTitle] isEqualToString:@"Info"]) {
+                    NSLog(@"Collecting current simulation: %@",[currentSelection description]);
+                    Simulation *aSimulation = [mydocument fetchSimulation:[currentSelection description]];
+                    NSLog(@"Sim: %@", aSimulation);
+                    
+                    BOOL result = [simulationController setSelectedObjects:[[[NSArray alloc] initWithObjects:aSimulation, nil] autorelease]];
+                    
+                    if  (result) {
+                        NSLog(@"Selecting simulation in the simulationController: %@", [[simulationController selectedObjects] objectAtIndex:0]);
+                    } else {
+                        NSLog(@"Can't select current simulation in the NSArrayController");
+                    }
+                    [self changeItemView];
+                }
             }
             else if ([[currentSelection category] isEqualToString:CATEGORY_SIMULATIONGROUP])
             {
@@ -728,7 +784,7 @@
 		else
 		{
 			// there is no current selection - no view to display
-			
+			[self removeSubview];
 		}
 	}
 }
@@ -868,6 +924,5 @@
 		}
 	}
 }
-
 
 @end

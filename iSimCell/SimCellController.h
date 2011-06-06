@@ -74,6 +74,7 @@
     //VIEWS
     IBOutlet NSView				*placeHolderView;
     InfoView                    *infoView;
+    NSView						*currentView;    // current subView
 }
 
 - (void)setManagedObjectContext:(NSManagedObjectContext *)value;

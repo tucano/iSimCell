@@ -72,6 +72,8 @@
 
         [self newSimulation:@"New Simulation"];
         
+        [self newSimulation:@"Another Simulation"];
+        
         [managedObjectContext processPendingChanges];
         
         // enable save ...
