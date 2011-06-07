@@ -7,11 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
-//#import "CorePlot/CorePlot.h"
+#import "CorePlot/CorePlot.h"
 
-//@interface GraphView : NSViewController <CPPlotDataSource> {
-//@private
-//    CPXYGraph *graph;
-//}
-//
-//@end
+@interface GraphView : NSViewController <CPTPlotDataSource> {
+@private
+    CPTXYGraph *graph;
+}
+
+@end

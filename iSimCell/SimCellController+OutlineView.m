@@ -839,9 +839,9 @@
 			[self removeSubview];
             
             // TEST
-//            NSView *subView = [graphView view];
-//            [placeHolderView addSubview: subView];
-//            currentView = subView;
+            NSView *subView = [graphView view];
+            [placeHolderView addSubview: subView];
+            currentView = subView;
 		}
 	}
 }

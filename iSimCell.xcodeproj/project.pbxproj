@@ -33,6 +33,8 @@
 		55F48103138BA8C100406891 /* SimCellLinkerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F48102138BA8C100406891 /* SimCellLinkerTest.m */; };
 		55FC150F138E823700BBCBD0 /* Simulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FC150E138E823700BBCBD0 /* Simulation.m */; };
 		55FC1513138E825300BBCBD0 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FC1512138E825300BBCBD0 /* Configuration.m */; };
+		ED19174E139E5A7700D8E077 /* README in Resources */ = {isa = PBXBuildFile; fileRef = ED19174D139E5A7700D8E077 /* README */; };
+		ED19176D139E5D8C00D8E077 /* CorePlot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED19176C139E5D8C00D8E077 /* CorePlot.framework */; };
 		ED92A11E1393C73400AD9E26 /* outlineView.dict in Resources */ = {isa = PBXBuildFile; fileRef = ED92A11D1393C73400AD9E26 /* outlineView.dict */; };
 		ED973E48139416CD00424F8D /* SimCellController+OutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED973E47139416CD00424F8D /* SimCellController+OutlineView.m */; };
 		EDD1934E139CFF6E0067EC98 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD1934D139CFF6E0067EC98 /* Quartz.framework */; };
@@ -51,6 +53,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = 5542569E138A701900FD94C6;
 			remoteInfo = iSimCell;
+		};
+		ED191758139E5AE800D8E077 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ED19174F139E5AE800D8E077 /* CorePlot.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
+			remoteInfo = CorePlot;
+		};
+		ED19175A139E5AE800D8E077 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ED19174F139E5AE800D8E077 /* CorePlot.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0730F600109492D800E95162;
+			remoteInfo = UnitTests;
+		};
+		ED19175C139E5B0A00D8E077 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ED19174F139E5AE800D8E077 /* CorePlot.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = CorePlot;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -115,11 +138,13 @@
 		55FC150E138E823700BBCBD0 /* Simulation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Simulation.m; sourceTree = "<group>"; };
 		55FC1511138E825300BBCBD0 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
 		55FC1512138E825300BBCBD0 /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; };
+		ED19174D139E5A7700D8E077 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = SOURCE_ROOT; };
+		ED19174F139E5AE800D8E077 /* CorePlot.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CorePlot.xcodeproj; path = "../core-plot/framework/CorePlot.xcodeproj"; sourceTree = "<group>"; };
+		ED19176C139E5D8C00D8E077 /* CorePlot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CorePlot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED92A11D1393C73400AD9E26 /* outlineView.dict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = outlineView.dict; sourceTree = "<group>"; };
 		ED973E46139416CD00424F8D /* SimCellController+OutlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SimCellController+OutlineView.h"; sourceTree = "<group>"; };
 		ED973E47139416CD00424F8D /* SimCellController+OutlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SimCellController+OutlineView.m"; sourceTree = "<group>"; };
 		EDD1934D139CFF6E0067EC98 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
-		EDD19353139D028B0067EC98 /* CorePlot.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CorePlot.framework; path = "../CorePlotInstall_0.3/Mac OS X Binaries/CorePlot.framework"; sourceTree = "<group>"; };
 		EDD19381139D181B0067EC98 /* GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphView.h; sourceTree = "<group>"; };
 		EDD19382139D181C0067EC98 /* GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphView.m; sourceTree = "<group>"; };
 		EDD19383139D181C0067EC98 /* GraphView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GraphView.xib; sourceTree = "<group>"; };
@@ -136,6 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED19176D139E5D8C00D8E077 /* CorePlot.framework in Frameworks */,
 				EDD1934E139CFF6E0067EC98 /* Quartz.framework in Frameworks */,
 				554256A4138A701900FD94C6 /* Cocoa.framework in Frameworks */,
 			);
@@ -155,6 +181,7 @@
 		55425694138A701900FD94C6 = {
 			isa = PBXGroup;
 			children = (
+				ED19174F139E5AE800D8E077 /* CorePlot.xcodeproj */,
 				554256A9138A701900FD94C6 /* iSimCell */,
 				554256CA138A701900FD94C6 /* iSimCellTests */,
 				554256A2138A701900FD94C6 /* Frameworks */,
@@ -183,7 +210,7 @@
 		554256A5138A701900FD94C6 /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EDD19353139D028B0067EC98 /* CorePlot.framework */,
+				ED19176C139E5D8C00D8E077 /* CorePlot.framework */,
 				EDD1934D139CFF6E0067EC98 /* Quartz.framework */,
 				554256A6138A701900FD94C6 /* AppKit.framework */,
 				554256A7138A701900FD94C6 /* CoreData.framework */,
@@ -195,6 +222,7 @@
 		554256A9138A701900FD94C6 /* iSimCell */ = {
 			isa = PBXGroup;
 			children = (
+				ED19174B139E5A3C00D8E077 /* Documentation */,
 				559093AF1394E4A000573F3D /* ouline Cell Support */,
 				ED973E451394165400424F8D /* Controllers */,
 				55AD8A5F139396CD00AC6600 /* outlineTreeSupport */,
@@ -322,6 +350,23 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		ED19174B139E5A3C00D8E077 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				ED19174D139E5A7700D8E077 /* README */,
+			);
+			name = Documentation;
+			sourceTree = "<group>";
+		};
+		ED191750139E5AE800D8E077 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ED191759139E5AE800D8E077 /* CorePlot.framework */,
+				ED19175B139E5AE800D8E077 /* UnitTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		ED973E451394165400424F8D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -354,6 +399,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				ED19175D139E5B0A00D8E077 /* PBXTargetDependency */,
 			);
 			name = iSimCell;
 			productName = iSimCell;
@@ -397,6 +443,12 @@
 			mainGroup = 55425694138A701900FD94C6;
 			productRefGroup = 554256A0138A701900FD94C6 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = ED191750139E5AE800D8E077 /* Products */;
+					ProjectRef = ED19174F139E5AE800D8E077 /* CorePlot.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				5542569E138A701900FD94C6 /* iSimCell */,
@@ -404,6 +456,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		ED191759139E5AE800D8E077 /* CorePlot.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CorePlot.framework;
+			remoteRef = ED191758139E5AE800D8E077 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		ED19175B139E5AE800D8E077 /* UnitTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = UnitTests.octest;
+			remoteRef = ED19175A139E5AE800D8E077 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		5542569D138A701900FD94C6 /* Resources */ = {
@@ -419,6 +488,7 @@
 				EDF471B613958AF20048A75D /* InfoView.xib in Resources */,
 				EDECF7A6139CDF0C001FB210 /* ConfigView.xib in Resources */,
 				EDD19385139D181C0067EC98 /* GraphView.xib in Resources */,
+				ED19174E139E5A7700D8E077 /* README in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,6 +561,11 @@
 			isa = PBXTargetDependency;
 			target = 5542569E138A701900FD94C6 /* iSimCell */;
 			targetProxy = 554256C8138A701900FD94C6 /* PBXContainerItemProxy */;
+		};
+		ED19175D139E5B0A00D8E077 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CorePlot;
+			targetProxy = ED19175C139E5B0A00D8E077 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
