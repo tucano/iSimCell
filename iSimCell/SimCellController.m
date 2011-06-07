@@ -91,7 +91,7 @@
     [configView setValue:simulationController forKey:@"simulationController"];
     [configView setValue:configurationController forKey:@"configurationController"];
     
-    graphView = [[GraphView alloc] initWithNibName:GRAPHVIEW_NIB bundle:nil];
+    //graphView = [[GraphView alloc] initWithNibName:GRAPHVIEW_NIB bundle:nil];
     
     // apply our custom ImageAndTextCell for rendering the first column's cells
 	NSTableColumn *tableColumn = [myOutlineView tableColumnWithIdentifier:COLUMNID_NAME];

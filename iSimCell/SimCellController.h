@@ -82,7 +82,7 @@
     IBOutlet NSView				*placeHolderView;
     InfoView                    *infoView;
     ConfigView                  *configView;
-    GraphView                   *graphView;
+    //GraphView                   *graphView;
     NSView						*currentView;    // current subView
 }
 

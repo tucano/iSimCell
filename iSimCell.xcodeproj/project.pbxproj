@@ -36,8 +36,6 @@
 		ED92A11E1393C73400AD9E26 /* outlineView.dict in Resources */ = {isa = PBXBuildFile; fileRef = ED92A11D1393C73400AD9E26 /* outlineView.dict */; };
 		ED973E48139416CD00424F8D /* SimCellController+OutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED973E47139416CD00424F8D /* SimCellController+OutlineView.m */; };
 		EDD1934E139CFF6E0067EC98 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD1934D139CFF6E0067EC98 /* Quartz.framework */; };
-		EDD19354139D028B0067EC98 /* CorePlot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD19353139D028B0067EC98 /* CorePlot.framework */; };
-		EDD19356139D03730067EC98 /* CorePlot.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EDD19353139D028B0067EC98 /* CorePlot.framework */; };
 		EDD19384139D181C0067EC98 /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD19382139D181C0067EC98 /* GraphView.m */; };
 		EDD19385139D181C0067EC98 /* GraphView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDD19383139D181C0067EC98 /* GraphView.xib */; };
 		EDECF7A5139CDF0C001FB210 /* ConfigView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDECF7A3139CDF0C001FB210 /* ConfigView.m */; };
@@ -64,16 +62,6 @@
 			dstSubfolderSpec = 6;
 			files = (
 				55B82CC3138AA1C30078BC6A /* simCell in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EDD19355139D033F0067EC98 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				EDD19356139D03730067EC98 /* CorePlot.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,7 +136,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDD19354139D028B0067EC98 /* CorePlot.framework in Frameworks */,
 				EDD1934E139CFF6E0067EC98 /* Quartz.framework in Frameworks */,
 				554256A4138A701900FD94C6 /* Cocoa.framework in Frameworks */,
 			);
@@ -359,7 +346,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 554256D7138A701900FD94C6 /* Build configuration list for PBXNativeTarget "iSimCell" */;
 			buildPhases = (
-				EDD19355139D033F0067EC98 /* CopyFiles */,
 				5542569B138A701900FD94C6 /* Sources */,
 				5542569C138A701900FD94C6 /* Frameworks */,
 				5542569D138A701900FD94C6 /* Resources */,
@@ -592,7 +578,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/../CorePlotInstall_0.3/Mac OS X Binaries\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -613,7 +598,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/../CorePlotInstall_0.3/Mac OS X Binaries\"",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -630,10 +614,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iSimCell.app/Contents/MacOS/iSimCell";
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-					"\"$(SRCROOT)/../CorePlotInstall_0.3/Mac OS X Binaries\"/**",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
