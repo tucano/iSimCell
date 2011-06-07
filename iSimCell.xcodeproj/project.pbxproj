@@ -95,14 +95,14 @@
 		559093B21394E4B900573F3D /* ImageAndTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageAndTextCell.m; sourceTree = "<group>"; };
 		559093B31394E4B900573F3D /* SeparatorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeparatorCell.h; sourceTree = "<group>"; };
 		559093B41394E4B900573F3D /* SeparatorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeparatorCell.m; sourceTree = "<group>"; };
-		5590B43A13929C61005F8678 /* Application.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Application.icns; path = ../Application.icns; sourceTree = "<group>"; };
+		5590B43A13929C61005F8678 /* Application.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Application.icns; path = ../Resources/Application.icns; sourceTree = "<group>"; };
 		55AD8A58139396C800AC6600 /* BaseNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNode.h; sourceTree = "<group>"; };
 		55AD8A59139396C800AC6600 /* BaseNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNode.m; sourceTree = "<group>"; };
 		55AD8A5A139396C800AC6600 /* ChildNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildNode.m; sourceTree = "<group>"; };
 		55AD8A5B139396C800AC6600 /* ChildNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildNode.h; sourceTree = "<group>"; };
 		55AD8A611393971F00AC6600 /* NSArray_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSArray_Extensions.h; sourceTree = "<group>"; };
 		55AD8A621393971F00AC6600 /* NSArray_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArray_Extensions.m; sourceTree = "<group>"; };
-		55B82CC2138AA1C30078BC6A /* simCell */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = simCell; path = ../../simCell/src/simCell; sourceTree = "<group>"; };
+		55B82CC2138AA1C30078BC6A /* simCell */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = simCell; path = ../Resources/simCell; sourceTree = "<group>"; };
 		55B82CC5138AA4A20078BC6A /* SimCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimCellController.h; sourceTree = "<group>"; };
 		55B82CC6138AA4A20078BC6A /* SimCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimCellController.m; sourceTree = "<group>"; };
 		55B82CC8138AA6EB0078BC6A /* SimCellLinker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimCellLinker.h; sourceTree = "<group>"; };
