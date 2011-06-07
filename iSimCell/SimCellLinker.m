@@ -43,6 +43,7 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     if (currentData) [currentData release];
+    [task release];
     [super dealloc];
 }
 
@@ -62,8 +63,7 @@
     taskLog = [outputPipeError fileHandleForReading];
     
     // ALLOC TASK
-    task = [[NSTask alloc] init];
-   
+    task = [[NSTask alloc] init];   
     
     // ALLOC OUTPUTS
     [task setStandardOutput:outputPipe];
@@ -91,7 +91,6 @@
 
 -(void)killTask
 {
-    // FIXME CRASH AND BED ACCES HERE
     if ([task isRunning]) {
         [task terminate];
     }
@@ -116,8 +115,6 @@
     
     // Post completed task
     [[NSNotificationCenter defaultCenter] postNotificationName:@"SimCellTaskComplete" object:self];
-    
-    [task release];
 }
 
 - (void)readPipe:(NSNotification *)notification
