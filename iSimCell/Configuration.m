@@ -33,7 +33,6 @@
 @dynamic latency_temp;
 @dynamic division_temp;
 @dynamic pkh_temp;
-@dynamic divisions;
 @dynamic headers;
 @dynamic nspheres;
 @dynamic prob;
@@ -64,6 +63,22 @@
     nspheres = newSpheres;
     [self didAccessValueForKey:@"nspheres"];
 }
+
+-(NSInteger)divisions
+{
+    [self willAccessValueForKey:@"divisions"];
+    long n = divisions;
+    [self didAccessValueForKey:@"divisions"];
+    return n;
+}
+
+-(void)setDivisions:(NSInteger)newDivisions
+{
+    [self willAccessValueForKey:@"divisions"];
+    divisions = newDivisions;
+    [self didAccessValueForKey:@"divisions"];
+}
+
 
 #pragma mark -
 #pragma mark Custom Actions

@@ -13,6 +13,7 @@
 
 @interface Configuration : NSManagedObject {
     NSInteger nspheres;
+    NSInteger divisions;
 }
 
 @property (nonatomic, retain) NSString * name;
@@ -33,13 +34,13 @@
 @property (nonatomic, retain) NSNumber * latency_temp;
 @property (nonatomic, retain) NSNumber * division_temp;
 @property (nonatomic, retain) NSNumber * pkh_temp;
-@property (nonatomic, retain) NSNumber * divisions;
 @property (nonatomic, retain) NSNumber * headers;
 @property (nonatomic, retain) NSNumber * prob;
 @property (nonatomic, retain) Simulation * simulation;
 
 // CUSTOM
 @property NSInteger nspheres;
+@property NSInteger divisions;
 
 - (void) generateUniqueID;
 -(NSArray *)arrayOfOptions;

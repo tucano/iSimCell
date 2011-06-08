@@ -12,8 +12,10 @@
 
 @interface ConfigView : NSViewController {
 @private
-    
+    IBOutlet NSPopUpButton *outputPopUp;
 }
+
+-(IBAction)changeOutput:(id)sender;
 
 // parent window.
 @property (assign) SimCellController *mainWindowController;
