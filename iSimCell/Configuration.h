@@ -14,11 +14,12 @@
 @interface Configuration : NSManagedObject {
     NSInteger nspheres;
     NSInteger divisions;
+    NSInteger size;
+    NSInteger facs_range;
 }
 
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * key;
-@property (nonatomic, retain) NSNumber * facs_range;
 @property (nonatomic, retain) NSString * output;
 @property (nonatomic, retain) NSNumber * parent_mean;
 @property (nonatomic, retain) NSString * uniqueID;
@@ -28,7 +29,6 @@
 @property (nonatomic, retain) NSNumber * sigsplit_temp;
 @property (nonatomic, retain) NSNumber * latency;
 @property (nonatomic, retain) NSNumber * timelimit;
-@property (nonatomic, retain) NSNumber * size;
 @property (nonatomic, retain) NSNumber * pkh_range;
 @property (nonatomic, retain) NSNumber * verbose;
 @property (nonatomic, retain) NSNumber * latency_temp;
@@ -41,6 +41,8 @@
 // CUSTOM
 @property NSInteger nspheres;
 @property NSInteger divisions;
+@property NSInteger size;
+@property NSInteger facs_range;
 
 - (void) generateUniqueID;
 -(NSArray *)arrayOfOptions;

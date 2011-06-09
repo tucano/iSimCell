@@ -17,7 +17,6 @@
 
 @dynamic name;
 @dynamic key;
-@dynamic facs_range;
 @dynamic output;
 @dynamic parent_mean;
 @dynamic uniqueID;
@@ -27,7 +26,6 @@
 @dynamic sigsplit_temp;
 @dynamic latency;
 @dynamic timelimit;
-@dynamic size;
 @dynamic pkh_range;
 @dynamic verbose;
 @dynamic latency_temp;
@@ -79,6 +77,35 @@
     [self didAccessValueForKey:@"divisions"];
 }
 
+-(NSInteger)size
+{
+    [self willAccessValueForKey:@"size"];
+    long n = size;
+    [self didAccessValueForKey:@"size"];
+    return n;
+}
+
+-(void)setSize:(NSInteger)newSize
+{
+    [self willAccessValueForKey:@"size"];
+    size = newSize;
+    [self didAccessValueForKey:@"size"];
+}
+
+-(NSInteger)facs_range
+{
+    [self willAccessValueForKey:@"facs_range"];
+    long n = facs_range;
+    [self didAccessValueForKey:@"facs_range"];
+    return n;
+}
+
+-(void)setFacs_range:(NSInteger)new_facs_range
+{
+    [self willAccessValueForKey:@"facs_range"];
+    facs_range = new_facs_range;
+    [self didAccessValueForKey:@"facs_range"];
+}
 
 #pragma mark -
 #pragma mark Custom Actions
