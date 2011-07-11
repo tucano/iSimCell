@@ -1,0 +1,773 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		554256A4138A701900FD94C6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554256A3138A701900FD94C6 /* Cocoa.framework */; };
+		554256AE138A701900FD94C6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 554256AC138A701900FD94C6 /* InfoPlist.strings */; };
+		554256B1138A701900FD94C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 554256B0138A701900FD94C6 /* main.m */; };
+		554256B4138A701900FD94C6 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 554256B2138A701900FD94C6 /* Credits.rtf */; };
+		554256B7138A701900FD94C6 /* MySimulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 554256B6138A701900FD94C6 /* MySimulation.m */; };
+		554256BA138A701900FD94C6 /* SimCellWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 554256B8138A701900FD94C6 /* SimCellWindow.xib */; };
+		554256BD138A701900FD94C6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 554256BB138A701900FD94C6 /* MainMenu.xib */; };
+		554256C0138A701900FD94C6 /* MySimulation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 554256BE138A701900FD94C6 /* MySimulation.xcdatamodeld */; };
+		554256C7138A701900FD94C6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554256A3138A701900FD94C6 /* Cocoa.framework */; };
+		554256CF138A701900FD94C6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 554256CD138A701900FD94C6 /* InfoPlist.strings */; };
+		554256D2138A701900FD94C6 /* iSimCellTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 554256D1138A701900FD94C6 /* iSimCellTests.h */; };
+		554256D4138A701900FD94C6 /* iSimCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 554256D3138A701900FD94C6 /* iSimCellTests.m */; };
+		55425732138A78CB00FD94C6 /* MySimulationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 55425730138A78A500FD94C6 /* MySimulationTest.m */; };
+		559093B51394E4B900573F3D /* ImageAndTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 559093B21394E4B900573F3D /* ImageAndTextCell.m */; };
+		559093B61394E4B900573F3D /* SeparatorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 559093B41394E4B900573F3D /* SeparatorCell.m */; };
+		5590B43B13929C61005F8678 /* Application.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5590B43A13929C61005F8678 /* Application.icns */; };
+		55AD8A5C139396C900AC6600 /* BaseNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AD8A59139396C800AC6600 /* BaseNode.m */; };
+		55AD8A5D139396C900AC6600 /* ChildNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AD8A5A139396C800AC6600 /* ChildNode.m */; };
+		55AD8A631393971F00AC6600 /* NSArray_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AD8A621393971F00AC6600 /* NSArray_Extensions.m */; };
+		55B82CC3138AA1C30078BC6A /* simCell in CopyFiles */ = {isa = PBXBuildFile; fileRef = 55B82CC2138AA1C30078BC6A /* simCell */; };
+		55B82CC7138AA4A20078BC6A /* SimCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B82CC6138AA4A20078BC6A /* SimCellController.m */; };
+		55B82CCA138AA6EB0078BC6A /* SimCellLinker.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B82CC9138AA6EB0078BC6A /* SimCellLinker.m */; };
+		55F48100138BA83C00406891 /* SimCellControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F480FD138BA68300406891 /* SimCellControllerTest.m */; };
+		55F48103138BA8C100406891 /* SimCellLinkerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F48102138BA8C100406891 /* SimCellLinkerTest.m */; };
+		55FC150F138E823700BBCBD0 /* Simulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FC150E138E823700BBCBD0 /* Simulation.m */; };
+		55FC1513138E825300BBCBD0 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FC1512138E825300BBCBD0 /* Configuration.m */; };
+		ED19174E139E5A7700D8E077 /* README in Resources */ = {isa = PBXBuildFile; fileRef = ED19174D139E5A7700D8E077 /* README */; };
+		ED19176D139E5D8C00D8E077 /* CorePlot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED19176C139E5D8C00D8E077 /* CorePlot.framework */; };
+		ED92A11E1393C73400AD9E26 /* outlineView.dict in Resources */ = {isa = PBXBuildFile; fileRef = ED92A11D1393C73400AD9E26 /* outlineView.dict */; };
+		ED973E48139416CD00424F8D /* SimCellController+OutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED973E47139416CD00424F8D /* SimCellController+OutlineView.m */; };
+		EDD1934E139CFF6E0067EC98 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD1934D139CFF6E0067EC98 /* Quartz.framework */; };
+		EDD19384139D181C0067EC98 /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD19382139D181C0067EC98 /* GraphView.m */; };
+		EDD19385139D181C0067EC98 /* GraphView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDD19383139D181C0067EC98 /* GraphView.xib */; };
+		EDD29D8713CB2D95001862A3 /* ResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD29D8513CB2D95001862A3 /* ResultView.m */; };
+		EDD29D8813CB2D95001862A3 /* ResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDD29D8613CB2D95001862A3 /* ResultView.xib */; };
+		EDECF7A5139CDF0C001FB210 /* ConfigView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDECF7A3139CDF0C001FB210 /* ConfigView.m */; };
+		EDECF7A6139CDF0C001FB210 /* ConfigView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDECF7A4139CDF0C001FB210 /* ConfigView.xib */; };
+		EDF471B513958AF20048A75D /* InfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF471B313958AF20048A75D /* InfoView.m */; };
+		EDF471B613958AF20048A75D /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDF471B413958AF20048A75D /* InfoView.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		554256C8138A701900FD94C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55425696138A701900FD94C6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5542569E138A701900FD94C6;
+			remoteInfo = iSimCell;
+		};
+		ED7B5A5A13CB5E3E0054B021 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ED19174F139E5AE800D8E077 /* CorePlot.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
+			remoteInfo = CorePlot;
+		};
+		ED7B5A5C13CB5E3E0054B021 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ED19174F139E5AE800D8E077 /* CorePlot.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0730F600109492D800E95162;
+			remoteInfo = UnitTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		55B82CC1138AA1870078BC6A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				55B82CC3138AA1C30078BC6A /* simCell in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		5542569F138A701900FD94C6 /* iSimCell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSimCell.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		554256A3138A701900FD94C6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		554256A6138A701900FD94C6 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		554256A7138A701900FD94C6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		554256A8138A701900FD94C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		554256AB138A701900FD94C6 /* iSimCell-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iSimCell-Info.plist"; sourceTree = "<group>"; };
+		554256AD138A701900FD94C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		554256AF138A701900FD94C6 /* iSimCell-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSimCell-Prefix.pch"; sourceTree = "<group>"; };
+		554256B0138A701900FD94C6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		554256B3138A701900FD94C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		554256B5138A701900FD94C6 /* MySimulation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MySimulation.h; sourceTree = "<group>"; };
+		554256B6138A701900FD94C6 /* MySimulation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MySimulation.m; sourceTree = "<group>"; };
+		554256B9138A701900FD94C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SimCellWindow.xib; sourceTree = "<group>"; };
+		554256BC138A701900FD94C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		554256BF138A701900FD94C6 /* MySimulation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MySimulation.xcdatamodel; sourceTree = "<group>"; };
+		554256C6138A701900FD94C6 /* iSimCellTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iSimCellTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		554256CC138A701900FD94C6 /* iSimCellTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iSimCellTests-Info.plist"; sourceTree = "<group>"; };
+		554256CE138A701900FD94C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		554256D0138A701900FD94C6 /* iSimCellTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSimCellTests-Prefix.pch"; sourceTree = "<group>"; };
+		554256D1138A701900FD94C6 /* iSimCellTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iSimCellTests.h; sourceTree = "<group>"; };
+		554256D3138A701900FD94C6 /* iSimCellTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iSimCellTests.m; sourceTree = "<group>"; };
+		5542572F138A78A500FD94C6 /* MySimulationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySimulationTest.h; sourceTree = "<group>"; };
+		55425730138A78A500FD94C6 /* MySimulationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySimulationTest.m; sourceTree = "<group>"; };
+		559093B11394E4B900573F3D /* ImageAndTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageAndTextCell.h; sourceTree = "<group>"; };
+		559093B21394E4B900573F3D /* ImageAndTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageAndTextCell.m; sourceTree = "<group>"; };
+		559093B31394E4B900573F3D /* SeparatorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeparatorCell.h; sourceTree = "<group>"; };
+		559093B41394E4B900573F3D /* SeparatorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeparatorCell.m; sourceTree = "<group>"; };
+		5590B43A13929C61005F8678 /* Application.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Application.icns; path = ../Resources/Application.icns; sourceTree = "<group>"; };
+		55AD8A58139396C800AC6600 /* BaseNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNode.h; sourceTree = "<group>"; };
+		55AD8A59139396C800AC6600 /* BaseNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNode.m; sourceTree = "<group>"; };
+		55AD8A5A139396C800AC6600 /* ChildNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildNode.m; sourceTree = "<group>"; };
+		55AD8A5B139396C800AC6600 /* ChildNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildNode.h; sourceTree = "<group>"; };
+		55AD8A611393971F00AC6600 /* NSArray_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSArray_Extensions.h; sourceTree = "<group>"; };
+		55AD8A621393971F00AC6600 /* NSArray_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArray_Extensions.m; sourceTree = "<group>"; };
+		55B82CC2138AA1C30078BC6A /* simCell */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = simCell; path = ../Resources/simCell; sourceTree = "<group>"; };
+		55B82CC5138AA4A20078BC6A /* SimCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimCellController.h; sourceTree = "<group>"; };
+		55B82CC6138AA4A20078BC6A /* SimCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimCellController.m; sourceTree = "<group>"; };
+		55B82CC8138AA6EB0078BC6A /* SimCellLinker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimCellLinker.h; sourceTree = "<group>"; };
+		55B82CC9138AA6EB0078BC6A /* SimCellLinker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimCellLinker.m; sourceTree = "<group>"; };
+		55F480FC138BA68300406891 /* SimCellControllerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimCellControllerTest.h; sourceTree = "<group>"; };
+		55F480FD138BA68300406891 /* SimCellControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimCellControllerTest.m; sourceTree = "<group>"; };
+		55F48101138BA8C100406891 /* SimCellLinkerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimCellLinkerTest.h; sourceTree = "<group>"; };
+		55F48102138BA8C100406891 /* SimCellLinkerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimCellLinkerTest.m; sourceTree = "<group>"; };
+		55FC150D138E823700BBCBD0 /* Simulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Simulation.h; sourceTree = "<group>"; };
+		55FC150E138E823700BBCBD0 /* Simulation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Simulation.m; sourceTree = "<group>"; };
+		55FC1511138E825300BBCBD0 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
+		55FC1512138E825300BBCBD0 /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; };
+		ED19174D139E5A7700D8E077 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = SOURCE_ROOT; };
+		ED19174F139E5AE800D8E077 /* CorePlot.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CorePlot.xcodeproj; path = "../../core-plot/framework/CorePlot.xcodeproj"; sourceTree = "<group>"; };
+		ED19176C139E5D8C00D8E077 /* CorePlot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CorePlot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED92A11D1393C73400AD9E26 /* outlineView.dict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = outlineView.dict; sourceTree = "<group>"; };
+		ED973E46139416CD00424F8D /* SimCellController+OutlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SimCellController+OutlineView.h"; sourceTree = "<group>"; };
+		ED973E47139416CD00424F8D /* SimCellController+OutlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SimCellController+OutlineView.m"; sourceTree = "<group>"; };
+		EDD1934D139CFF6E0067EC98 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
+		EDD19381139D181B0067EC98 /* GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphView.h; sourceTree = "<group>"; };
+		EDD19382139D181C0067EC98 /* GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphView.m; sourceTree = "<group>"; };
+		EDD19383139D181C0067EC98 /* GraphView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GraphView.xib; sourceTree = "<group>"; };
+		EDD29D8413CB2D95001862A3 /* ResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultView.h; sourceTree = "<group>"; };
+		EDD29D8513CB2D95001862A3 /* ResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultView.m; sourceTree = "<group>"; };
+		EDD29D8613CB2D95001862A3 /* ResultView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultView.xib; sourceTree = "<group>"; };
+		EDECF7A2139CDF0C001FB210 /* ConfigView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigView.h; sourceTree = "<group>"; };
+		EDECF7A3139CDF0C001FB210 /* ConfigView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigView.m; sourceTree = "<group>"; };
+		EDECF7A4139CDF0C001FB210 /* ConfigView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfigView.xib; sourceTree = "<group>"; };
+		EDF471B213958AF20048A75D /* InfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoView.h; sourceTree = "<group>"; };
+		EDF471B313958AF20048A75D /* InfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoView.m; sourceTree = "<group>"; };
+		EDF471B413958AF20048A75D /* InfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoView.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5542569C138A701900FD94C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED19176D139E5D8C00D8E077 /* CorePlot.framework in Frameworks */,
+				EDD1934E139CFF6E0067EC98 /* Quartz.framework in Frameworks */,
+				554256A4138A701900FD94C6 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		554256C2138A701900FD94C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				554256C7138A701900FD94C6 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		55425694138A701900FD94C6 = {
+			isa = PBXGroup;
+			children = (
+				ED19174F139E5AE800D8E077 /* CorePlot.xcodeproj */,
+				554256A9138A701900FD94C6 /* iSimCell */,
+				554256CA138A701900FD94C6 /* iSimCellTests */,
+				554256A2138A701900FD94C6 /* Frameworks */,
+				554256A0138A701900FD94C6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		554256A0138A701900FD94C6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5542569F138A701900FD94C6 /* iSimCell.app */,
+				554256C6138A701900FD94C6 /* iSimCellTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		554256A2138A701900FD94C6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				554256A3138A701900FD94C6 /* Cocoa.framework */,
+				554256A5138A701900FD94C6 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		554256A5138A701900FD94C6 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ED19176C139E5D8C00D8E077 /* CorePlot.framework */,
+				EDD1934D139CFF6E0067EC98 /* Quartz.framework */,
+				554256A6138A701900FD94C6 /* AppKit.framework */,
+				554256A7138A701900FD94C6 /* CoreData.framework */,
+				554256A8138A701900FD94C6 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		554256A9138A701900FD94C6 /* iSimCell */ = {
+			isa = PBXGroup;
+			children = (
+				ED19174B139E5A3C00D8E077 /* Documentation */,
+				559093AF1394E4A000573F3D /* ouline Cell Support */,
+				ED973E451394165400424F8D /* Controllers */,
+				55AD8A5F139396CD00AC6600 /* outlineTreeSupport */,
+				55B82CC4138AA1F10078BC6A /* Resources */,
+				554256DF138A71AE00FD94C6 /* DataModels */,
+				554256DE138A715500FD94C6 /* Models */,
+				554256DD138A704C00FD94C6 /* Interface */,
+				554256AA138A701900FD94C6 /* Supporting Files */,
+			);
+			path = iSimCell;
+			sourceTree = "<group>";
+		};
+		554256AA138A701900FD94C6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				554256AB138A701900FD94C6 /* iSimCell-Info.plist */,
+				554256AC138A701900FD94C6 /* InfoPlist.strings */,
+				554256AF138A701900FD94C6 /* iSimCell-Prefix.pch */,
+				554256B0138A701900FD94C6 /* main.m */,
+				554256B2138A701900FD94C6 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		554256CA138A701900FD94C6 /* iSimCellTests */ = {
+			isa = PBXGroup;
+			children = (
+				554256E0138A71C500FD94C6 /* Test Cases */,
+				554256D1138A701900FD94C6 /* iSimCellTests.h */,
+				554256D3138A701900FD94C6 /* iSimCellTests.m */,
+				554256CB138A701900FD94C6 /* Supporting Files */,
+			);
+			path = iSimCellTests;
+			sourceTree = "<group>";
+		};
+		554256CB138A701900FD94C6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				554256CC138A701900FD94C6 /* iSimCellTests-Info.plist */,
+				554256CD138A701900FD94C6 /* InfoPlist.strings */,
+				554256D0138A701900FD94C6 /* iSimCellTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		554256DD138A704C00FD94C6 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				EDD29D8613CB2D95001862A3 /* ResultView.xib */,
+				EDD19383139D181C0067EC98 /* GraphView.xib */,
+				EDECF7A4139CDF0C001FB210 /* ConfigView.xib */,
+				EDF471B413958AF20048A75D /* InfoView.xib */,
+				554256B8138A701900FD94C6 /* SimCellWindow.xib */,
+				554256BB138A701900FD94C6 /* MainMenu.xib */,
+			);
+			name = Interface;
+			sourceTree = "<group>";
+		};
+		554256DE138A715500FD94C6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				554256B5138A701900FD94C6 /* MySimulation.h */,
+				554256B6138A701900FD94C6 /* MySimulation.m */,
+				55B82CC8138AA6EB0078BC6A /* SimCellLinker.h */,
+				55B82CC9138AA6EB0078BC6A /* SimCellLinker.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		554256DF138A71AE00FD94C6 /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+				554256BE138A701900FD94C6 /* MySimulation.xcdatamodeld */,
+				55FC150D138E823700BBCBD0 /* Simulation.h */,
+				55FC150E138E823700BBCBD0 /* Simulation.m */,
+				55FC1511138E825300BBCBD0 /* Configuration.h */,
+				55FC1512138E825300BBCBD0 /* Configuration.m */,
+			);
+			name = DataModels;
+			sourceTree = "<group>";
+		};
+		554256E0138A71C500FD94C6 /* Test Cases */ = {
+			isa = PBXGroup;
+			children = (
+				5542572F138A78A500FD94C6 /* MySimulationTest.h */,
+				55425730138A78A500FD94C6 /* MySimulationTest.m */,
+				55F480FC138BA68300406891 /* SimCellControllerTest.h */,
+				55F480FD138BA68300406891 /* SimCellControllerTest.m */,
+				55F48101138BA8C100406891 /* SimCellLinkerTest.h */,
+				55F48102138BA8C100406891 /* SimCellLinkerTest.m */,
+			);
+			name = "Test Cases";
+			sourceTree = "<group>";
+		};
+		559093AF1394E4A000573F3D /* ouline Cell Support */ = {
+			isa = PBXGroup;
+			children = (
+				559093B11394E4B900573F3D /* ImageAndTextCell.h */,
+				559093B21394E4B900573F3D /* ImageAndTextCell.m */,
+				559093B31394E4B900573F3D /* SeparatorCell.h */,
+				559093B41394E4B900573F3D /* SeparatorCell.m */,
+			);
+			name = "ouline Cell Support";
+			sourceTree = "<group>";
+		};
+		55AD8A5F139396CD00AC6600 /* outlineTreeSupport */ = {
+			isa = PBXGroup;
+			children = (
+				55AD8A611393971F00AC6600 /* NSArray_Extensions.h */,
+				55AD8A621393971F00AC6600 /* NSArray_Extensions.m */,
+				55AD8A58139396C800AC6600 /* BaseNode.h */,
+				55AD8A59139396C800AC6600 /* BaseNode.m */,
+				55AD8A5A139396C800AC6600 /* ChildNode.m */,
+				55AD8A5B139396C800AC6600 /* ChildNode.h */,
+			);
+			name = outlineTreeSupport;
+			sourceTree = "<group>";
+		};
+		55B82CC4138AA1F10078BC6A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5590B43A13929C61005F8678 /* Application.icns */,
+				55B82CC2138AA1C30078BC6A /* simCell */,
+				ED92A11D1393C73400AD9E26 /* outlineView.dict */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		ED19174B139E5A3C00D8E077 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				ED19174D139E5A7700D8E077 /* README */,
+			);
+			name = Documentation;
+			sourceTree = "<group>";
+		};
+		ED7B5A5513CB5E3E0054B021 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ED7B5A5B13CB5E3E0054B021 /* CorePlot.framework */,
+				ED7B5A5D13CB5E3E0054B021 /* UnitTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ED973E451394165400424F8D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				55B82CC5138AA4A20078BC6A /* SimCellController.h */,
+				55B82CC6138AA4A20078BC6A /* SimCellController.m */,
+				ED973E46139416CD00424F8D /* SimCellController+OutlineView.h */,
+				ED973E47139416CD00424F8D /* SimCellController+OutlineView.m */,
+				EDF471B213958AF20048A75D /* InfoView.h */,
+				EDF471B313958AF20048A75D /* InfoView.m */,
+				EDECF7A2139CDF0C001FB210 /* ConfigView.h */,
+				EDECF7A3139CDF0C001FB210 /* ConfigView.m */,
+				EDD19381139D181B0067EC98 /* GraphView.h */,
+				EDD19382139D181C0067EC98 /* GraphView.m */,
+				EDD29D8413CB2D95001862A3 /* ResultView.h */,
+				EDD29D8513CB2D95001862A3 /* ResultView.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5542569E138A701900FD94C6 /* iSimCell */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 554256D7138A701900FD94C6 /* Build configuration list for PBXNativeTarget "iSimCell" */;
+			buildPhases = (
+				5542569B138A701900FD94C6 /* Sources */,
+				5542569C138A701900FD94C6 /* Frameworks */,
+				5542569D138A701900FD94C6 /* Resources */,
+				55B82CC1138AA1870078BC6A /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iSimCell;
+			productName = iSimCell;
+			productReference = 5542569F138A701900FD94C6 /* iSimCell.app */;
+			productType = "com.apple.product-type.application";
+		};
+		554256C5138A701900FD94C6 /* iSimCellTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 554256DA138A701900FD94C6 /* Build configuration list for PBXNativeTarget "iSimCellTests" */;
+			buildPhases = (
+				554256C1138A701900FD94C6 /* Sources */,
+				554256C2138A701900FD94C6 /* Frameworks */,
+				554256C3138A701900FD94C6 /* Resources */,
+				554256C4138A701900FD94C6 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				554256C9138A701900FD94C6 /* PBXTargetDependency */,
+			);
+			name = iSimCellTests;
+			productName = iSimCellTests;
+			productReference = 554256C6138A701900FD94C6 /* iSimCellTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		55425696138A701900FD94C6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = Tucano;
+			};
+			buildConfigurationList = 55425699138A701900FD94C6 /* Build configuration list for PBXProject "iSimCell" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 55425694138A701900FD94C6;
+			productRefGroup = 554256A0138A701900FD94C6 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = ED7B5A5513CB5E3E0054B021 /* Products */;
+					ProjectRef = ED19174F139E5AE800D8E077 /* CorePlot.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				5542569E138A701900FD94C6 /* iSimCell */,
+				554256C5138A701900FD94C6 /* iSimCellTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		ED7B5A5B13CB5E3E0054B021 /* CorePlot.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CorePlot.framework;
+			remoteRef = ED7B5A5A13CB5E3E0054B021 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		ED7B5A5D13CB5E3E0054B021 /* UnitTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = UnitTests.octest;
+			remoteRef = ED7B5A5C13CB5E3E0054B021 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5542569D138A701900FD94C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				554256AE138A701900FD94C6 /* InfoPlist.strings in Resources */,
+				554256B4138A701900FD94C6 /* Credits.rtf in Resources */,
+				554256BA138A701900FD94C6 /* SimCellWindow.xib in Resources */,
+				554256BD138A701900FD94C6 /* MainMenu.xib in Resources */,
+				5590B43B13929C61005F8678 /* Application.icns in Resources */,
+				ED92A11E1393C73400AD9E26 /* outlineView.dict in Resources */,
+				EDF471B613958AF20048A75D /* InfoView.xib in Resources */,
+				EDECF7A6139CDF0C001FB210 /* ConfigView.xib in Resources */,
+				EDD19385139D181C0067EC98 /* GraphView.xib in Resources */,
+				ED19174E139E5A7700D8E077 /* README in Resources */,
+				EDD29D8813CB2D95001862A3 /* ResultView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		554256C3138A701900FD94C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				554256CF138A701900FD94C6 /* InfoPlist.strings in Resources */,
+				554256D2138A701900FD94C6 /* iSimCellTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		554256C4138A701900FD94C6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5542569B138A701900FD94C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				554256B1138A701900FD94C6 /* main.m in Sources */,
+				554256B7138A701900FD94C6 /* MySimulation.m in Sources */,
+				554256C0138A701900FD94C6 /* MySimulation.xcdatamodeld in Sources */,
+				55B82CC7138AA4A20078BC6A /* SimCellController.m in Sources */,
+				55B82CCA138AA6EB0078BC6A /* SimCellLinker.m in Sources */,
+				55FC150F138E823700BBCBD0 /* Simulation.m in Sources */,
+				55FC1513138E825300BBCBD0 /* Configuration.m in Sources */,
+				55AD8A5C139396C900AC6600 /* BaseNode.m in Sources */,
+				55AD8A5D139396C900AC6600 /* ChildNode.m in Sources */,
+				55AD8A631393971F00AC6600 /* NSArray_Extensions.m in Sources */,
+				ED973E48139416CD00424F8D /* SimCellController+OutlineView.m in Sources */,
+				559093B51394E4B900573F3D /* ImageAndTextCell.m in Sources */,
+				559093B61394E4B900573F3D /* SeparatorCell.m in Sources */,
+				EDF471B513958AF20048A75D /* InfoView.m in Sources */,
+				EDECF7A5139CDF0C001FB210 /* ConfigView.m in Sources */,
+				EDD19384139D181C0067EC98 /* GraphView.m in Sources */,
+				EDD29D8713CB2D95001862A3 /* ResultView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		554256C1138A701900FD94C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				554256D4138A701900FD94C6 /* iSimCellTests.m in Sources */,
+				55425732138A78CB00FD94C6 /* MySimulationTest.m in Sources */,
+				55F48100138BA83C00406891 /* SimCellControllerTest.m in Sources */,
+				55F48103138BA8C100406891 /* SimCellLinkerTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		554256C9138A701900FD94C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5542569E138A701900FD94C6 /* iSimCell */;
+			targetProxy = 554256C8138A701900FD94C6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		554256AC138A701900FD94C6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				554256AD138A701900FD94C6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		554256B2138A701900FD94C6 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				554256B3138A701900FD94C6 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		554256B8138A701900FD94C6 /* SimCellWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				554256B9138A701900FD94C6 /* en */,
+			);
+			name = SimCellWindow.xib;
+			sourceTree = "<group>";
+		};
+		554256BB138A701900FD94C6 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				554256BC138A701900FD94C6 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		554256CD138A701900FD94C6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				554256CE138A701900FD94C6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		554256D5138A701900FD94C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		554256D6138A701900FD94C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		554256D8138A701900FD94C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iSimCell/iSimCell-Prefix.pch";
+				INFOPLIST_FILE = "iSimCell/iSimCell-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		554256D9138A701900FD94C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iSimCell/iSimCell-Prefix.pch";
+				INFOPLIST_FILE = "iSimCell/iSimCell-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		554256DB138A701900FD94C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iSimCell.app/Contents/MacOS/iSimCell";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iSimCellTests/iSimCellTests-Prefix.pch";
+				INFOPLIST_FILE = "iSimCellTests/iSimCellTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		554256DC138A701900FD94C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iSimCell.app/Contents/MacOS/iSimCell";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iSimCellTests/iSimCellTests-Prefix.pch";
+				INFOPLIST_FILE = "iSimCellTests/iSimCellTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		55425699138A701900FD94C6 /* Build configuration list for PBXProject "iSimCell" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				554256D5138A701900FD94C6 /* Debug */,
+				554256D6138A701900FD94C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		554256D7138A701900FD94C6 /* Build configuration list for PBXNativeTarget "iSimCell" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				554256D8138A701900FD94C6 /* Debug */,
+				554256D9138A701900FD94C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		554256DA138A701900FD94C6 /* Build configuration list for PBXNativeTarget "iSimCellTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				554256DB138A701900FD94C6 /* Debug */,
+				554256DC138A701900FD94C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		554256BE138A701900FD94C6 /* MySimulation.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				554256BF138A701900FD94C6 /* MySimulation.xcdatamodel */,
+			);
+			currentVersion = 554256BF138A701900FD94C6 /* MySimulation.xcdatamodel */;
+			path = MySimulation.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 55425696138A701900FD94C6 /* Project object */;
+}
