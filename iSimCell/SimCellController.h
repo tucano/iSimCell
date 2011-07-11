@@ -13,7 +13,7 @@
 #import "InfoView.h"
 #import "ConfigView.h"
 #import "GraphView.h"
-
+#import "ResultView.h"
 
 
 //////////////////////////////////////////////////////////
@@ -52,11 +52,13 @@
 #define INFOVIEW_NIB            @"InfoView"
 #define CONFIGVIEW_NIB          @"ConfigView"
 #define GRAPHVIEW_NIB           @"GraphView"
+#define RESULTVIEW_NIB          @"ResultView"
 
 @class SeparatorCell;
 @class MySimulation;
 @class InfoView;
 @class ConfigView;
+@class ResultView;
 
 @interface SimCellController : NSWindowController {
 @private
@@ -83,6 +85,7 @@
     InfoView                    *infoView;
     ConfigView                  *configView;
     GraphView                   *graphView;
+    ResultView                  *resultView;
     NSView						*currentView;    // current subView
 }
 

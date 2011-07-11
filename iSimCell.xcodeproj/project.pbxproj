@@ -40,6 +40,8 @@
 		EDD1934E139CFF6E0067EC98 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD1934D139CFF6E0067EC98 /* Quartz.framework */; };
 		EDD19384139D181C0067EC98 /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD19382139D181C0067EC98 /* GraphView.m */; };
 		EDD19385139D181C0067EC98 /* GraphView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDD19383139D181C0067EC98 /* GraphView.xib */; };
+		EDD29D8713CB2D95001862A3 /* ResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD29D8513CB2D95001862A3 /* ResultView.m */; };
+		EDD29D8813CB2D95001862A3 /* ResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDD29D8613CB2D95001862A3 /* ResultView.xib */; };
 		EDECF7A5139CDF0C001FB210 /* ConfigView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDECF7A3139CDF0C001FB210 /* ConfigView.m */; };
 		EDECF7A6139CDF0C001FB210 /* ConfigView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDECF7A4139CDF0C001FB210 /* ConfigView.xib */; };
 		EDF471B513958AF20048A75D /* InfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF471B313958AF20048A75D /* InfoView.m */; };
@@ -148,6 +150,9 @@
 		EDD19381139D181B0067EC98 /* GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphView.h; sourceTree = "<group>"; };
 		EDD19382139D181C0067EC98 /* GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphView.m; sourceTree = "<group>"; };
 		EDD19383139D181C0067EC98 /* GraphView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GraphView.xib; sourceTree = "<group>"; };
+		EDD29D8413CB2D95001862A3 /* ResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultView.h; sourceTree = "<group>"; };
+		EDD29D8513CB2D95001862A3 /* ResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultView.m; sourceTree = "<group>"; };
+		EDD29D8613CB2D95001862A3 /* ResultView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultView.xib; sourceTree = "<group>"; };
 		EDECF7A2139CDF0C001FB210 /* ConfigView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigView.h; sourceTree = "<group>"; };
 		EDECF7A3139CDF0C001FB210 /* ConfigView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigView.m; sourceTree = "<group>"; };
 		EDECF7A4139CDF0C001FB210 /* ConfigView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfigView.xib; sourceTree = "<group>"; };
@@ -271,6 +276,7 @@
 		554256DD138A704C00FD94C6 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				EDD29D8613CB2D95001862A3 /* ResultView.xib */,
 				EDD19383139D181C0067EC98 /* GraphView.xib */,
 				EDECF7A4139CDF0C001FB210 /* ConfigView.xib */,
 				EDF471B413958AF20048A75D /* InfoView.xib */,
@@ -380,6 +386,8 @@
 				EDECF7A3139CDF0C001FB210 /* ConfigView.m */,
 				EDD19381139D181B0067EC98 /* GraphView.h */,
 				EDD19382139D181C0067EC98 /* GraphView.m */,
+				EDD29D8413CB2D95001862A3 /* ResultView.h */,
+				EDD29D8513CB2D95001862A3 /* ResultView.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -489,6 +497,7 @@
 				EDECF7A6139CDF0C001FB210 /* ConfigView.xib in Resources */,
 				EDD19385139D181C0067EC98 /* GraphView.xib in Resources */,
 				ED19174E139E5A7700D8E077 /* README in Resources */,
+				EDD29D8813CB2D95001862A3 /* ResultView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,6 +549,7 @@
 				EDF471B513958AF20048A75D /* InfoView.m in Sources */,
 				EDECF7A5139CDF0C001FB210 /* ConfigView.m in Sources */,
 				EDD19384139D181C0067EC98 /* GraphView.m in Sources */,
+				EDD29D8713CB2D95001862A3 /* ResultView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

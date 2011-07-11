@@ -717,6 +717,12 @@
         [placeHolderView addSubview: subView];
         currentView = subView;
     }
+    else if ([name isEqualToString:@"Results"])
+    {
+        NSView *subView = [resultView view];
+        [placeHolderView addSubview: subView];
+        currentView = subView;
+    }
 }
 
 #pragma mark -
@@ -833,8 +839,9 @@
                 
                 if ([[currentSelection nodeTitle] isEqualToString:@"Plots"]) {
                     NSLog(@"Selected Plots");
-                    [self changeItemView];
                 }
+                
+                [self changeItemView];
             }
             else
             {
