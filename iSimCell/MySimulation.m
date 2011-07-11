@@ -135,8 +135,8 @@
     for (index = 0, numberOfLines = 0; index < stringLength; numberOfLines++)
         index = NSMaxRange([[simcell currentData] lineRangeForRange:NSMakeRange(index, 0)]);
     
-    NSLog(@"data length: %lu", stringLength);
-    NSLog(@"data lines: %lu", numberOfLines);
+    NSLog(@"NSPersistentDocument: data length: %lu", stringLength);
+    NSLog(@"NSPersistentDocument: data lines: %lu", numberOfLines);
     
     simcellLock = NO;
 }
