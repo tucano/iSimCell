@@ -19,6 +19,8 @@
 		ED1AC69213CB6347006C4D72 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ED1AC69013CB6347006C4D72 /* InfoPlist.strings */; };
 		ED1AC69513CB6347006C4D72 /* iSimCellTests.h in Resources */ = {isa = PBXBuildFile; fileRef = ED1AC69413CB6347006C4D72 /* iSimCellTests.h */; };
 		ED1AC69713CB6347006C4D72 /* iSimCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1AC69613CB6347006C4D72 /* iSimCellTests.m */; };
+		ED1AC6A613CB64A7006C4D72 /* simCell in Resources */ = {isa = PBXBuildFile; fileRef = ED1AC6A513CB64A7006C4D72 /* simCell */; };
+		ED1AC6BC13CB64F5006C4D72 /* simCell in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED1AC6A513CB64A7006C4D72 /* simCell */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +32,19 @@
 			remoteInfo = iSimCell;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		ED1AC6BB13CB64DB006C4D72 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				ED1AC6BC13CB64F5006C4D72 /* simCell in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		ED1AC66213CB6346006C4D72 /* iSimCell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSimCell.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,6 +68,7 @@
 		ED1AC69313CB6347006C4D72 /* iSimCellTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSimCellTests-Prefix.pch"; sourceTree = "<group>"; };
 		ED1AC69413CB6347006C4D72 /* iSimCellTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iSimCellTests.h; sourceTree = "<group>"; };
 		ED1AC69613CB6347006C4D72 /* iSimCellTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iSimCellTests.m; sourceTree = "<group>"; };
+		ED1AC6A513CB64A7006C4D72 /* simCell */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = simCell; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +98,7 @@
 				ED1AC68D13CB6347006C4D72 /* iSimCellTests */,
 				ED1AC66513CB6346006C4D72 /* Frameworks */,
 				ED1AC66313CB6346006C4D72 /* Products */,
+				ED1AC6A413CB6480006C4D72 /* Resources */,
 			);
 			sourceTree = "<group>";
 		};
@@ -190,6 +207,14 @@
 			name = Interface;
 			sourceTree = "<group>";
 		};
+		ED1AC6A413CB6480006C4D72 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				ED1AC6A513CB64A7006C4D72 /* simCell */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -200,6 +225,7 @@
 				ED1AC65E13CB6346006C4D72 /* Sources */,
 				ED1AC65F13CB6346006C4D72 /* Frameworks */,
 				ED1AC66013CB6346006C4D72 /* Resources */,
+				ED1AC6BB13CB64DB006C4D72 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -261,6 +287,7 @@
 				ED1AC67713CB6346006C4D72 /* Credits.rtf in Resources */,
 				ED1AC67D13CB6346006C4D72 /* SimCellDocument.xib in Resources */,
 				ED1AC68013CB6347006C4D72 /* MainMenu.xib in Resources */,
+				ED1AC6A613CB64A7006C4D72 /* simCell in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
