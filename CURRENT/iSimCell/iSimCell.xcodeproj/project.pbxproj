@@ -116,11 +116,10 @@
 		ED1AC66C13CB6346006C4D72 /* iSimCell */ = {
 			isa = PBXGroup;
 			children = (
-				ED1AC67813CB6346006C4D72 /* SimCellDocument.h */,
-				ED1AC67913CB6346006C4D72 /* SimCellDocument.m */,
-				ED1AC67B13CB6346006C4D72 /* SimCellDocument.xib */,
-				ED1AC67E13CB6347006C4D72 /* MainMenu.xib */,
-				ED1AC68113CB6347006C4D72 /* SimCellDocument.xcdatamodeld */,
+				ED1AC6A313CB63E6006C4D72 /* Interface */,
+				ED1AC6A213CB63D4006C4D72 /* CoreData Models */,
+				ED1AC6A113CB63B5006C4D72 /* Models */,
+				ED1AC6A013CB63AA006C4D72 /* Controllers */,
 				ED1AC66D13CB6346006C4D72 /* Supporting Files */,
 			);
 			path = iSimCell;
@@ -156,6 +155,39 @@
 				ED1AC69313CB6347006C4D72 /* iSimCellTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		ED1AC6A013CB63AA006C4D72 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		ED1AC6A113CB63B5006C4D72 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ED1AC67813CB6346006C4D72 /* SimCellDocument.h */,
+				ED1AC67913CB6346006C4D72 /* SimCellDocument.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		ED1AC6A213CB63D4006C4D72 /* CoreData Models */ = {
+			isa = PBXGroup;
+			children = (
+				ED1AC68113CB6347006C4D72 /* SimCellDocument.xcdatamodeld */,
+			);
+			name = "CoreData Models";
+			sourceTree = "<group>";
+		};
+		ED1AC6A313CB63E6006C4D72 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				ED1AC67B13CB6346006C4D72 /* SimCellDocument.xib */,
+				ED1AC67E13CB6347006C4D72 /* MainMenu.xib */,
+			);
+			name = Interface;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
