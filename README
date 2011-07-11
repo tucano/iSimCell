@@ -1,9 +1,0 @@
-* iSimCell README
-
-
-
-CorePlot:
-
-Install in Code with mercurial
-
-hg clone https://core-plot.googlecode.com/hg/ core-plot
