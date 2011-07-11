@@ -8,8 +8,9 @@
 
 #import "ResultView.h"
 
-
 @implementation ResultView
+
+@synthesize mainWindowController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -24,6 +25,20 @@
 - (void)dealloc
 {
     [super dealloc];
+}
+
+#pragma mark -
+#pragma mark AwakeFromNib
+
+- (void)awakeFromNib
+{
+    NSLog(@"AWAKE  from NIB for : RESULTVIEW");
+    NSLog(@"Parent: %@", self.mainWindowController);
+    NSLog(@"MyDocument: %@", [self.mainWindowController document]);
+    
+    // FIXME deve fare update not in LOAD
+    if ([[[self.mainWindowController document] simcell] currentData] != nil)
+        NSLog(@"MyLinker data: %@", [[[self.mainWindowController document] simcell] currentData]);
 }
 
 @end

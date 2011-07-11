@@ -94,6 +94,7 @@
     graphView = [[GraphView alloc] initWithNibName:GRAPHVIEW_NIB bundle:nil];
     
     resultView = [[ResultView alloc] initWithNibName:RESULTVIEW_NIB bundle:nil];
+    [resultView setValue:self forKey:@"mainWindowController"];
     
     // apply our custom ImageAndTextCell for rendering the first column's cells
 	NSTableColumn *tableColumn = [myOutlineView tableColumnWithIdentifier:COLUMNID_NAME];

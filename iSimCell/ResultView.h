@@ -7,11 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "SimCellController.h"
 
 @interface ResultView : NSViewController {
 @private
     
 }
+
+// parent window.
+@property (assign) SimCellController *mainWindowController;
 
 @end
