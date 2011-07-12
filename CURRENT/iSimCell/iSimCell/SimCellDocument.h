@@ -7,10 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "SimCellController.h"
+
+@class SimCellController;
 
 @interface SimCellDocument : NSPersistentDocument {
 @private
-
+    SimCellController *mainWindow;
 }
+
+@property(nonatomic, retain) SimCellController *mainWindow;
 
 @end
