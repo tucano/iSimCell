@@ -19,4 +19,6 @@
 @property (nonatomic, retain) NSString * uniqueID;
 @property (nonatomic, retain) NSSet* configurations;
 
+-(void)generateUniqueID;
+
 @end

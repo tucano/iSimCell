@@ -46,6 +46,9 @@
         // disable save..
         [[managedObjectContext undoManager] disableUndoRegistration];
         
+        // create MAIN core data object
+        [self newSimulation:@"New Simulation"];
+        
         [managedObjectContext processPendingChanges];
         
         // enable save ...
@@ -73,15 +76,60 @@
     [mainWindow autorelease];
     [self addWindowController:mainWindow];
     
-    NSLog(@"SimCellDocument: passing control to the window controller.");
-    
+    NSLog(@"SimCellDocument: passing control to the window controller. Simulation Name is: %@", [[[self fetchSimulations] objectAtIndex:0] name]);
 }
 
-- (void)windowControllerDidLoadNib:(NSWindowController *)aController
+#pragma mark -
+#pragma mark Core Data Methods
+-(void)newSimulation:(NSString *)name
 {
-    [super windowControllerDidLoadNib:aController];
-    // Add any code here that needs to be executed once the windowController has loaded the document's window.
-    NSLog(@"SimCellDocument: window controller DidLoad the NIB.");
+    Simulation *simulation = [NSEntityDescription insertNewObjectForEntityForName:@"Simulation" 
+                                                           inManagedObjectContext:[self managedObjectContext]];
+    simulation.name = name;
+}
+
+-(Simulation *)fetchSimulation:(NSString *)uniqueID
+{
+    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Simulation" 
+                                                         inManagedObjectContext:managedObjectContext];
+    NSFetchRequest *request = [[[NSFetchRequest alloc] init ] autorelease];
+    
+    [request setEntity:entityDescription];
+    
+    NSPredicate *predicateTemplate = [NSPredicate predicateWithFormat:
+                                      @"uniqueID == %@", uniqueID];
+    [request setPredicate:predicateTemplate];
+    
+    
+    NSError *error = nil;
+    NSArray *array = [managedObjectContext executeFetchRequest:request error:&error];
+    
+    if (array == nil) {
+        // Deal with error
+        NSLog(@"fetchRequest NODATA");
+    }
+    
+    return [array objectAtIndex:0];
+}
+
+-(NSArray *)fetchSimulations
+{
+    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Simulation" 
+                                                         inManagedObjectContext:managedObjectContext];
+    NSFetchRequest *request = [[[NSFetchRequest alloc] init ] autorelease];
+    
+    [request setEntity:entityDescription];
+    NSError *error = nil;
+    NSArray *array = [managedObjectContext executeFetchRequest:request error:&error];
+    
+    if (array == nil) {
+        // Deal with error
+        NSLog(@"fetchRequest NODATA");
+    }
+    
+    return array;
 }
 
 @end

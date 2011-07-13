@@ -46,6 +46,7 @@
     [super windowDidLoad];
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     NSLog(@"SimCellController: window Loaded. Calling Document is: %@", [self document]);
+    NSLog(@"SimCellController: Simulation Name: %@", [[[[self document] fetchSimulations] objectAtIndex:0] name]);
 }
 
 -(void)awakeFromNib

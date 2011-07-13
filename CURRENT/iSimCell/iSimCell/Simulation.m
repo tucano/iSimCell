@@ -44,5 +44,14 @@
     [self didChangeValueForKey:@"configurations" withSetMutation:NSKeyValueMinusSetMutation usingObjects:value];
 }
 
+#pragma mark -
+#pragma mark Custom Methods
+
+- (void) generateUniqueID 
+{
+    NSString* uniqueID = self.uniqueID;
+    if ( uniqueID != nil ) return;
+    self.uniqueID = [[NSProcessInfo processInfo] globallyUniqueString];
+}
 
 @end

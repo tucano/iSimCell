@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "SimCellDocument.h"
 
 @interface SimCellController : NSWindowController {
 @private

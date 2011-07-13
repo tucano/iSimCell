@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "SimCellController.h"
+#import "Simulation.h"
 
 @class SimCellController;
 
@@ -17,5 +18,9 @@
 }
 
 @property(nonatomic, retain) SimCellController *mainWindow;
+
+-(void)newSimulation:(NSString *)name;
+-(NSArray *)fetchSimulations;
+-(Simulation *)fetchSimulation:(NSString *)uniqueID;
 
 @end
