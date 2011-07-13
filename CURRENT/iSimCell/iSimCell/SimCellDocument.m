@@ -29,6 +29,27 @@
         // init linker
         simcell = [[SimCellLinker alloc] init];
         simcellLock = NO;
+        
+        // Notify START TASK
+        [[NSNotificationCenter defaultCenter] 
+         addObserver:self 
+         selector:@selector(taskStarted:)
+         name:@"SimCellTaskStarted"
+         object:simcell];
+        
+        // Notify TASK COMPLETE
+        [[NSNotificationCenter defaultCenter] 
+         addObserver:self 
+         selector:@selector(taskFinished:)
+         name:@"SimCellTaskComplete"
+         object:simcell];
+        
+        // Notify END READING DATA
+        [[NSNotificationCenter defaultCenter] 
+         addObserver:self 
+         selector:@selector(endReadingData:)
+         name:@"SimCellEndReadingData"
+         object:simcell];
 
     }
     return self;
@@ -54,6 +75,8 @@
         
         // create MAIN core data object
         [self newSimulation:@"New Simulation"];
+        Simulation *sim = [self fetchSimulation];
+        [self newConfiguration:@"Default" forSimulation:sim];
         
         [managedObjectContext processPendingChanges];
         
@@ -137,6 +160,41 @@
     }
     
     return [array objectAtIndex:0];
+}
+
+-(Configuration *)newConfiguration:(NSString *)name forSimulation:(Simulation *)simulation;
+{
+    Configuration *config = [NSEntityDescription insertNewObjectForEntityForName:@"Configuration" 
+                                                          inManagedObjectContext:[self managedObjectContext]];
+    config.name = name;
+    [simulation addConfigurationsObject:config];
+    return config;
+}
+
+#pragma mark -
+#pragma mark Notifications
+
+-(void)taskStarted:(NSNotification *)notification
+{
+    NSLog(@"SimCellDocument: Task Control Start.");
+}
+
+-(void)taskFinished:(NSNotification *)notification
+{
+    NSLog(@"SimCellDocument: Task Control End.");
+}
+
+-(void)endReadingData:(NSNotification *)notification
+{
+    NSLog(@"SimCellDocument: End reading data.");
+    unsigned long numberOfLines, index, stringLength = [[simcell currentData] length];
+    for (index = 0, numberOfLines = 0; index < stringLength; numberOfLines++)
+        index = NSMaxRange([[simcell currentData] lineRangeForRange:NSMakeRange(index, 0)]);
+    
+    NSLog(@"SimCellDocument: data length: %lu", stringLength);
+    NSLog(@"SimCellDocument: data lines: %lu", numberOfLines);
+    
+    simcellLock = NO;
 }
 
 @end

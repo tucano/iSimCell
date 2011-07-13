@@ -20,5 +20,6 @@
 @property (nonatomic, retain) NSSet* configurations;
 
 -(void)generateUniqueID;
+-(void)addConfigurationsObject:(Configuration *)value;
 
 @end

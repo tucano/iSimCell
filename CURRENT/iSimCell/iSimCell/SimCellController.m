@@ -49,7 +49,7 @@
     NSLog(@"SimCellController: Simulation Name: %@", [[[self document] fetchSimulation] name]);
     
     // TEST
-    Configuration *aC = [[Configuration alloc] init];
+    Configuration *aC = [[[[self document] fetchSimulation] configurations] anyObject];
     [[self document] runSimCell:aC];
     [aC release];
 }

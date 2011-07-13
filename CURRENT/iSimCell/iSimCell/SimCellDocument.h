@@ -30,5 +30,5 @@
 
 -(void)newSimulation:(NSString *)name;
 -(Simulation *)fetchSimulation;
-
+-(Configuration *)newConfiguration:(NSString *)name forSimulation:(Simulation *)simulation;
 @end

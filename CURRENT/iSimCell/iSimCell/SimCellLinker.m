@@ -111,10 +111,10 @@
     // FIXME
     int exitCode = [[notification object] terminationStatus];
     
-    NSLog(@"End Task with ExitCode: %i", exitCode);
+    NSLog(@"SimCellLinker: End Task with ExitCode: %i", exitCode);
     
     if (exitCode != 0) {
-        NSLog(@"Task failed with error: %@", [[NSString alloc] initWithData:[taskLog readDataToEndOfFile] 
+        NSLog(@"SimCellLinker: Task failed with error: %@", [[NSString alloc] initWithData:[taskLog readDataToEndOfFile] 
                                                                    encoding:NSASCIIStringEncoding]);
     }
     
@@ -125,9 +125,7 @@
 }
 
 - (void)readPipe:(NSNotification *)notification
-{
-    NSLog(@"Reading...");
-    
+{    
     if( [notification object] != taskOutput ) return;
     
     NSData *incomingData = [[notification userInfo] objectForKey:NSFileHandleNotificationDataItem];
@@ -135,6 +133,7 @@
     if (incomingData && [incomingData length])
     {
         currentData = [[NSString alloc] initWithData:incomingData encoding:NSASCIIStringEncoding];
+        NSLog(@"SimCellLinker: Reading data complete");
     }
     
     // Post completed task
