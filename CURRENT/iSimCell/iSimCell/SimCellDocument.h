@@ -20,7 +20,6 @@
 @property(nonatomic, retain) SimCellController *mainWindow;
 
 -(void)newSimulation:(NSString *)name;
--(NSArray *)fetchSimulations;
--(Simulation *)fetchSimulation:(NSString *)uniqueID;
+-(Simulation *)fetchSimulation;
 
 @end
