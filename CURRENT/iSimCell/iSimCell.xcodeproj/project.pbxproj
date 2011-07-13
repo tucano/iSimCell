@@ -22,6 +22,10 @@
 		ED1AC6A613CB64A7006C4D72 /* simCell in Resources */ = {isa = PBXBuildFile; fileRef = ED1AC6A513CB64A7006C4D72 /* simCell */; };
 		ED1AC6BC13CB64F5006C4D72 /* simCell in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED1AC6A513CB64A7006C4D72 /* simCell */; };
 		ED66B8DC13CDCC9300393E64 /* Application.icns in Resources */ = {isa = PBXBuildFile; fileRef = ED66B8DB13CDCC9300393E64 /* Application.icns */; };
+		ED66B8F413CDD12C00393E64 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = ED66B8F313CDD12C00393E64 /* Configuration.m */; };
+		ED66B8F713CDD12D00393E64 /* Plot.m in Sources */ = {isa = PBXBuildFile; fileRef = ED66B8F613CDD12D00393E64 /* Plot.m */; };
+		ED66B8FA13CDD12D00393E64 /* Simulation.m in Sources */ = {isa = PBXBuildFile; fileRef = ED66B8F913CDD12D00393E64 /* Simulation.m */; };
+		ED66B8FD13CDD12D00393E64 /* Result.m in Sources */ = {isa = PBXBuildFile; fileRef = ED66B8FC13CDD12D00393E64 /* Result.m */; };
 		EDA09F1F13CC92E400FE5C43 /* SimCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA09F1E13CC92E400FE5C43 /* SimCellController.m */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +76,14 @@
 		ED1AC69613CB6347006C4D72 /* iSimCellTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iSimCellTests.m; sourceTree = "<group>"; };
 		ED1AC6A513CB64A7006C4D72 /* simCell */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = simCell; sourceTree = "<group>"; };
 		ED66B8DB13CDCC9300393E64 /* Application.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Application.icns; sourceTree = "<group>"; };
+		ED66B8F213CDD12C00393E64 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
+		ED66B8F313CDD12C00393E64 /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; };
+		ED66B8F513CDD12C00393E64 /* Plot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plot.h; sourceTree = "<group>"; };
+		ED66B8F613CDD12D00393E64 /* Plot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Plot.m; sourceTree = "<group>"; };
+		ED66B8F813CDD12D00393E64 /* Simulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Simulation.h; sourceTree = "<group>"; };
+		ED66B8F913CDD12D00393E64 /* Simulation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Simulation.m; sourceTree = "<group>"; };
+		ED66B8FB13CDD12D00393E64 /* Result.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Result.h; sourceTree = "<group>"; };
+		ED66B8FC13CDD12D00393E64 /* Result.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Result.m; sourceTree = "<group>"; };
 		EDA09F1D13CC92E400FE5C43 /* SimCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimCellController.h; sourceTree = "<group>"; };
 		EDA09F1E13CC92E400FE5C43 /* SimCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimCellController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -201,6 +213,14 @@
 			isa = PBXGroup;
 			children = (
 				ED1AC68113CB6347006C4D72 /* SimCellDocument.xcdatamodeld */,
+				ED66B8FB13CDD12D00393E64 /* Result.h */,
+				ED66B8FC13CDD12D00393E64 /* Result.m */,
+				ED66B8F813CDD12D00393E64 /* Simulation.h */,
+				ED66B8F913CDD12D00393E64 /* Simulation.m */,
+				ED66B8F513CDD12C00393E64 /* Plot.h */,
+				ED66B8F613CDD12D00393E64 /* Plot.m */,
+				ED66B8F213CDD12C00393E64 /* Configuration.h */,
+				ED66B8F313CDD12C00393E64 /* Configuration.m */,
 			);
 			name = "CoreData Models";
 			sourceTree = "<group>";
@@ -336,6 +356,10 @@
 				ED1AC67A13CB6346006C4D72 /* SimCellDocument.m in Sources */,
 				ED1AC68313CB6347006C4D72 /* SimCellDocument.xcdatamodeld in Sources */,
 				EDA09F1F13CC92E400FE5C43 /* SimCellController.m in Sources */,
+				ED66B8F413CDD12C00393E64 /* Configuration.m in Sources */,
+				ED66B8F713CDD12D00393E64 /* Plot.m in Sources */,
+				ED66B8FA13CDD12D00393E64 /* Simulation.m in Sources */,
+				ED66B8FD13CDD12D00393E64 /* Result.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
