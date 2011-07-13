@@ -24,6 +24,10 @@
         
         // Common entry point
         NSLog(@"SimCellDocument: INIT common entry point to open and new functions.");
+        
+        // init linker
+        simcell = [[SimCellLinker alloc] init];
+
     }
     return self;
 }
@@ -63,6 +67,7 @@
 - (void)dealloc
 {
     NSLog(@"SimCellDocument: dealloc document");
+    [simcell release];
     [super dealloc];
 }
 

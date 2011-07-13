@@ -9,11 +9,14 @@
 #import <Cocoa/Cocoa.h>
 #import "SimCellController.h"
 #import "Simulation.h"
+#import "SimCellLinker.h"
 
 @class SimCellController;
+@class SimCellLinker;
 
 @interface SimCellDocument : NSPersistentDocument {
 @private
+    SimCellLinker     *simcell;
     SimCellController *mainWindow;
 }
 

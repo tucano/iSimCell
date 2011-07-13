@@ -26,6 +26,7 @@
 		ED66B8F713CDD12D00393E64 /* Plot.m in Sources */ = {isa = PBXBuildFile; fileRef = ED66B8F613CDD12D00393E64 /* Plot.m */; };
 		ED66B8FA13CDD12D00393E64 /* Simulation.m in Sources */ = {isa = PBXBuildFile; fileRef = ED66B8F913CDD12D00393E64 /* Simulation.m */; };
 		ED66B8FD13CDD12D00393E64 /* Result.m in Sources */ = {isa = PBXBuildFile; fileRef = ED66B8FC13CDD12D00393E64 /* Result.m */; };
+		ED66B90013CDDB0F00393E64 /* SimCellLinker.m in Sources */ = {isa = PBXBuildFile; fileRef = ED66B8FF13CDDB0F00393E64 /* SimCellLinker.m */; };
 		EDA09F1F13CC92E400FE5C43 /* SimCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA09F1E13CC92E400FE5C43 /* SimCellController.m */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,8 @@
 		ED66B8F913CDD12D00393E64 /* Simulation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Simulation.m; sourceTree = "<group>"; };
 		ED66B8FB13CDD12D00393E64 /* Result.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Result.h; sourceTree = "<group>"; };
 		ED66B8FC13CDD12D00393E64 /* Result.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Result.m; sourceTree = "<group>"; };
+		ED66B8FE13CDDB0F00393E64 /* SimCellLinker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimCellLinker.h; sourceTree = "<group>"; };
+		ED66B8FF13CDDB0F00393E64 /* SimCellLinker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimCellLinker.m; sourceTree = "<group>"; };
 		EDA09F1D13CC92E400FE5C43 /* SimCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimCellController.h; sourceTree = "<group>"; };
 		EDA09F1E13CC92E400FE5C43 /* SimCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimCellController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -205,6 +208,8 @@
 			children = (
 				ED1AC67813CB6346006C4D72 /* SimCellDocument.h */,
 				ED1AC67913CB6346006C4D72 /* SimCellDocument.m */,
+				ED66B8FE13CDDB0F00393E64 /* SimCellLinker.h */,
+				ED66B8FF13CDDB0F00393E64 /* SimCellLinker.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -360,6 +365,7 @@
 				ED66B8F713CDD12D00393E64 /* Plot.m in Sources */,
 				ED66B8FA13CDD12D00393E64 /* Simulation.m in Sources */,
 				ED66B8FD13CDD12D00393E64 /* Result.m in Sources */,
+				ED66B90013CDDB0F00393E64 /* SimCellLinker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
