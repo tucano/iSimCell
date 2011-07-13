@@ -47,6 +47,11 @@
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     NSLog(@"SimCellController: window Loaded. Calling Document is: %@", [self document]);
     NSLog(@"SimCellController: Simulation Name: %@", [[[self document] fetchSimulation] name]);
+    
+    // TEST
+    Configuration *aC = [[Configuration alloc] init];
+    [[self document] runSimCell:aC];
+    [aC release];
 }
 
 -(void)awakeFromNib

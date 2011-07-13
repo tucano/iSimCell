@@ -11,6 +11,7 @@
 @implementation SimCellDocument
 
 @synthesize mainWindow;
+@synthesize simcellLock;
 
 #pragma mark -
 #pragma mark Init
@@ -27,6 +28,7 @@
         
         // init linker
         simcell = [[SimCellLinker alloc] init];
+        simcellLock = NO;
 
     }
     return self;
@@ -83,6 +85,31 @@
     
     NSLog(@"SimCellDocument: passing control to the window controller. Simulation Name is: %@", [[self fetchSimulation] name]);
 }
+
+#pragma mark -
+#pragma mark Linker
+-(void)runSimCell:(Configuration *)conf
+{
+    // back if Locked
+    if (simcellLock) {
+        return;
+    }
+    
+    simcellLock = YES;
+    
+    NSArray *myargs = [conf arrayOfOptions];
+    NSLog(@"Arguments: %@",myargs);
+    
+    [simcell setArguments: myargs];
+    [simcell launchTask];
+    
+}
+
+-(void)killSimCell
+{
+    [simcell killTask];
+}
+
 
 #pragma mark -
 #pragma mark Core Data Methods

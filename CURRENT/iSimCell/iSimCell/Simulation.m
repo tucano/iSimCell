@@ -45,6 +45,14 @@
 }
 
 #pragma mark -
+#pragma mark Core Data Methods
+- (void) awakeFromInsert 
+{
+    // called when the object is first created.
+    [self generateUniqueID];
+}
+
+#pragma mark -
 #pragma mark Custom Methods
 
 - (void) generateUniqueID 

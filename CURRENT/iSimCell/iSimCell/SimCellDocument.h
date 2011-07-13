@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "SimCellController.h"
 #import "Simulation.h"
+#import "Configuration.h"
 #import "SimCellLinker.h"
 
 @class SimCellController;
@@ -17,10 +18,15 @@
 @interface SimCellDocument : NSPersistentDocument {
 @private
     SimCellLinker     *simcell;
+    bool simcellLock;
     SimCellController *mainWindow;
 }
 
 @property(nonatomic, retain) SimCellController *mainWindow;
+@property(readonly, assign) bool simcellLock;
+
+-(void)runSimCell:(Configuration *)conf;
+-(void)killSimCell;
 
 -(void)newSimulation:(NSString *)name;
 -(Simulation *)fetchSimulation;
