@@ -11,7 +11,9 @@
 
 @interface SimCellController : NSWindowController {
 @private
-     NSManagedObjectContext *_moc;
+    NSManagedObjectContext *_moc;
+    
+    IBOutlet NSObjectController *simulationController;
 }
 
 
