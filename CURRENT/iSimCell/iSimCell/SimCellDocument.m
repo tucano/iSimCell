@@ -31,6 +31,7 @@
 -(id)initWithType:(NSString *)type error:(NSError **)error
 {
     NSLog(@"SimCellDocument: Init and create file");
+
     self = [super initWithType:type error:error];
     
     if (self != nil) {
@@ -54,6 +55,12 @@
         NSLog(@"SimCellDocument: CoreData managed object context: %@.", managedObjectContext);
     }
     return self;
+}
+
+- (void)dealloc
+{
+    NSLog(@"SimCellDocument: dealloc document");
+    [super dealloc];
 }
 
 #pragma mark -
