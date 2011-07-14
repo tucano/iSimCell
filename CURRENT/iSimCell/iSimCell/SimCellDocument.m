@@ -120,6 +120,7 @@
     
     simcellLock = YES;
     
+    // options create in the CoreModel
     NSArray *myargs = [conf arrayOfOptions];
     NSLog(@"Arguments: %@",myargs);
     

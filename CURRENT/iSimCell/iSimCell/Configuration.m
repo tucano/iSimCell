@@ -89,8 +89,6 @@
     NSMutableArray *tmp = [[NSMutableArray alloc] init];
     NSMutableDictionary *keys = [[NSMutableDictionary alloc] initWithDictionary:[[self entity] attributesByName]];
     
-    NSLog(@"verbose: %@", self.verbose);
-    
     // handle VERBOSE and HEADERS
     if ([self.verbose intValue] > 0) {
         NSString *verboseLevel = @"-";
