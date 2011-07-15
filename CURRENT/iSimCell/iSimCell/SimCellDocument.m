@@ -195,6 +195,7 @@
     
     NSLog(@"SimCellDocument: data length: %lu", stringLength);
     NSLog(@"SimCellDocument: data lines: %lu", numberOfLines);
+    NSLog(@"SimCellDocument: data: %@", [simcell currentData]);
     
     simcellLock = NO;
 }
