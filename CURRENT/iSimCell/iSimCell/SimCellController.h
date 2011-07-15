@@ -14,9 +14,11 @@
     NSManagedObjectContext *_moc;
     
     IBOutlet NSObjectController *simulationController;
+    IBOutlet NSArrayController  *configurationController;
 }
 
 -(IBAction)launchSim:(id)sender;
+-(IBAction)terminateSim:(id)sender;
 
 - (void)setManagedObjectContext:(NSManagedObjectContext *)value;
 - (NSManagedObjectContext *)managedObjectContext;
