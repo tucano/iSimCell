@@ -17,7 +17,7 @@
 @dynamic uniqueID;
 @dynamic configuration;
 @dynamic plots;
-
+@dynamic data;
 
 - (void)addPlotsObject:(Plot *)value {    
     NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
@@ -47,5 +47,23 @@
     [self didChangeValueForKey:@"plots" withSetMutation:NSKeyValueMinusSetMutation usingObjects:value];
 }
 
+#pragma mark -
+#pragma mark Core Data Methods
+- (void) awakeFromInsert 
+{
+    // called when the object is first created.
+    [self generateUniqueID];
+}
+
+
+#pragma mark -
+#pragma mark Custom Actions
+
+- (void) generateUniqueID 
+{
+    NSString* uniqueID = self.uniqueID;
+    if ( uniqueID != nil ) return;
+    self.uniqueID = [[NSProcessInfo processInfo] globallyUniqueString];
+}
 
 @end

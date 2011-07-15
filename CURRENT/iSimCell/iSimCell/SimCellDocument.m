@@ -92,6 +92,7 @@
 - (void)dealloc
 {
     NSLog(@"SimCellDocument: dealloc document");
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [simcell release];
     [super dealloc];
 }

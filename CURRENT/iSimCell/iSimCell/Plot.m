@@ -15,5 +15,23 @@
 @dynamic uniqueID;
 @dynamic result;
 
+#pragma mark -
+#pragma mark Core Data Methods
+- (void) awakeFromInsert 
+{
+    // called when the object is first created.
+    [self generateUniqueID];
+}
+
+
+#pragma mark -
+#pragma mark Custom Actions
+
+- (void) generateUniqueID 
+{
+    NSString* uniqueID = self.uniqueID;
+    if ( uniqueID != nil ) return;
+    self.uniqueID = [[NSProcessInfo processInfo] globallyUniqueString];
+}
 
 @end

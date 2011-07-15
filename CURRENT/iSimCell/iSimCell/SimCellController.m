@@ -46,12 +46,7 @@
     [super windowDidLoad];
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     NSLog(@"SimCellController: window Loaded. Calling Document is: %@", [self document]);
-    NSLog(@"SimCellController: Simulation Name: %@", [[[self document] fetchSimulation] name]);
-    
-    // TEST
-    Configuration *aC = [[[[self document] fetchSimulation] configurations] anyObject];
-    [[self document] runSimCell:aC];
-    [aC release];
+    NSLog(@"SimCellController: Simulation Name: %@", [[[self document] fetchSimulation] name]);    
 }
 
 -(void)awakeFromNib
@@ -62,6 +57,18 @@
 - (NSString *)windowTitleForDocumentDisplayName:(NSString *)displayName
 {
     return [@"iSimCell - " stringByAppendingString:displayName];
+}
+
+#pragma mark -
+#pragma mark Actions
+
+- (IBAction)launchSim:(id)sender
+{
+    NSLog(@"SimCellController: simulations Controller selection: %@",[[simulationController selectedObjects] objectAtIndex:0]);
+//    NSLog(@"SimCellController: configuration Controller: %@",[configurationController selectedObjects]);
+    // TEST
+    Configuration *aC = [[[[self document] fetchSimulation] configurations] anyObject];
+    [[self document] runSimCell:aC];
 }
 
 #pragma mark -

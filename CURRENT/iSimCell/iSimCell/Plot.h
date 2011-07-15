@@ -18,4 +18,6 @@
 @property (nonatomic, retain) NSString * uniqueID;
 @property (nonatomic, retain) NSManagedObject * result;
 
+- (void) generateUniqueID;
+
 @end

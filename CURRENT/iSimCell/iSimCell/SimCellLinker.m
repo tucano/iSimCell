@@ -50,7 +50,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     if (currentData) [currentData release];
     [task release];
-    
     [super dealloc];
 }
 

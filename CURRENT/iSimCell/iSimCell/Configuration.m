@@ -29,7 +29,7 @@
 @dynamic verbose;
 @dynamic simulation;
 @dynamic results;
-
+@dynamic output;
 
 - (void)addResultsObject:(NSManagedObject *)value {    
     NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];

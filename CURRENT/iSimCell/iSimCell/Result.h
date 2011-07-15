@@ -19,5 +19,9 @@
 @property (nonatomic, retain) NSString * uniqueID;
 @property (nonatomic, retain) Configuration * configuration;
 @property (nonatomic, retain) NSSet* plots;
+@property (nonatomic, retain) NSString * data;
+
+
+-(void)generateUniqueID;
 
 @end

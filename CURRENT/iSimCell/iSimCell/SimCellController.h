@@ -16,6 +16,7 @@
     IBOutlet NSObjectController *simulationController;
 }
 
+-(IBAction)launchSim:(id)sender;
 
 - (void)setManagedObjectContext:(NSManagedObjectContext *)value;
 - (NSManagedObjectContext *)managedObjectContext;

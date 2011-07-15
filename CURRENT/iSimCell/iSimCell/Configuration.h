@@ -37,6 +37,7 @@
 @property (nonatomic, retain) NSNumber * verbose;
 @property (nonatomic, retain) NSManagedObject * simulation;
 @property (nonatomic, retain) NSSet* results;
+@property (nonatomic, retain) NSString * output;
 
 @property NSInteger nspheres;
 @property NSInteger divisions;
